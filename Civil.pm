@@ -299,7 +299,54 @@ sub pairgaps {
     return @meshed;
 }
 
-    
+sub plateslopes {
+        # need to read in numbers here
+        # code writen by Jonathan Kuchem 2018_06_11
+        #
+        # need all info for the following points
+        # start - normally a web splice or bearing location
+        # end   - normally a web splice or bearing location
+        #         a chord will be struck b/w start and end
+        #         (mathmatically and likely also in the shop)
+        # poi  = point of interest= location to find verticallity
+        #
+        # Web_ht = needed to turn the angle from vertical into a offset
+        #
+        
+# Function of start, end, point of interest (poi), A, and B
+# A and B are known points close to the poi to calculate slope
+# Web_ht should be the input of web height for calculating the offset
+
+
+# Deck Slope Calculations
+=pod
+
+    my $s_a = 	($A->{deck} - $poi->{deck})/
+                ($A->{d_along} - $poi->{d_along});
+
+    my $s_b = 	($poi->{deck} - $B->{deck})/
+            ($poi->{d_along} - $B->{d_along});
+
+    my $s1 = 	($s_a + $s_b)/2;
+
+# Deflection Slope Calculations
+    my $ds_a = 	(($A->{total_DL} - $poi->{total_DL})/12)/
+                ($A->{d_along} - $poi->{d_along});
+
+    my $ds_b = 	(($poi->{total_DL} - $B->{total_DL})/12)/
+                ($poi->{d_along} - $B->{d_along});
+
+    my $ds1 = 	($ds_a + $ds_b)/2;
+
+    // Offset Calculation
+
+    my $offset = 	$Web_ht * ($s1 + $ds1);
+
+    print "Offset :" .nearest (0.0001,$offset);
+=cut
+}
+
+
 #say join " ", rotate (45/180.0*3.1415, 10,10);
 #say join " ", translate (-5, 5, 10,10, 5, 5);
 #say join "  ", c2p(100, 101);
