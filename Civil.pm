@@ -352,4 +352,5 @@ sub plateslopes {
 #say join "  ", c2p(100, 101);
 #say join "  ", c2p(101, 100);
 #say join "  ", p2c (  c2p(100, 101) ) ;
+#  will it save and work?
 1;   # modules return true to show they have loaded
