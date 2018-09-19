@@ -12,7 +12,7 @@ $VERSION     = '0.20';
 @EXPORT      = qw( ftc );
 @EXPORT_OK   = qw( ProG chk_ProG format_STA parse_ft_in 
                    slope_camber feet2callout ftc translate 
-                   rotate c2p p2c pairgap) ;
+                   rotate c2p p2c pairgaps) ;
 
 %EXPORT_TAGS = ( all   => [ qw( ProG chk_ProG format_STA parse_ft_in 
                                 slope_camber feet2callout translate 
@@ -67,6 +67,7 @@ sub chk_ProG {
 
 
 sub ProG {
+    #need to be called with  ProG( know_sta, ref to hash of arrays)
 	my $known_sta = shift;
 	my $ref_curves = shift;
 	my $l_curve =  scalar  @{ $ref_curves->{'STA'} }  ;

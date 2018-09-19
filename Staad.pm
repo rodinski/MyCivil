@@ -6,10 +6,12 @@ use warnings;
 use vars qw( $VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 $VERSION     = '0.20';
 @ISA         = qw (Exporter);
-@EXPORT      = qw( list2desc mlinestaad getColumn slurp_std joint_coordinates member_incidences);
-@EXPORT_OK   = qw(  list2desc mlinestaad getColumn  slurp_std joint_coordinates member_incidences);
-%EXPORT_TAGS = ( all   => [ qw( &list2desc &mlinestaad &getColumn  &slurp_std &joint_coordinates &member_incidences) ]
-);
+@EXPORT      = qw( list2desc mlinestaad getColumn slurp_std 
+                   joint_coordinates member_incidences);
+@EXPORT_OK   = qw(  list2desc mlinestaad getColumn  slurp_std  
+                    joint_coordinates member_incidences);
+%EXPORT_TAGS = ( all   => [ qw( &list2desc &mlinestaad &getColumn  
+                           &slurp_std &joint_coordinates &member_incidences) ]);
 use feature  qw( say );
 use Data::Dumper;
 
@@ -189,7 +191,7 @@ my $f = "Z:/Clients/TRN/ILDOT/98624_I-280/Design/Bridge/I-280 over Mississippi R
 my $ref_A =  slurp_std $f; 
 
 #say join "\n", @{$ref_A} ; 
-say member_incidences $ref_A ;
+say member_incidences $ref_A   ;
 say joint_coordinates $ref_A ;
 
 1;   # modules return true to show they have loaded
