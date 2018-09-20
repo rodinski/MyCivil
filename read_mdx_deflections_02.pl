@@ -5,8 +5,14 @@ use YAML;
 use Data::Dumper;
 use Math::Spline;
 
+# ^----span1----------^----span2------^---span_N
+# nth  (10 per span) 
+# 0 1 2 3 4 5 6 7 8 9 X 11  ...
+#
+#
 my @spans; #will need this later
-my @nth={};
+my @nth; # an array of points along span
+my $ref = \@nth; #ref to the above array
 while(my $row = <DATA>) {
     $row = clean($row);
     if ($row =~/^ +SPN /) {
@@ -26,6 +32,7 @@ while(my $row = <DATA>) {
                $current_point++;
                 $nth[$current_point]->{d_along_span}= $n / 10 * $spans[$current_span];
                 $nth[$current_point]->{d_along_total}= $left_support + $nth[$current_point]->{d_along_span};
+                $nth[$current_point]->{index} = $current_point;  #not needed but nice to have.
                 if ($n == 10) {$left_support += $spans[$current_span]};
             }
         }
@@ -48,7 +55,7 @@ $i, $nth[$i]->{d_along_span}, $nth[$i]{d_along_total}
 .
     write ;
 }
- 
+say Dump ($ref); 
 # ===================================
 sub ltrim { my $s = shift; $s =~ s/^\s+//;       return $s };
 sub rtrim { my $s = shift; $s =~ s/\s+$//;       return $s };
