@@ -1,0 +1,99 @@
+---
+#Unit number goes in column 1
+1c:
+  slab: 8.5
+  web: 64.0
+  haunch: 3.00
+  1:
+    # info for this pier
+    t_btm_f: 0.75
+    # note the brging_ht lines get ran thru 'eval' 
+    brging_ht: "1.500 +  2.500 "
+  2:
+    # info for this pier
+    t_btm_f: 0.75 
+    brging_ht: "1.500 +  2.500 "
+
+1:
+  slab: 8.5
+  web: 64.0
+  haunch: 3.000
+  1:
+    # info for this pier
+    t_btm_f: 0.750
+    brging_ht: "1.500 +  2.500 "
+  2:
+    # info for this pier
+    t_btm_f: 0.750
+    brging_ht: "1.500 +  2.500 "
+
+
+2:
+  slab: 9.5
+  web: 144.0
+  haunch: 5.000
+  2:
+    # info for this pier
+    t_btm_f: 1.50 
+    brging_ht: 12.375 
+  3:
+    t_btm_f: 3.00 
+    brging_ht: 15.5 
+  4:
+    t_btm_f: 1.125 
+    brging_ht: 12.375 
+  SP1:
+    t_top_f: 1.50 
+    t_top_plate: 0.875 
+  SP2:
+    t_top_f: 1.50 
+    t_top_plate: 0.625 
+  SP3:
+    t_top_f: 3.00 
+    t_top_plate: 0.875 
+  SP4:
+    t_top_f: 3.00 
+    t_top_plate: 0.875 
+  SP5:
+    t_top_f: 1.125 
+    t_top_plate: 0.625 
+  SP6:
+    t_top_f: 1.125 
+    t_top_plate: 0.625 
+
+
+3:
+  # info for this unit
+  slab: 8.5
+  web: 54.0
+  haunch: 3.000
+  4:
+    # info for this pier
+    t_btm_f: 1.250
+    brging_ht: "2.000 + .25 + 0.125 + .25 + .75 + 3.125 + 1.5 + 0.125"
+  5:
+    t_btm_f: 2.125
+    brging_ht: "1.66 + 3.75"
+  6:
+    t_btm_f: 1.375
+    brging_ht: "2.000 + .25 + 0.125  + .25 + .75 + 3.125 + 1.5 + 0.125"
+
+4:
+  slab: 8.5
+  web: 102.0
+  haunch: 4.000
+  6:
+    t_btm_f: 1.
+    brging_ht: "2.000 + .25 + 0.125 + .25 + .75 + 3.125 + 1.5 + 0.125"
+  7:
+    t_btm_f: 2.750
+    brging_ht: 10.
+  8:
+    t_btm_f: 2.750
+    brging_ht: 8.75
+  9:
+    t_btm_f: 2.000
+    brging_ht: 10.
+  10:
+    t_btm_f: 1.
+    brging_ht: "2.000 + .25 + 0.125 + .25 + .75 + 3.125 + 1.5 + 0.125"
