@@ -19,6 +19,7 @@ while(my $row = <DATA>) {
 
         $nth[0]->{d_along_span}=0;
         $nth[0]->{d_along_total}=0;
+        $nth[0]->{n}=0;
         my $left_support = 0;
         foreach my $span (@spans) {
             $current_span++;
@@ -26,6 +27,7 @@ while(my $row = <DATA>) {
                $current_point++;
                 $nth[$current_point]->{d_along_span}= $n / 10 * $spans[$current_span];
                 $nth[$current_point]->{d_along_total}= $left_support + $nth[$current_point]->{d_along_span};
+                $nth[$current_point]->{n}= $current_point; # not need but might be nice to have. 
                 if ($n == 10) {$left_support += $spans[$current_span]};
             }
         }
@@ -49,6 +51,7 @@ $i, $nth[$i]->{d_along_span}, $nth[$i]{d_along_total}
     write ;
 }
  
+say Dump \@nth; 
 # ===================================
 sub ltrim { my $s = shift; $s =~ s/^\s+//;       return $s };
 sub rtrim { my $s = shift; $s =~ s/\s+$//;       return $s };
