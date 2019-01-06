@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use feature 'say';
 use Data::Dumper;
-
+# ready to commit as 90-147 done!
 my %HoA = ( spans => [ 54.25, 77, 77, 54.25 ] );
 
 #my %HoA =( spans => [ 100, 50, 100 ] );
