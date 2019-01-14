@@ -347,7 +347,45 @@ sub plateslopes {
 =cut
 }
 
+sub bar_a {
+  use Switch;
+  my $bar = shift;
+  switch ($bar) {
+    case( 3 )  {return 0.11}
+    case( 4 )  {return 0.2 }
+    case( 5 )  {return 0.31}
+    case( 6 )  {return 0.44}
+    case( 7 )  {return 0.6 }
+    case( 8 )  {return 0.79}
+    case( 9 )  {return 1   }
+    case( 10)  {return 1.27}
+    case( 11)  {return 1.56}
+    case( 14)  {return 2.25}
+    case( 18)  {return 4   }
+    else       { return "NA"}
+  }
+  return "NA";
+}
 
+sub bar_wt {
+  use Switch;
+  my $bar = shift;
+  switch ($bar) {
+    case (3 ) { return 0.38}
+    case (4 ) { return 0.67}
+    case (5 ) { return 1.04}
+    case (6 ) { return 1.50}
+    case (7 ) { return 2.04}
+    case (8 ) { return 2.67}
+    case (9 ) { return 3.40}
+    case (10) { return 4.30}
+    case (11) { return 5.31}
+    case (14) { return 7.65}
+    case (18) { return 13.60}
+    else      { return "NA"}
+  }
+  return "NA";
+}
 #say join " ", rotate (45/180.0*3.1415, 10,10);
 #say join " ", translate (-5, 5, 10,10, 5, 5);
 #say join "  ", c2p(100, 101);
