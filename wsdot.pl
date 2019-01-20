@@ -17,7 +17,6 @@ my @b = (   [1.5            , 2.5, 1.24 , 9.33   ]
        );
 
 
-
 my $end_span = scalar @{ $HoA{spans} }; 
 foreach my $memb ( 1 .. $end_span ) {
     say "";
