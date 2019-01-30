@@ -1,37 +1,46 @@
 use strict;
 use warnings;
 use feature 'say';
+use My::MyCivil::Civil qw( bar_a feet2callout )  ;
+use Data::Dumper;
 my %p = ( '1' => 0, '2'=>77, '3'=>154 ) ;
-say $p{2};
-
 #==   ===.==  ======   ==  ====.==    =    ===.==  ==.==   ==.==  ==.==  |  =      =     |   =      =     |
-
 my $ln;
 no warnings;
 until ( $ln =~ /^=== / ) { $ln = <DATA>  }
 use warnings;
 
+my @barray;
 while ( $ln = <DATA>  ) {
   chomp $ln;
   #say $ln;
-  if ($ln =~/^\s*$/)   { next }
-  if ($ln =~/^\*/)     { next }
   if ($ln !~/[0-9]/)   { next }
   my @d = unpack ("A3 x3 A6 x2 A6 x3 A2 x2 A7 x4  A x4 A6 x2 A5 x3 A5 x2  A5 x5  A x6 A x9 A x6 A" , $ln);
-  if (!defined $d[0]) {next}
-  if ( defined $d[0] && defined $d[1] ) {
-      say $d[0];
-      my $memb =  trim $d[0];
-      my $dist =  $d[1];
-      my $start = $dist + $p{$memb};
-      #say $start;
-      }
-  #print join "\n", @d;
+      my $memb =  &trim($d[0]);
+      my $dist =  &trim($d[1]);
+      my $barsz = &trim($d[3]);
+      my $no =    &trim($d[4]);
+      my $l =     &trim($d[6]);
+      my $area  = bar_a($barsz) * $no;
+      my $start = $dist  + $p{$memb};
+      my $end =   $start + $l ;
+      push @barray,  [$start, $area ], [ $end, -$area ]   ;
+#      say " memb:$memb dist:$dist  bar_a:  $area   s: $start  e: $end "  ;
+      
 }
 
-sub ltrim { my $s = shift ; $s =~ s/^\s+//;  return $s }
-sub rtrim { my $s = shift ; $s =~ s/\s+$//;  return $s }
-sub  trim { my $s = shift ; $s =~ ltrim ( rtrim ($s)); $s }
+say Dumper @barray;
+#say $barray[0][0] ;
+#say $barray[0][1] ;
+#say join "  ", @barray;
+#print join "\n", sort { $barray[$a][0] <=>  $barray[$b][0] } @barray;
+
+
+sub ltrim { my $s = shift ; $s =~ s/^\s+//g;  return $s }
+sub rtrim { my $s = shift ; $s =~ s/\s+$//g;  return $s }
+sub trim  { my $s = shift ; $s =~ s/^\s+|\s+$//g; return $s }
+
+
 __DATA__
 * =============================================================================================================================
 # [TOP STEEL(B)]         1024  <Top Steel (Neg.Mom.) Alternate Entry Method>
@@ -93,3 +102,4 @@ __DATA__
 
   3    -1.       623    8     2       N     16.    10       4.25   3.75     S      C         S      C
   3   -17.       624    8     2       N     31.75  10       4.25   3.75     S      C         S      C
+__END__
