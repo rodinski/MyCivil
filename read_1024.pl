@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use feature 'say';
-use My::MyCivil::Civil qw( bar_a feet2callout )  ;
+use My::Civil qw( bar_a feet2callout )  ;
 use Data::Dumper;
 my %p = ( '1' => 0, '2'=>77, '3'=>154 ) ;
 #==   ===.==  ======   ==  ====.==    =    ===.==  ==.==   ==.==  ==.==  |  =      =     |   =      =     |
@@ -10,7 +10,7 @@ no warnings;
 until ( $ln =~ /^=== / ) { $ln = <DATA>  }
 use warnings;
 
-my @barray;
+my @AoA;
 while ( $ln = <DATA>  ) {
   chomp $ln;
   #say $ln;
@@ -24,12 +24,24 @@ while ( $ln = <DATA>  ) {
       my $area  = bar_a($barsz) * $no;
       my $start = $dist  + $p{$memb};
       my $end =   $start + $l ;
-      push @barray,  [$start, $area ], [ $end, -$area ]   ;
+      push @AoA,  [ ($start, $area ) ] ;
+      push @AoA,  [ ($end  , -$area) ] ;
 #      say " memb:$memb dist:$dist  bar_a:  $area   s: $start  e: $end "  ;
       
 }
+#say @AoA;
 
-say Dumper @barray;
+my @sort = sort { $a->[0] <=> $b->[0] }   @AoA ;
+#need to report each delta_x and delta_y
+say "0.0\t0.0";
+my ($run_x, $run_y) = ( 0.0, 0.0 );
+foreach my $i ( 0 .. $#sort   ) {
+        printf "%6.2f\t%6.2f\n",   $sort[$i][0],  $run_y ; 
+        $run_y += $sort[$i][1];
+        printf "%6.2f\t%6.2f\n",   $sort[$i][0],  $run_y ; 
+}
+
+#say Dumper @barray;
 #say $barray[0][0] ;
 #say $barray[0][1] ;
 #say join "  ", @barray;
@@ -102,4 +114,3 @@ __DATA__
 
   3    -1.       623    8     2       N     16.    10       4.25   3.75     S      C         S      C
   3   -17.       624    8     2       N     31.75  10       4.25   3.75     S      C         S      C
-__END__
