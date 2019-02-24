@@ -1,29 +1,35 @@
 package Ray;
-use My::CoGo::Bearing;
-use My::CoGo::Point;
+use My::MyCivil::CoGo::Bearing;
+use My::MyCivil::CoGo::Point;
 use Moo;
+use Scalar::Util ( 'looks_like_number' );
+use Carp qw( confess ); 
+use feature ( 'say' );
 
-sub obj_test { 
-  my($invocant,$class) = @_;
-  my $whoami = Scalar::Util::blessed($invocant);
-  die "$_[0] is " . ref $_[0] unless ( $whoami eq $class);
-}
+
+#sub obj_test { 
+#  my($invocant,$class) = @_;
+#  say "invocant: $invocant";
+#  say "class:    $class";
+#  my $whoami = Scalar::Util::blessed($invocant);
+#  say "whoami: $whoami";
+#  die "$_[0] is " . ref $_[0] unless ( $whoami eq $class);
+#}
+
 has 'name' => (
-    is       => 'ro',
+    is       => 'rw',
     required => 1,
 );
 has point => (
-    is  => 'ro',
-    isa => sub {
-        die "$_[0] is " . ref $_[0] unless (1);
-    },
+    is  => 'rw',
+    isa => sub {  confess "'$_[0]' is not a Point Hash!"
+        unless  $_[0] =~/Point=HASH/ }
 );
 
 has bearing => (
-    is  => 'ro',
-    isa => sub {
-        die "$_[0] is " . ref $_[0] unless (1);
-    },
+    is  => 'rw',
+    isa => sub {  confess "'$_[0]' is not a number!"
+        unless   looks_like_number( $_[0] )  }
 );
 
 
