@@ -1,0 +1,158 @@
+---
+# Lewis and Clark Expressway SuperElevation Transitions
+# sta,  breakes in slope and slope to the right of a break
+# all are lists
+#
+#
+# crazy stuff at the starting gore
+# Doesn't matter where the offset is in these sections
+# because the super elevation correction routine 
+# is going to do an override of the offset
+  - sta: 11047.11
+    bk: [-10,  24.00,  55   ]
+    s: [    1.17,    -2.63  ]
+
+# -----------------------------
+  - sta: 11047.11
+    bk: [-10,  26.43,  55   ]
+    s: [    1.17,    -2.63  ]
+  - sta: 11047.36
+    bk: [-10,  26.41,  55   ]
+    s: [    1.17,    -2.63  ]
+  - sta: 11057.54
+    bk: [-10,  26.41,  55   ]
+    s: [    1.24,    -2.46  ]
+  - sta: 11067.72
+    bk: [-10,  25.09,  55   ]
+    s: [    1.31,    -2.29  ]
+  - sta: 11077.90
+    bk: [-10,  24.54,  55   ]
+#update next line per KimC comments
+    s: [    1.38,    -2.12  ]
+  - sta: 11088.08
+    bk: [-10,  24.04,  55   ]
+    s: [    1.46,    -1.94  ]
+  - sta: 11088.88
+    bk: [-10,  24.00,  55   ]
+    s: [    1.46,    -1.93  ]
+  - sta: 11098.26
+    bk: [-10,  24.00,  55   ]
+    s: [    1.53,    -1.77  ]
+  - sta: 11098.26
+    bk: [-10,  24.00,  55   ]
+    s: [    1.53,    -1.77  ]
+# -----------------------------
+  - sta: 11098.26
+    bk: [-10,  24.00,  55   ]
+    s: [    1.53,    -1.77  ]
+
+        
+# end of crazy gore
+#
+# back to baseline type stuff
+  - sta: 11108.44
+    bk: [-10,  24,   52  ]
+    s: [    1.6,    -1.6  ]
+#
+  - sta: 11342.38
+    bk: [ -10,     24,    52  ]
+    s: [  1.6,     -1.6  ]
+  - sta: 11342.39
+    bk: [ -42,     24,    44  ]
+    s: [  1.6,     -1.6  ]
+#
+  - sta: 11560.44
+    bk: [ -42,     24,   44  ]
+    s: [  1.6,     -1.6  ]
+  - sta: 11642.44
+    bk: [ -20,     24,   41.17 ]
+    s: [  0.0,      -1.6  ]
+#
+#
+  - sta: 11724.72
+    # just one slope
+    bk: [ -30,  24,    41.17 ]
+    s: [   -1.6,   -1.6  ]
+  - sta: 11724.73
+    # just one slope
+    bk: [ -30,   41.17 ]
+    s: [     -1.6 ]
+#
+#
+  - sta: 11858.43
+    bk: [ -30,   41.17 ]
+    s: [  -4.2 ]
+  - sta: 11858.44
+    bk: [ -30,   41.17 ]
+    s: [  -4.2 ]
+#
+#
+  - sta: 12230.43
+    bk: [ -8, 41.17 ]
+    s: [    -4.2 ]
+  - sta: 12230.44
+    bk: [ -5.17, 41.17 ]
+    s: [    -4.2 ]
+#
+#
+  - sta: 12446.23
+    bk: [ -5.17, 41.17 ]
+    s: [     0.0 ]
+  - sta: 12528.44
+    bk: [ -5.17, 41.17 ]
+    s: [     1.6 ]
+  - sta: 12763.44
+    bk: [ -5.17, 41.17 ]
+    s: [     1.6 ]
+  - sta: 13058.44
+    bk: [ -5.17, 41.17 ]
+    s: [     6.2 ]
+  - sta: 13458.44
+    bk: [ -5.17, 41.17 ]
+    s: [     6.2 ]
+
+#
+##  just one slope
+  - sta: 13788.43
+    bk: [ -5.17, 41.17 ]
+    s: [    1.6 ]
+  - sta: 13788.44
+    bk: [ -5.17,   24,    41.17 ]
+    s: [    1.6 ,     1.6  ]
+#
+##  just one slope
+  - sta: 13898.44
+    bk: [ -5.17,   24,    41.17 ]
+    s: [     1.6,     0.0 ]
+  - sta: 13998.44
+    bk: [ -5.17,   24,    41.17 ]
+    s: [     1.6,    -1.6 ]
+#  
+#
+# flat NO INFO
+  - sta: 13998.45
+    bk: [ -5.17,   24,    41.17 ]
+    s: [     1.6,   -1.6  ]
+  - sta: 14028.69
+    bk: [ -5.17,   24,    41.17 ]
+    s: [     1.5,  -1.9   ]
+#  
+#
+# no mans land to get to ramp_C stationing
+#
+# start ramp_C
+# YZ_info
+  - sta: 21046.5283
+    bk: [ -10,  25 ]
+    s: [     2.2549    ]
+# info from plans
+  - sta: 21046.96
+    bk: [ -10,  25 ]
+    s: [     2.25    ]
+  - sta: 21104.51
+    bk: [ -10,  25 ]
+    s: [     1.60    ]
+  - sta: 21341.38
+    bk: [ -10,  25 ]
+    s: [     1.60    ]
+# end ramp_C
