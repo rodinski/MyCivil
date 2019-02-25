@@ -1,0 +1,16 @@
+$T = 
+
+
+$dx = $p2->x - $p1->x;
+$dy = $p2->y - $p1->y;*
+$dr = sqrt($dx**2 + $dy**2 );
+$D =  $p1->x*$p2->y - $p2->x*$p1->y;
+
+
+$x = $D*$dy + sign($dy) * $dx * sqrt($r**2 * $dr**2 - $D**2) / $dr**2 ;
+$x = $D*$dy - sign($dy) * $dx * sqrt($r**2 * $dr**2 - $D**2) / $dr**2 ;
+
+
+$y =-$D*$dx + abs($dy)  * sqrt($r**2 * $dr**2 - $D**2) / $dr**2 ;
+$y =-$D*$dx - abs($dy)  * sqrt($r**2 * $dr**2 - $D**2) / $dr**2 ;
+$distriminant = $r**2 * $dr**2 - $D**2
