@@ -347,43 +347,38 @@ sub plateslopes {
 =cut
 }
 
+
 sub bar_a {
-  use Switch;
   my $bar = shift;
-  switch ($bar) {
-    case( 3 )  {return 0.11}
-    case( 4 )  {return 0.2 }
-    case( 5 )  {return 0.31}
-    case( 6 )  {return 0.44}
-    case( 7 )  {return 0.6 }
-    case( 8 )  {return 0.79}
-    case( 9 )  {return 1   }
-    case( 10)  {return 1.27}
-    case( 11)  {return 1.56}
-    case( 14)  {return 2.25}
-    case( 18)  {return 4   }
-    else       { return "NA"}
-  }
+       if( $bar == 3 )  {return 0.11}
+    elsif( $bar == 4 )  {return 0.2 }
+    elsif( $bar == 5 )  {return 0.31}
+    elsif( $bar == 6 )  {return 0.44}
+    elsif( $bar == 7 )  {return 0.6 }
+    elsif( $bar == 8 )  {return 0.79}
+    elsif( $bar == 9 )  {return 1   }
+    elsif( $bar == 10)  {return 1.27}
+    elsif( $bar == 11)  {return 1.56}
+    elsif( $bar == 14)  {return 2.25}
+    elsif( $bar == 18)  {return 4   }
+     else               { return "NA"}
   return "NA";
 }
 
 sub bar_wt {
-  use Switch;
   my $bar = shift;
-  switch ($bar) {
-    case (3 ) { return 0.38}
-    case (4 ) { return 0.67}
-    case (5 ) { return 1.04}
-    case (6 ) { return 1.50}
-    case (7 ) { return 2.04}
-    case (8 ) { return 2.67}
-    case (9 ) { return 3.40}
-    case (10) { return 4.30}
-    case (11) { return 5.31}
-    case (14) { return 7.65}
-    case (18) { return 13.60}
-    else      { return "NA"}
-  }
+     if ($bar == 3 ) { return 0.376}
+  elsif ($bar == 4 ) { return 0.668}
+  elsif ($bar == 5 ) { return 1.043}
+  elsif ($bar == 6 ) { return 1.502}
+  elsif ($bar == 7 ) { return 2.044}
+  elsif ($bar == 8 ) { return 2.670}
+  elsif ($bar == 9 ) { return 3.400}
+  elsif ($bar == 10) { return 4.303}
+  elsif ($bar == 11) { return 5.313}
+  elsif ($bar == 14) { return 7.650}
+  elsif ($bar == 18) { return 13.60}
+   else              { return "NA"}
   return "NA";
 }
 #say join " ", rotate (45/180.0*3.1415, 10,10);
