@@ -27,7 +27,7 @@ has ID =>    ( is => 'rw', required => 0 ) ;
 has tags =>  ( is => 'rw', required => 0 ) ;
 
 
-sub distance {
+sub length {
     my ( $self ) = @_; 
     my $d_E = -$self->pt0->E + $self->pt1->E ;
     my $d_N = -$self->pt0->N + $self->pt1->N ;

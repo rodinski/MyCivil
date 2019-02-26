@@ -1,25 +1,40 @@
 package Curve;
 use Moo;
 use Type::Tiny;
+use Carp qw( confess ); 
 use Scalar::Util qw( looks_like_number);
 #use Math::Trig qw( :pi rad2deg );
-#use Data:Dumper;
-use Point;
-use Bearing;
+use Data::Dumper;
+use My::CoGo::Point;
+use My::CoGo::Bearing;
 
 #my $POINT_TEST = "Type::Tiny"->new(
 #    name       => "Point",
 #    constraint => sub { 0 },
 #    message    => sub {  $_[-1] ." ". ref $_ . " ain't a number or isn't b/w -pi to pi" },
 #);
-has R => ( 
-    is => 'rw', 
-    required => 1, 
+has PC => (
+    is  => 'rw',
+    isa => sub {  confess "'$_[0]' is not a Point Hash!"
+        unless  $_[0] =~/Point=HASH/ }
 );
+has CC => (
+    is  => 'rw',
+    isa => sub {  confess "'$_[0]' is not a Point Hash!"
+        unless  $_[0] =~/Point=HASH/ }
+);
+
 has delta_angle  => ( 
     is => 'rw', 
     required => 1, 
 );
+
+sub R { 
+    my ($self) = @_;
+    my $seg = Segment->new( pt0=>$self->CC, pt1=>$self->PC );
+    return $seg->length;
+}
+
 sub r { my ($self) = @_; 
     return $self->R }
 
@@ -44,12 +59,12 @@ sub PI { my ($self) = @_;
 sub DA { my ($self) = @_; 
   return  $self->delta_angle }
 
-sub PC { 
-  my ($self) = @_; 
-  my $x = $self->R - $self->M;
-  my $y = $self->Chord / 2.0 ;
-  my $p = Point->new(x=>$x, y=>$y);
-  return  $p }
+#sub PC { 
+#  my ($self) = @_; 
+#  my $x = $self->R - $self->M;
+#  my $y = $self->Chord / 2.0 ;
+#  my $p = Point->new(x=>$x, y=>$y);
+#  return  $p }
 
 sub PT { 
   my ($self) = @_; 
@@ -59,3 +74,14 @@ sub PT {
   return  $p }
 
 1;
+#
+#               |
+#               +
+#               |  
+#               |      
+#               |
+#               |
+#   +           |
+#   |           |
+#---------------+------------------
+#
