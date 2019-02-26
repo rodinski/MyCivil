@@ -1,6 +1,6 @@
 package Ray;
-use My::MyCivil::CoGo::Bearing;
-use My::MyCivil::CoGo::Point;
+use My::CoGo::Bearing;
+use My::CoGo::Point;
 use Moo;
 use Scalar::Util ( 'looks_like_number' );
 use Carp qw( confess ); 

@@ -5,7 +5,7 @@ use Types::Standard qw( Str Int ArrayRef HashRef );
 use Scalar::Util qw( looks_like_number);
 ##use Math::Trig qw( :pi rad2deg );
 use Data::Dumper;
-use  My::MyCivil::CoGo::Point;
+use  My::CoGo::Point;
 use Carp qw( confess ); 
 
 has pt0 => ( #should be Segment Hash

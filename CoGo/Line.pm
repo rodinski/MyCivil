@@ -19,10 +19,10 @@ use Data::Dumper;
 #);
 #=============================================================
 
-#has 'start' => ( is => 'rw', required => 1, isa => 'My::MyCivil::CoGo::Point'  );
+#has 'start' => ( is => 'rw', required => 1, isa => 'My::CoGo::Point'  );
 #has 'start' => ( is => 'rw', required => 1, isa => 'Point'  );
 has 'start' => ( is => 'rw', required => 1,   );
-#has 'end'   => ( is => 'rw', required => 1, isa => 'My::MyCivil::CoGo::Point' );
+#has 'end'   => ( is => 'rw', required => 1, isa => 'My::CoGo::Point' );
 has 'end'   => ( is => 'rw', required => 1, );
 
 sub length {
