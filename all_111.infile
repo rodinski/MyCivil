@@ -1,0 +1,2157 @@
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     LewisClarkProj                                                     
+$Subject:     LEWISCLARK_LAYOUT                                                  
+$Job No.      213              Operator: RH                                      
+$Date:        Thursday  November 12, 2015  10:20 am                              
+                                                                                
+$SYSTEM FIX 4 ASEC 2 BEAR PRI 0 RED NE STA 2 FILE: 'LCE_01'                      
+                                                                                
+                                                                                
+$  CHAIN CL_PROP                                                        
+SET FEATURE ADD DEFAULT_POINT                                           
+$                                                                       
+$  DEFINE CL PROPOSED IMPROVEMENT                                       
+$ POT                                                                   
+STO POI 101 N 302644.737 E 2272013.578                                  
+$ PI                                                                    
+STO POI 102 N 301680.764 E 2273383.534                                  
+STO POI 103 N 300801.893 E 2274298.308                                  
+$ POT                                                                   
+STO POI 104 N 300210.487 E 2275845.558                                  
+$                                                                       
+$                                                                       
+$ START FUTURE WB I-70                                                  
+$ POT                                                                   
+STO POI 201 N 300528.912 E 2271232.421                                  
+$ PI                                                                    
+STO POI 202 N 302357.319 E 2272378.536                                  
+STO POI 203 N 300798.750 E 2274245.680                                  
+STO POI 204 N 300574.851 E 2274858.690                                  
+$ POT                                                                   
+STO POI 205 N 300535.072 E 2274962.761                                  
+$                                                                       
+$  STORE LINES                                                          
+SET FEATURE ADD LIGHT_LINE                                              
+STORE LINE LN_101 101 TO 102                                            
+STORE LINE LN_102 102 TO 103                                            
+STORE LINE LN_103 103 TO 104                                            
+STORE LINE LN_201 201 TO 202                                            
+STORE LINE LN_202 202 TO 203                                            
+STORE LINE LN_203 203 TO 204                                            
+STORE LINE LN_204 204 TO 205                                            
+$                                                                       
+SET FEATURE ADD DEFAULT_CURVE                                           
+$  CURVES ON PROPOSED IMP                                               
+STORE CURVE CURVE_01 PB 101 PI 102 RADIUS 3000 PA 103                   
+STORE CURVE CURVE_02 PB 102 PI 103 RADIUS 1820 PA 104                   
+$                                                                       
+$  CURVES ON FUTURE WB                                                  
+STORE CURVE CURVE_03 PB 201 PI 202 RADIUS 1400 PA 203                   
+STORE CURVE CURVE_04 PB 202 PI 203 RADIUS 1820 PA 204                   
+STORE CURVE CURVE_05 PB 203 PI 204 RADIUS 9750 PA 205                   
+$                                                                       
+$                                                                       
+SET FEATURE ADD 2011                                                    
+STORE CHAIN PRO_IM 101 CUR CURVE_01 CUR CURVE_02 104  STATION 10379.86  
+$                                                                       
+STORE CHAIN F_WB 201 CUR CURVE_03 CUR CURVE_04 CUR CURVE_05 205  STATION 19500                                                                         
+$                                                                       
+SET FEATURE ADD BIG_POINT                                               
+EQUATE CC01 TO CC CURVE_01                                              
+EQUATE CC02 TO CC CURVE_02                                              
+EQUATE CC03 TO CC CURVE_03                                              
+EQUATE CC04 TO CC CURVE_04                                              
+EQUATE CC05 TO CC CURVE_05                                              
+$                                                                       
+$   RAMP C                                                              
+SET FEATURE ADD DEFAULT_POINT                                           
+$ LAY OUT  RAMP_C FROM PLAN SHEET THEN EXTEND IT 100 TO THE WEST        
+$ NOTE R <> 580.00 FEET                                                 
+LOCATE  301 ON CHAIN PRO_IM STATION 11048.73 OFFSET  -52.01             
+LOCATE  302 ON CHAIN PRO_IM STATION 11071.29 OFFSET  -48.77             
+LOCATE  303 ON CHAIN PRO_IM STATION 11094.03 OFFSET  -47.30             
+LOCATE  304 ON CHAIN PRO_IM STATION 11826.02                            
+STORE CURVE CURVE_11 PC 301 PI 302 PT 303                               
+EQUATE CC11 TO CC CURVE_11                                              
+STORE DISTANCE R_11 R CURVE_11                                          
+$                                                                       
+$  NOW MUST EXTEND CURVE BACK TO THE W 100 FEET/                        
+STORE CHAIN RAMP_C 301 CUR CURVE_11 304 STATION 21046.96                
+LOCATE 305 ON CURVE CURVE_11 STA 20946.96                               
+STORE CURVE CURVE_11 PC 305   PT  303  R %R_11 CC                       
+LOCATE BNT14 ON CHAIN  PRO_IM  STA 13363.44                             
+STORE CHAIN RAMP_C 305 CUR CURVE_11 304 STATION 20946.96                
+$ DONE WITH RAMP_C                                                      
+$                                                                       
+SET FEATURE ADD BIG_POINT                                               
+LOCATE BNT01 ON CHAIN PRO_IM   STA   11047.11                           
+LOCATE BNT02 ON CHAIN  PRO_IM  STA 11108.44                             
+LOCATE BNT03 ON CHAIN  PRO_IM  STA 11483.44                             
+LOCATE BNT04 ON CHAIN  PRO_IM  STA 11858.44                             
+LOCATE BNT05 ON CHAIN  PRO_IM  STA 11968.44                             
+LOCATE BNT06 ON CHAIN  PRO_IM  STA 12098.44                             
+LOCATE BNT07 ON CHAIN  PRO_IM  STA 12268.44                             
+LOCATE BNT08 ON CHAIN  PRO_IM  STA 12528.44                             
+LOCATE BNT09 ON CHAIN  PRO_IM  STA 12763.44                             
+LOCATE BNT10 ON CHAIN  PRO_IM  STA 12953.44                             
+LOCATE BNT11 ON CHAIN  PRO_IM  STA 13058.44                             
+LOCATE BNT12 ON CHAIN  PRO_IM  STA 13153.44                             
+LOCATE BNT13 ON CHAIN  PRO_IM  STA 13273.44                             
+LOCATE BNT14 ON CHAIN  PRO_IM  STA 13363.44                             
+LOCATE BNT15 ON CHAIN  PRO_IM  STA 13458.44                             
+LOCATE BNT16 ON CHAIN  PRO_IM  STA 13568.44                             
+LOCATE BNT17 ON CHAIN  PRO_IM  STA 13678.44                             
+LOCATE BNT18 ON CHAIN  PRO_IM  STA 13788.44                             
+LOCATE BNT19 ON CHAIN  PRO_IM  STA 13898.44                             
+LOCATE BNT20 ON CHAIN  PRO_IM  STA 13998.44                             
+LOCATE BNT21 ON CHAIN  PRO_IM  STA 14028.69                             
+SET FEATURE ADD DEFAULT_POINT                                           
+$                                                                       
+$ INPUT RAMP B CURVE INTO                                               
+LOC  401 ON CHAIN PRO_IM STATION 11047.06  OFFSET  54.57                
+LOC  402 ON CHAIN PRO_IM STATION 11055.46  OFFSET  53.71                
+LOC  403 ON CHAIN PRO_IM STATION 11063.90  OFFSET  53.28                
+LOC  404 ON CHAIN PRO_IM STATION 11279.52  OFFSET  42.50                
+LOC  405 ON CHAIN PRO_IM STATION 11329.45  OFFSET  40.00                
+LOC  406 ON CHAIN PRO_IM STATION 11379.45  OFFSET  40.00                
+$                                                                       
+$ SET SIGHT LINES                                                       
+SET FEATURE ADD LIGHT_LINE                                              
+STORE LINE LN_401 401 TO 402                                            
+STORE LINE LN_402 402 TO 403                                            
+STORE LINE LN_403 403 TO 404                                            
+STORE LINE LN_404 404 TO 405                                            
+$                                                                       
+SET FEATURE ADD DEFAULT_CURVE                                           
+$  CURVES ON RAMP B                                                     
+SET FEATURE ADD 2011 EOLANE                                             
+$  STORE CURVE CURVE_41 PB 401 PI 402 RADIUS 320 PA 403                 
+STORE CURVE CURVE_41 PC 401 PI 402 PT 403                               
+$  STORE CURVE CURVE_42 PB 404 PI 405 RADIUS 2000 PA 406                
+STORE CURVE CURVE_42  PC 404 PI 405 PT 406                              
+$                                                                       
+SET FEATURE ADD 2011                                                    
+STORE CHAIN RAMP_B 401 CUR CURVE_41 CUR CURVE_42  406 STATION 46.70     
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT_R                                         
+LOCATE BREAK113 ON CHAIN PRO_IM  STA 11342.38                           
+LOCATE BREAK114  INTERSECTION  LINE BREAK113  BNT03 TO  BNTL03 CHAIN RAMP_C                                                                            
+INVERSE ALONG RAMP_C    BREAK113  BREAK114                              
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     LewisClarkProj                                                     
+$Subject:     SET POINTS LEFT OF BNT POINTS                                      
+$Job No.      213              Operator: RH                                      
+$Date:        Thursday  November 12, 2015   8:50 am                              
+                                                                                
+$SYSTEM FIX 4 ASEC 2 BEAR PRI 0 RED NE STA 2 FILE: 'LCE_02'                      
+                                                                                
+                                                                                
+LOCATE BNTL01 PROJ BNT01 ON CHAIN PRO_IM OFFSET -100                    
+LOCATE BNTL02 PROJ BNT02 ON CHAIN PRO_IM OFFSET -100                    
+LOCATE BNTL03 PROJ BNT03 ON CHAIN PRO_IM OFFSET -100                    
+$  BENT 4 IS ACTUALLY PARALLEL  TO BENT 03                              
+LOC BNTL04     TRA  BNT04   DIS 100   BNT03  TO BNTL03                  
+$                                                                       
+LOCATE BNTL05 PROJ BNT05 ON CHAIN PRO_IM OFFSET -100                    
+LOCATE BNTL06 PROJ BNT06 ON CHAIN PRO_IM OFFSET -100                    
+LOCATE BNTL07 PROJ BNT07 ON CHAIN PRO_IM OFFSET -100                    
+LOCATE BNTL08 PROJ BNT08 ON CHAIN PRO_IM OFFSET -100                    
+LOCATE BNTL09 PROJ BNT09 ON CHAIN PRO_IM OFFSET -100                    
+LOCATE BNTL10 PROJ BNT10 ON CHAIN PRO_IM OFFSET -100                    
+LOCATE BNTL11 PROJ BNT11 ON CHAIN PRO_IM OFFSET -100                    
+LOCATE BNTL12 PROJ BNT12 ON CHAIN PRO_IM OFFSET -100                    
+LOCATE BNTL13 PROJ BNT13 ON CHAIN PRO_IM OFFSET -100                    
+LOCATE BNTL14 PROJ BNT14 ON CHAIN PRO_IM OFFSET -100                    
+LOCATE BNTL15 PROJ BNT15 ON CHAIN PRO_IM OFFSET -100                    
+LOCATE BNTL16 PROJ BNT16 ON CHAIN PRO_IM OFFSET -100                    
+LOCATE BNTL17 PROJ BNT17 ON CHAIN PRO_IM OFFSET -100                    
+LOCATE BNTL18 PROJ BNT18 ON CHAIN PRO_IM OFFSET -100                    
+LOCATE BNTL19 PROJ BNT19 ON CHAIN PRO_IM OFFSET -100                    
+LOCATE BNTL20 PROJ BNT20 ON CHAIN PRO_IM OFFSET -100                    
+LOCATE BNTL21 PROJ BNT21 ON CHAIN PRO_IM OFFSET -100                    
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     Rod                                                                
+$Subject:     BNTS AND BEARINGS                                                  
+$Job No.      213              Operator: RH                                      
+$Date:        Wednesday  November 11, 2015  11:04 am                             
+                                                                                
+$SYSTEM FIX 4 ASEC 2 BEAR PRI 0 RED NE STA 2 FILE: 'LCE_03'                      
+                                                                                
+                                                                                
+STORE  DISTANCE PSOFF 1.00                                              
+SET FEATURE ADD LIGHT_LINE                                              
+STORE LINE  CLBT01 BNT01 TO  BNTL01                                     
+STORE LINE  CLBT02 BNT02 TO  BNTL02                                     
+STORE LINE  CLBT03 BNT03 TO  BNTL03                                     
+STORE LINE  CLBT04 BNT04 TO  BNTL04                                     
+STORE LINE  CLBT05 BNT05 TO  BNTL05                                     
+STORE LINE  CLBT06 BNT06 TO  BNTL06                                     
+STORE LINE  CLBT07 BNT07 TO  BNTL07                                     
+STORE LINE  CLBT08 BNT08 TO  BNTL08                                     
+STORE LINE  CLBT09 BNT09 TO  BNTL09                                     
+STORE LINE  CLBT10 BNT10 TO  BNTL10                                     
+STORE LINE  CLBT11 BNT11 TO  BNTL11                                     
+STORE LINE  CLBT12 BNT12 TO  BNTL12                                     
+STORE LINE  CLBT13 BNT13 TO  BNTL13                                     
+STORE LINE  CLBT14 BNT14 TO  BNTL14                                     
+STORE LINE  CLBT15 BNT15 TO  BNTL15                                     
+STORE LINE  CLBT16 BNT16 TO  BNTL16                                     
+STORE LINE  CLBT17 BNT17 TO  BNTL17                                     
+STORE LINE  CLBT18 BNT18 TO  BNTL18                                     
+STORE LINE  CLBT19 BNT19 TO  BNTL19                                     
+STORE LINE  CLBT20 BNT20 TO  BNTL20                                     
+STORE LINE  CLBT21 BNT21 TO  BNTL21                                     
+STORE BEARING BRG01  BNT01 TO BNTL01                                    
+STORE BEARING BRG02  BNT02 TO BNTL02                                    
+STORE BEARING BRG03  BNT03 TO BNTL03                                    
+STORE BEARING BRG04  BNT04 TO BNTL04                                    
+STORE BEARING BRG05  BNT05 TO BNTL05                                    
+STORE BEARING BRG06  BNT06 TO BNTL06                                    
+STORE BEARING BRG07  BNT08 TO BNTL07                                    
+STORE BEARING BRG08  BNT09 TO BNTL08                                    
+STORE BEARING BRG09  BNT10 TO BNTL09                                    
+STORE BEARING BRG10  BNT10 TO BNTL10                                    
+STORE BEARING BRG11  BNT11 TO BNTL11                                    
+STORE BEARING BRG12  BNT12 TO BNTL12                                    
+STORE BEARING BRG13  BNT13 TO BNTL13                                    
+STORE BEARING BRG14  BNT14 TO BNTL14                                    
+STORE BEARING BRG15  BNT15 TO BNTL15                                    
+STORE BEARING BRG16  BNT16 TO BNTL16                                    
+STORE BEARING BRG17  BNT17 TO BNTL17                                    
+STORE BEARING BRG18  BNT18 TO BNTL18                                    
+STORE BEARING BRG19  BNT19 TO BNTL19                                    
+STORE BEARING BRG20  BNT20 TO BNTL20                                    
+STORE BEARING BRG21  BNT21 TO BNTL21                                    
+$                                                                       
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT                                           
+$                                                                       
+LOC BTA10 INT LIN BNT10 %BRG10 OFFSET %PSOFF CHAIN PRO_IM               
+LOC BTA11 INT LINE BNT11 %BRG11 OFFSET %PSOFF  CHAIN PRO_IM             
+LOC BTA12 INT LINE BNT12 %BRG12 OFFSET %PSOFF  CHAIN PRO_IM             
+LOC BTA13 INT LINE BNT13 %BRG13 OFFSET %PSOFF  CHAIN PRO_IM             
+LOC BTA14 INT LINE BNT14 %BRG14 OFFSET %PSOFF  CHAIN PRO_IM             
+LOC BTA15 INT LINE BNT15 %BRG15 OFFSET %PSOFF  CHAIN PRO_IM             
+LOC BTA16 INT LINE BNT16 %BRG16 OFFSET %PSOFF  CHAIN PRO_IM             
+LOC BTA17 INT LINE BNT17 %BRG17 OFFSET %PSOFF  CHAIN PRO_IM             
+LOC BTA18 INT LINE BNT18 %BRG18 OFFSET %PSOFF  CHAIN PRO_IM             
+LOC BTA19 INT LINE BNT19 %BRG19 OFFSET %PSOFF  CHAIN PRO_IM             
+LOC BTA20 INT LINE BNT20 %BRG20 OFFSET %PSOFF  CHAIN PRO_IM             
+SET FEATURE ADD DEFAULT_POINT_R                                         
+STORE  DISTANCE PSOFFB 0 M 1.00                                         
+LOC BTB11 INT LINE BNT11 %BRG11 OFFSET %PSOFFB  CHAIN PRO_IM            
+LOC BTB12 INT LINE BNT12 %BRG12 OFFSET %PSOFFB  CHAIN PRO_IM            
+LOC BTB13 INT LINE BNT13 %BRG13 OFFSET %PSOFFB  CHAIN PRO_IM            
+LOC BTB14 INT LINE BNT14 %BRG14 OFFSET %PSOFFB  CHAIN PRO_IM            
+LOC BTB15 INT LINE BNT15 %BRG15 OFFSET %PSOFFB  CHAIN PRO_IM            
+LOC BTB16 INT LINE BNT16 %BRG16 OFFSET %PSOFFB  CHAIN PRO_IM            
+LOC BTB17 INT LINE BNT17 %BRG17 OFFSET %PSOFFB  CHAIN PRO_IM            
+LOC BTB18 INT LINE BNT18 %BRG18 OFFSET %PSOFFB  CHAIN PRO_IM            
+LOC BTB19 INT LINE BNT19 %BRG19 OFFSET %PSOFFB  CHAIN PRO_IM            
+LOC BTB20 INT LINE BNT20 %BRG20 OFFSET %PSOFFB  CHAIN PRO_IM            
+SET FEATURE ADD DEFAULT_POINT_R                                         
+SET FEATURE ADD DEFAULT_POINT_R                                         
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     LewisClarkProj                                                     
+$Subject:     MID_CHORDS                                                         
+$Job No.      684              Operator: RH                                      
+$Date:        Monday  October 5, 2015   1:15 pm                                  
+                                                                                
+$SYSTEM FIX 4 ASEC 2 BEAR PRI 0 RED NE STA 2 FILE: 'LCE_04'                      
+                                                                                
+                                                                                
+SET FEATURE ADD PS_CHORD                                                
+STORE LINE CHORD10 BNT10 TO BNT11                                       
+STORE LINE CHORD11 BNT11 TO BNT12                                       
+STORE LINE CHORD12 BNT12 TO BNT13                                       
+STORE LINE CHORD13 BNT13 TO BNT14                                       
+STORE LINE CHORD14 BNT14 TO BNT15                                       
+STORE LINE CHORD15 BNT15 TO BNT16                                       
+STORE LINE CHORD16 BNT16 TO BNT17                                       
+STORE LINE CHORD17 BNT17 TO BNT18                                       
+STORE LINE CHORD18 BNT18 TO BNT19                                       
+STORE LINE CHORD19 BNT19 TO BNT20                                       
+STORE LINE CHORD20 BNT20 TO BNT21                                       
+SET FEATURE ADD DEFAULT_POINT                                           
+DIV/LIN BNT10 TO BNT11 BY 2 BEG CHORDH10                                
+DIV/LIN BNT11 TO BNT12 BY 2 BEG CHORDH11                                
+DIV/LIN BNT12 TO BNT13 BY 2 BEG CHORDH12                                
+DIV/LIN BNT13 TO BNT14 BY 2 BEG CHORDH13                                
+DIV/LIN BNT14 TO BNT15 BY 2 BEG CHORDH14                                
+DIV/LIN BNT15 TO BNT16 BY 2 BEG CHORDH15                                
+DIV/LIN BNT16 TO BNT17 BY 2 BEG CHORDH16                                
+DIV/LIN BNT17 TO BNT18 BY 2 BEG CHORDH17                                
+DIV/LIN BNT18 TO BNT19 BY 2 BEG CHORDH18                                
+DIV/LIN BNT19 TO BNT20 BY 2 BEG CHORDH19                                
+DIV/LIN BNT20 TO BNT21 BY 2 BEG CHORDH20                                
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     LewisClarkProj                                                     
+$Subject:     GIRDER_06                                                          
+$Job No.      213              Operator: RH                                      
+$Date:        Friday  November 13, 2015   1:51 pm                                
+                                                                                
+$SYSTEM FIX 4 ASEC 2 BEAR PRI 0 RED NE STA 2 FILE: 'LCE_06'                      
+                                                                                
+                                                                                
+SET FEATURE ADD DEFAULT_POINT                                           
+LOCATE ANG BNTL10 BNT10 B1006 P 180 DIS 37.5                            
+LOCATE ANG BNTL11 BNT11 B1106 P 180 DIS 37.5                            
+LOCATE ANG BNTL12 BNT12 B1206 P 180 DIS 37.5                            
+LOCATE ANG BNTL13 BNT13 B1306 P 180 DIS 37.5                            
+LOCATE ANG BNTL14 BNT14 B1406 P 180 DIS 37.5                            
+LOCATE ANG BNTL15 BNT15 B1506 P 180 DIS 37.5                            
+LOCATE ANG BNTL16 BNT16 B1606 P 180 DIS 37.5                            
+LOCATE ANG BNTL17 BNT17 B1706 P 180 DIS 37.5                            
+LOCATE ANG BNTL18 BNT18 B1806 P 180 DIS 37.5                            
+LOCATE ANG BNTL19 BNT19 B1906 P 180 DIS 37.5                            
+LOCATE ANG BNTL20 BNT20 B2006 P 180 DIS 37.5                            
+$ ENDS OF UNIT 7 A LITTLE DIFFERENT                                     
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT2                                          
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT_L                                         
+LOCATE 10600 INT LIN BTA10 BNTL10 TO  BNT10  LINE  B1006  BNT10 TO BNT11
+LOCATE 11600 INT LIN BTA11 BNTL11 TO  BNT11  LINE  B1106  BNT11 TO BNT12
+LOCATE 12600 INT LIN BTA12 BNTL12 TO  BNT12  LINE  B1206  BNT12 TO BNT13
+LOCATE 13600 INT LIN BTA13 BNTL13 TO  BNT13  LINE  B1306  BNT13 TO BNT14
+LOCATE 14600 INT LIN BTA14 BNTL14 TO  BNT14  LINE  B1406  BNT14 TO BNT15
+LOCATE 15600 INT LIN BTA15 BNTL15 TO  BNT15  LINE  B1506  BNT15 TO BNT16
+LOCATE 16600 INT LIN BTA16 BNTL16 TO  BNT16  LINE  B1606  BNT16 TO BNT17
+LOCATE 17600 INT LIN BTA17 BNTL17 TO  BNT17  LINE  B1706  BNT17 TO BNT18
+LOCATE 18600 INT LIN BTA18 BNTL18 TO  BNT18  LINE  B1806  BNT18 TO BNT19
+LOCATE 19600 INT LIN BTA19 BNTL19 TO  BNT19  LINE  B1906  BNT19 TO BNT20
+$                                                                       
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT_R                                         
+LOCATE 10610 INT LIN BTB11 BNTL11 TO  BNT11  LINE  B1106  BNT11 TO BNT10
+LOCATE 11610 INT LIN BTB12 BNTL12 TO  BNT12  LINE  B1206  BNT12 TO BNT11
+LOCATE 12610 INT LIN BTB13 BNTL13 TO  BNT13  LINE  B1306  BNT13 TO BNT12
+LOCATE 13610 INT LIN BTB14 BNTL14 TO  BNT14  LINE  B1406  BNT14 TO BNT13
+LOCATE 14610 INT LIN BTB15 BNTL15 TO  BNT15  LINE  B1506  BNT15 TO BNT14
+LOCATE 15610 INT LIN BTB16 BNTL16 TO  BNT16  LINE  B1606  BNT16 TO BNT15
+LOCATE 16610 INT LIN BTB17 BNTL17 TO  BNT17  LINE  B1706  BNT17 TO BNT16
+LOCATE 17610 INT LIN BTB18 BNTL18 TO  BNT18  LINE  B1806  BNT18 TO BNT17
+LOCATE 18610 INT LIN BTB19 BNTL19 TO  BNT19  LINE  B1906  BNT19 TO BNT18
+LOCATE 19610 INT LIN BTB20 BNTL20 TO  BNT20  LINE  B2006  BNT20 TO BNT19
+LOCATE 20610 INT LIN BTB21 BNTL21 TO  BNT21  LINE  B2106  BNT21 TO BNT20
+LOCATE 21610 INT LIN BTB22 BNTL22 TO  BNT22  LINE  B2206  BNT22 TO BNT21
+$                                                                       
+SET FEATURE ADD DEFAULT_PT_S                                            
+DIV/LINE 10600   TO 10610   BY 10   BEG 10601                           
+DIV/LINE 11600   TO 11610   BY 10   BEG 11601                           
+DIV/LINE 12600   TO 12610   BY 10   BEG 12601                           
+DIV/LINE 13600   TO 13610   BY 10   BEG 13601                           
+DIV/LINE 14600   TO 14610   BY 10   BEG 14601                           
+DIV/LINE 15600   TO 15610   BY 10   BEG 15601                           
+DIV/LINE 16600   TO 16610   BY 10   BEG 16601                           
+DIV/LINE 17600   TO 17610   BY 10   BEG 17601                           
+DIV/LINE 18600   TO 18610   BY 10   BEG 18601                           
+DIV/LINE 19600   TO 19610   BY 10   BEG 19601                           
+$                                                                       
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     Rod                                                                
+$Subject:     SETUP FOR PS GIRDERS                                               
+$Job No.      213              Operator: RH                                      
+$Date:        Wednesday  November 11, 2015  11:40 am                             
+                                                                                
+$SYSTEM FIX 4 ASEC 2 BEAR PRI 0 RED NE STA 2 FILE: 'LCE_10'                      
+                                                                                
+                                                                                
+SET FEATURE ADD DEFAULT_POINT                                           
+STORE BEARING CHRD01  BNT01 TO BNT02                                    
+STORE BEARING CHRD02  BNT02 TO BNT03                                    
+STORE BEARING CHRD03  BNT03 TO BNT04                                    
+STORE BEARING CHRD04  BNT04 TO BNT05                                    
+STORE BEARING CHRD05  BNT05 TO BNT06                                    
+STORE BEARING CHRD06  BNT06 TO BNT07                                    
+STORE BEARING CHRD07  BNT07 TO BNT08                                    
+STORE BEARING CHRD08  BNT08 TO BNT09                                    
+STORE BEARING CHRD09  BNT09 TO BNT10                                    
+STORE BEARING CHRD10  BNT10 TO BNT11                                    
+STORE BEARING CHRD11  BNT11 TO BNT12                                    
+STORE BEARING CHRD12  BNT12 TO BNT13                                    
+STORE BEARING CHRD13  BNT13 TO BNT14                                    
+STORE BEARING CHRD14  BNT14 TO BNT15                                    
+STORE BEARING CHRD15  BNT15 TO BNT16                                    
+STORE BEARING CHRD16  BNT16 TO BNT17                                    
+STORE BEARING CHRD17  BNT17 TO BNT18                                    
+STORE BEARING CHRD18  BNT18 TO BNT19                                    
+STORE BEARING CHRD19  BNT19 TO BNT20                                    
+STORE BEARING CHRD20  BNT20 TO BNT21                                    
+$                                                                       
+$                                                                       
+STORE BEARING  BRG10  BNT10 TO BNTL10                                   
+STORE BEARING  BRG11  BNT11 TO BNTL11                                   
+STORE BEARING  BRG12  BNT12 TO BNTL12                                   
+STORE BEARING  BRG13  BNT13 TO BNTL13                                   
+STORE BEARING  BRG14  BNT14 TO BNTL14                                   
+STORE BEARING  BRG15  BNT15 TO BNTL15                                   
+STORE BEARING  BRG16  BNT16 TO BNTL16                                   
+STORE BEARING  BRG17  BNT17 TO BNTL17                                   
+STORE BEARING  BRG18  BNT18 TO BNTL18                                   
+STORE BEARING  BRG19  BNT19 TO BNTL19                                   
+STORE BEARING  BRG20  BNT20 TO BNTL20                                   
+STORE BEARING  BRG21  BNT21 TO BNTL21                                   
+$                                                                       
+LOC 10400  INT LINE BTA10   %BRG10  LINE  10600  %CHRD10  OFFSET  -9.75 
+LOC 10300  INT LINE BTA10   %BRG10  LINE  10600  %CHRD10  OFFSET  -19.5 
+LOC 10200  INT LINE BTA10   %BRG10  LINE  10600  %CHRD10  OFFSET  -29.25
+LOC 10100  INT LINE BTA10   %BRG10  LINE  10600  %CHRD10  OFFSET  -39.00
+$                                                                       
+LOC 11400  INT LINE BTA11   %BRG11  LINE  11600  %CHRD11  OFFSET  -9.75 
+LOC 11300  INT LINE BTA11   %BRG11  LINE  11600  %CHRD11  OFFSET -19.50 
+LOC 11200  INT LINE BTA11   %BRG11  LINE  11600  %CHRD11  OFFSET -29.25 
+LOC 11100  INT LINE BTA11   %BRG11  LINE  11600  %CHRD11  OFFSET -39.00 
+$                                                                       
+LOC 12400  INT LINE BTA12   %BRG12  LINE  12600  %CHRD12  OFFSET  -9.75 
+LOC 12300  INT LINE BTA12   %BRG12  LINE  12600  %CHRD12  OFFSET -19.50 
+LOC 12200  INT LINE BTA12   %BRG12  LINE  12600  %CHRD12  OFFSET -29.25 
+LOC 12100  INT LINE BTA12   %BRG12  LINE  12600  %CHRD12  OFFSET -39.00 
+$                                                                       
+LOC 13400  INT LINE BTA13   %BRG13  LINE  13600  %CHRD13  OFFSET  -9.75 
+LOC 13300  INT LINE BTA13   %BRG13  LINE  13600  %CHRD13  OFFSET -19.50 
+LOC 13200  INT LINE BTA13   %BRG13  LINE  13600  %CHRD13  OFFSET -29.25 
+LOC 13100  INT LINE BTA13   %BRG13  LINE  13600  %CHRD13  OFFSET -39.00 
+$                                                                       
+LOC 14400  INT LINE BTA14   %BRG14  LINE  14600  %CHRD14  OFFSET  -9.75 
+LOC 14300  INT LINE BTA14   %BRG14  LINE  14600  %CHRD14  OFFSET -19.50 
+LOC 14200  INT LINE BTA14   %BRG14  LINE  14600  %CHRD14  OFFSET -29.25 
+LOC 14100  INT LINE BTA14   %BRG14  LINE  14600  %CHRD14  OFFSET -39.00 
+$                                                                       
+LOC 15400  INT LINE BTA15   %BRG15  LINE  15600  %CHRD15  OFFSET  -9.75 
+LOC 15300  INT LINE BTA15   %BRG15  LINE  15600  %CHRD15  OFFSET -19.50 
+LOC 15200  INT LINE BTA15   %BRG15  LINE  15600  %CHRD15  OFFSET -29.25 
+LOC 15100  INT LINE BTA15   %BRG15  LINE  15600  %CHRD15  OFFSET -39.00 
+$                                                                       
+LOC 16400  INT LINE BTA16   %BRG16  LINE  16600  %CHRD16  OFFSET  -9.75 
+LOC 16300  INT LINE BTA16   %BRG16  LINE  16600  %CHRD16  OFFSET -19.50 
+LOC 16200  INT LINE BTA16   %BRG16  LINE  16600  %CHRD16  OFFSET -29.25 
+LOC 16100  INT LINE BTA16   %BRG16  LINE  16600  %CHRD16  OFFSET -39.00 
+$                                                                       
+LOC 17400  INT LINE BTA17   %BRG17  LINE  17600  %CHRD17  OFFSET  -9.75 
+LOC 17300  INT LINE BTA17   %BRG17  LINE  17600  %CHRD17  OFFSET -19.50 
+LOC 17200  INT LINE BTA17   %BRG17  LINE  17600  %CHRD17  OFFSET -29.25 
+LOC 17100  INT LINE BTA17   %BRG17  LINE  17600  %CHRD17  OFFSET -39.00 
+$                                                                       
+LOC 18400  INT LINE BTA18   %BRG18  LINE  18600  %CHRD18  OFFSET  -9.75 
+LOC 18300  INT LINE BTA18   %BRG18  LINE  18600  %CHRD18  OFFSET -19.50 
+LOC 18200  INT LINE BTA18   %BRG18  LINE  18600  %CHRD18  OFFSET -29.25 
+LOC 18100  INT LINE BTA18   %BRG18  LINE  18600  %CHRD18  OFFSET -39.00 
+$                                                                       
+LOC 19400  INT LINE BTA19   %BRG19  LINE  19600  %CHRD19  OFFSET  -9.75 
+LOC 19300  INT LINE BTA19   %BRG19  LINE  19600  %CHRD19  OFFSET -19.50 
+LOC 19200  INT LINE BTA19   %BRG19  LINE  19600  %CHRD19  OFFSET -29.25 
+LOC 19100  INT LINE BTA19   %BRG19  LINE  19600  %CHRD19  OFFSET -39.00 
+$                                                                       
+LOC 20400  INT LINE BTA20   %BRG20  LINE  20600  %CHRD20  OFFSET  -9.75 
+LOC 20300  INT LINE BTA20   %BRG20  LINE  20600  %CHRD20  OFFSET -19.50 
+LOC 20200  INT LINE BTA20   %BRG20  LINE  20600  %CHRD20  OFFSET -29.25 
+LOC 20100  INT LINE BTA20   %BRG20  LINE  20600  %CHRD20  OFFSET -39.00 
+$                                                                       
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT_R                                         
+$                                                                       
+$                                                                       
+LOC 10410  INT LINE BTB11  %BRG11  LINE  10600  %CHRD10  OFFSET  -9.75  
+LOC 10310  INT LINE BTB11  %BRG11  LINE  10600  %CHRD10  OFFSET  -19.50 
+LOC 10210  INT LINE BTB11  %BRG11  LINE  10600  %CHRD10  OFFSET  -29.25 
+LOC 10110  INT LINE BTB11  %BRG11  LINE  10600  %CHRD10  OFFSET  -39.00 
+$                                                                       
+LOC 11410  INT LINE BTB12  %BRG12  LINE  11600  %CHRD11  OFFSET  -9.75  
+LOC 11310  INT LINE BTB12  %BRG12  LINE  11600  %CHRD11  OFFSET -19.50  
+LOC 11210  INT LINE BTB12  %BRG12  LINE  11600  %CHRD11  OFFSET -29.25  
+LOC 11110  INT LINE BTB12  %BRG12  LINE  11600  %CHRD11  OFFSET -39.00  
+$                                                                       
+LOC 12410  INT LINE BTB13  %BRG13  LINE  12600  %CHRD12  OFFSET  -9.75  
+LOC 12310  INT LINE BTB13  %BRG13  LINE  12600  %CHRD12  OFFSET -19.50  
+LOC 12210  INT LINE BTB13  %BRG13  LINE  12600  %CHRD12  OFFSET -29.25  
+LOC 12110  INT LINE BTB13  %BRG13  LINE  12600  %CHRD12  OFFSET -39.00  
+$                                                                       
+LOC 13410  INT LINE BTB14  %BRG14  LINE  13600  %CHRD13  OFFSET  -9.75  
+LOC 13310  INT LINE BTB14  %BRG14  LINE  13600  %CHRD13  OFFSET -19.50  
+LOC 13210  INT LINE BTB14  %BRG14  LINE  13600  %CHRD13  OFFSET -29.25  
+LOC 13110  INT LINE BTB14  %BRG14  LINE  13600  %CHRD13  OFFSET -39.00  
+$                                                                       
+LOC 14410  INT LINE BTB15  %BRG15  LINE  14600  %CHRD14  OFFSET  -9.75  
+LOC 14310  INT LINE BTB15  %BRG15  LINE  14600  %CHRD14  OFFSET -19.50  
+LOC 14210  INT LINE BTB15  %BRG15  LINE  14600  %CHRD14  OFFSET -29.25  
+LOC 14110  INT LINE BTB15  %BRG15  LINE  14600  %CHRD14  OFFSET -39.00  
+$                                                                       
+LOC 15410  INT LINE BTB16  %BRG16  LINE  15600  %CHRD15  OFFSET  -9.75  
+LOC 15310  INT LINE BTB16  %BRG16  LINE  15600  %CHRD15  OFFSET -19.50  
+LOC 15210  INT LINE BTB16  %BRG16  LINE  15600  %CHRD15  OFFSET -29.25  
+LOC 15110  INT LINE BTB16  %BRG16  LINE  15600  %CHRD15  OFFSET -39.00  
+$                                                                       
+LOC 16410  INT LINE BTB17  %BRG17  LINE  16600  %CHRD16  OFFSET  -9.75  
+LOC 16310  INT LINE BTB17  %BRG17  LINE  16600  %CHRD16  OFFSET -19.50  
+LOC 16210  INT LINE BTB17  %BRG17  LINE  16600  %CHRD16  OFFSET -29.25  
+LOC 16110  INT LINE BTB17  %BRG17  LINE  16600  %CHRD16  OFFSET -39.00  
+$                                                                       
+LOC 17410  INT LINE BTB18  %BRG18  LINE  17600  %CHRD17  OFFSET  -9.75  
+LOC 17310  INT LINE BTB18  %BRG18  LINE  17600  %CHRD17  OFFSET -19.50  
+LOC 17210  INT LINE BTB18  %BRG18  LINE  17600  %CHRD17  OFFSET -29.25  
+LOC 17110  INT LINE BTB18  %BRG18  LINE  17600  %CHRD17  OFFSET -39.00  
+$                                                                       
+LOC 18410  INT LINE BTB19  %BRG19  LINE  18600  %CHRD18  OFFSET  -9.75  
+LOC 18310  INT LINE BTB19  %BRG19  LINE  18600  %CHRD18  OFFSET -19.50  
+LOC 18210  INT LINE BTB19  %BRG19  LINE  18600  %CHRD18  OFFSET -29.25  
+LOC 18110  INT LINE BTB19  %BRG19  LINE  18600  %CHRD18  OFFSET -39.00  
+$                                                                       
+LOC 19410  INT LINE BTB20  %BRG20  LINE  19600  %CHRD19  OFFSET  -9.75  
+LOC 19310  INT LINE BTB20  %BRG20  LINE  19600  %CHRD19  OFFSET -19.50  
+LOC 19210  INT LINE BTB20  %BRG20  LINE  19600  %CHRD19  OFFSET -29.25  
+LOC 19110  INT LINE BTB20  %BRG20  LINE  19600  %CHRD19  OFFSET -39.00  
+SET FEATURE ADD DEFAULT_POINT                                           
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     LewisClarkProj                                                     
+$Subject:     TENTH POINTS                                                       
+$Job No.      213              Operator: RH                                      
+$Date:        Thursday  November 12, 2015   9:13 am                              
+                                                                                
+$SYSTEM FIX 4 ASEC 2 BEAR PRI 0 RED NE STA 2 FILE: 'LCE_11'                      
+                                                                                
+                                                                                
+SET FEATURE ADD DEFAULT_PT_S                                            
+$                                                                       
+DIV/LINE 10100  TO  10110  BY 10   BEG   10101                          
+DIV/LINE 10200  TO  10210  BY 10   BEG   10201                          
+DIV/LINE 10300  TO  10310  BY 10   BEG   10301                          
+DIV/LINE 10400  TO  10410  BY 10   BEG   10401                          
+$                                                                       
+DIV/LINE 11100  TO  11110  BY 10   BEG   11101                          
+DIV/LINE 11200  TO  11210  BY 10   BEG   11201                          
+DIV/LINE 11300  TO  11310  BY 10   BEG   11301                          
+DIV/LINE 11400  TO  11410  BY 10   BEG   11401                          
+$                                                                       
+DIV/LINE 12100  TO  12110  BY 10   BEG   12101                          
+DIV/LINE 12200  TO  12210  BY 10   BEG   12201                          
+DIV/LINE 12300  TO  12310  BY 10   BEG   12301                          
+DIV/LINE 12400  TO  12410  BY 10   BEG   12401                          
+$                                                                       
+DIV/LINE 13100  TO  13110  BY 10   BEG   13101                          
+DIV/LINE 13200  TO  13210  BY 10   BEG   13201                          
+DIV/LINE 13300  TO  13310  BY 10   BEG   13301                          
+DIV/LINE 13400  TO  13410  BY 10   BEG   13401                          
+$                                                                       
+DIV/LINE 14100  TO  14110  BY 10   BEG   14101                          
+DIV/LINE 14200  TO  14210  BY 10   BEG   14201                          
+DIV/LINE 14300  TO  14310  BY 10   BEG   14301                          
+DIV/LINE 14400  TO  14410  BY 10   BEG   14401                          
+$                                                                       
+DIV/LINE 15100  TO  15110  BY 10   BEG   15101                          
+DIV/LINE 15200  TO  15210  BY 10   BEG   15201                          
+DIV/LINE 15300  TO  15310  BY 10   BEG   15301                          
+DIV/LINE 15400  TO  15410  BY 10   BEG   15401                          
+$                                                                       
+DIV/LINE 16100  TO  16110  BY 10   BEG   16101                          
+DIV/LINE 16200  TO  16210  BY 10   BEG   16201                          
+DIV/LINE 16300  TO  16310  BY 10   BEG   16301                          
+DIV/LINE 16400  TO  16410  BY 10   BEG   16401                          
+$                                                                       
+DIV/LINE 17100  TO  17110  BY 10   BEG   17101                          
+DIV/LINE 17200  TO  17210  BY 10   BEG   17201                          
+DIV/LINE 17300  TO  17310  BY 10   BEG   17301                          
+DIV/LINE 17400  TO  17410  BY 10   BEG   17401                          
+$                                                                       
+DIV/LINE 18100  TO  18110  BY 10   BEG   18101                          
+DIV/LINE 18200  TO  18210  BY 10   BEG   18201                          
+DIV/LINE 18300  TO  18310  BY 10   BEG   18301                          
+DIV/LINE 18400  TO  18410  BY 10   BEG   18401                          
+$                                                                       
+DIV/LINE 19100  TO  19110  BY 10   BEG   19101                          
+DIV/LINE 19200  TO  19210  BY 10   BEG   19201                          
+DIV/LINE 19300  TO  19310  BY 10   BEG   19301                          
+DIV/LINE 19400  TO  19410  BY 10   BEG   19401                          
+$                                                                       
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     Rod                                                                
+$Subject:     STA OFFSET OF NTH PTS                                              
+$Job No.      213              Operator: RH                                      
+$Date:        Wednesday  November 11, 2015   1:40 pm                             
+                                                                                
+$SYSTEM FIX 4 ASEC 2 BEAR PRI 0 RED NE STA 2 FILE: 'LCE_12'                      
+                                                                                
+                                                                                
+$                                                                       
+INVERSE ALONG PRO_IM 10100 TO 10110                                     
+INVERSE ALONG PRO_IM 10200 TO 10210                                     
+INVERSE ALONG PRO_IM 10300 TO 10310                                     
+INVERSE ALONG PRO_IM 10400 TO 10410                                     
+INVERSE ALONG PRO_IM 10600 TO 10610                                     
+$                                                                       
+INVERSE ALONG PRO_IM 11100 TO 11110                                     
+INVERSE ALONG PRO_IM 11200 TO 11210                                     
+INVERSE ALONG PRO_IM 11300 TO 11310                                     
+INVERSE ALONG PRO_IM 11400 TO 11410                                     
+INVERSE ALONG PRO_IM 11600 TO 11610                                     
+$                                                                       
+INVERSE ALONG PRO_IM 12100 TO 12110                                     
+INVERSE ALONG PRO_IM 12200 TO 12210                                     
+INVERSE ALONG PRO_IM 12300 TO 12310                                     
+INVERSE ALONG PRO_IM 12400 TO 12410                                     
+INVERSE ALONG PRO_IM 12600 TO 12610                                     
+$                                                                       
+INVERSE ALONG PRO_IM 13100 TO 13110                                     
+INVERSE ALONG PRO_IM 13200 TO 13210                                     
+INVERSE ALONG PRO_IM 13300 TO 13310                                     
+INVERSE ALONG PRO_IM 13400 TO 13410                                     
+INVERSE ALONG PRO_IM 13600 TO 13610                                     
+$                                                                       
+INVERSE ALONG PRO_IM 14100 TO 14110                                     
+INVERSE ALONG PRO_IM 14200 TO 14210                                     
+INVERSE ALONG PRO_IM 14300 TO 14310                                     
+INVERSE ALONG PRO_IM 14400 TO 14410                                     
+INVERSE ALONG PRO_IM 14600 TO 14610                                     
+$                                                                       
+INVERSE ALONG PRO_IM 15100 TO 15110                                     
+INVERSE ALONG PRO_IM 15200 TO 15210                                     
+INVERSE ALONG PRO_IM 15300 TO 15310                                     
+INVERSE ALONG PRO_IM 15400 TO 15410                                     
+INVERSE ALONG PRO_IM 15600 TO 15610                                     
+$                                                                       
+INVERSE ALONG PRO_IM 16100 TO 16110                                     
+INVERSE ALONG PRO_IM 16200 TO 16210                                     
+INVERSE ALONG PRO_IM 16300 TO 16310                                     
+INVERSE ALONG PRO_IM 16400 TO 16410                                     
+INVERSE ALONG PRO_IM 16600 TO 16610                                     
+$                                                                       
+INVERSE ALONG PRO_IM 17100 TO 17110                                     
+INVERSE ALONG PRO_IM 17200 TO 17210                                     
+INVERSE ALONG PRO_IM 17300 TO 17310                                     
+INVERSE ALONG PRO_IM 17400 TO 17410                                     
+INVERSE ALONG PRO_IM 17600 TO 17610                                     
+$                                                                       
+INVERSE ALONG PRO_IM 18100 TO 18110                                     
+INVERSE ALONG PRO_IM 18200 TO 18210                                     
+INVERSE ALONG PRO_IM 18300 TO 18310                                     
+INVERSE ALONG PRO_IM 18400 TO 18410                                     
+INVERSE ALONG PRO_IM 18600 TO 18610                                     
+$                                                                       
+INVERSE ALONG PRO_IM 19100 TO 19110                                     
+INVERSE ALONG PRO_IM 19200 TO 19210                                     
+INVERSE ALONG PRO_IM 19300 TO 19310                                     
+INVERSE ALONG PRO_IM 19400 TO 19410                                     
+INVERSE ALONG PRO_IM 19600 TO 19610                                     
+$                                                                       
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     LewisClarkProj                                                     
+$Subject:     VERTCAL_PROFILE                                                    
+$Job No.      684              Operator: RH                                      
+$Date:        Tuesday  September 29, 2015   4:07 pm                              
+                                                                                
+$SYSTEM FIX 4 ASEC 2 BEAR PRI 0 RED NE STA 2 FILE: 'LCE_14'                      
+                                                                                
+                                                                                
+SET FEATURE ADD DEFAULT_POINT                                           
+STORE PROFILE WBBL-RZP5                                                 
+VPI 1 S 11047.1139999998 E 838.2600000000                               
+VPI 2 S 11440.0039999999 E 828.8517393854 L  500.0000000000             
+VPI 3 S 12650.0039999999 E 813.3637393854 L  300.0000000000             
+VPI 4 S 13000.0039999999 E 798.8737393854 L  300.0000000000             
+VPI 5 S 13550.0039999999 E 785.3437393853 L  500.0000000000             
+VPI 6 S 14028.6939999999 E 782.8300000000                               
+END PROFILE                                                             
+INVERSE ALONG PRO_IM 11100 TO 11110                                     
+INVERSE ALONG PRO_IM 11100 TO 11110                                     
+PRINT PROFILE WBBL-RZP5                                                 
+ELEVATION PROFILE WBBL-RZP5 110+50.00                                   
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     Rod                                                                
+$Subject:     UNIT_3_GIRDER_LAYOUT                                               
+$Job No.      213              Operator: RH                                      
+$Date:        Wednesday  February 3, 2016   9:27 am                              
+                                                                                
+$SYSTEM FIX 4 ASEC 0 BEAR PRI 0 RED NE STA 2 FILE: 'LCE_21'                      
+                                                                                
+                                                                                
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT                                           
+LOCATE  RCBNT02 INT LINE BNT02  BNT02 TO BNTL02 LINE 303 303 TO 304     
+LOCATE RCED02 INT LINE BNT02 BNT02 TO BNTL02 LINE RCBNT02  RCBNT02 TO 304 OFFSET -9.1667                                                               
+LOCATE RCLE403 INTERSECT LINE 303 303 TO 304 OFF -9.166700000000 CHA PRO_IM OFF -5.166700000000  N BNT04                                               
+PRINT POINT RCLE403                                                     
+SET FEATURE ADD EDGE_OF_DECK                                            
+STORE LINE RCED02   RCED02  TO RCLE403                                  
+SET FEATURE ADD DEFAULT_POINT                                           
+LOCATE RCED04 IN LINE BNT04 BNT04 TO BNTL04 LINE RCED02 RCED02 TO RCLE403                                                                              
+$                                                                       
+LOC RED04 INT LIN BNTL04 BNTL04  TO BNT04    CHA PRO_IM OFF 41.1667     
+$                                                                       
+LOCATE RED05 BNT05 DIS 41.1667  BNTL05  TO  BNT05                       
+LOCATE LED05 BNT05 DIS 5.1667   BNT05  TO  BNTL05                       
+$                                                                       
+LOCATE RED06 BNT06 DIS 41.1667  BNTL06  TO  BNT06                       
+LOCATE LED06 BNT06 DIS 5.1667   BNT06  TO  BNTL06                       
+SET FEATURE ADD EDGE_OF_DECK                                            
+$                                                                       
+STORE CURVE ED_L_U3  THRU RCLE403 LED05 LED06                           
+STORE CURVE ED_R_U3  THRU RED04   RED05 RED06                           
+SET FEATURE ADD DEFAULT_POINT                                           
+LOC BA0401 INT LIN RCED02 RCED02 TO RCED04 OFF 3.667 LIN BNT04 BNTL04 TO BNT04                                                                         
+LOC  BA0406 INT LINE BNTL04 BNTL04 TO BNT04 CHAIN PRO_IM OFFSET 38.00   
+DIV/LIN BA0401 TO  BA0406 BY 5 BEG BA0402                               
+$                                                                       
+LOC BB0501 INT LIN BNTL05 BNTL05 TO BNT05 CHA PRO_IM OFF -2.00          
+LOC BB0506 INT LIN BNTL05 BNTL05 TO BNT05 CHA PRO_IM OFF  38.00         
+DIV/LIN BB0501 TO  BB0506 BY 5 BEG BB0502                               
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT_R                                         
+$                                                                       
+LOC BB0601 INT LIN BNTL06 BNTL06 TO BNT06 OFF 1.5 CHA PRO_IM OFF -2.00  
+LOC BB0606 INT LIN BNTL06 BNTL06 TO BNT06 OFF 1.5 CHA PRO_IM OFF  38.00 
+DIV/LIN BB0601 TO  BB0606 BY 5 BEG BB0602                               
+$ STRORE CURVES FOR ALL THE UNIT 3 GIRDERS                              
+$                                                                       
+$                                                                       
+SET FEATURE ADD LIGHT_LINE                                              
+STORE CURVE U3-G6 THRU BB0606 BB0506  BA0406                            
+STORE CUR U3-G5  CON CURVE U3-G6 OFFSET 8.00                            
+STORE CUR U3-G4  CON CURVE U3-G6 OFFSET 16.00                           
+STORE CUR U3-G3  CON CURVE U3-G6 OFFSET 24.00                           
+STORE CUR U3-G2  CON CURVE U3-G6 OFFSET 32.00                           
+STORE CUR U3-G1  CON CURVE U3-G6 OFFSET 40.00                           
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT                                           
+$ FIND THE TANGENT POINTS FOR G5 THRU G1                                
+LOCATE BTAN0405  FROM BA0405  CURVE U3-G5 NEAR RCLE403                  
+LOCATE BTAN0404  FROM BA0404  CURVE U3-G4 NEAR RCLE403                  
+LOCATE BTAN0403  FROM BA0403  CURVE U3-G3 NEAR RCLE403                  
+LOCATE BTAN0402  FROM BA0402  CURVE U3-G2 NEAR RCLE403                  
+LOCATE BTAN0401  FROM BA0401  CURVE U3-G1 NEAR RCLE403                  
+$                                                                       
+$NOW REDEFINE THE CURVES SO IT IS EASIER TO MAKE CHAINS                 
+SET FEATURE ADD LIGHT_LINE                                              
+STORE CURVE U3-G6 THRU  BA0406  BB0506  BB0606                          
+STORE CURVE U3-G5 THRU  BTAN0405  BB0505  BB0605                        
+STORE CURVE U3-G4 THRU  BTAN0404  BB0504  BB0604                        
+STORE CURVE U3-G3 THRU  BTAN0403  BB0503  BB0603                        
+STORE CURVE U3-G2 THRU  BTAN0402  BB0502  BB0602                        
+STORE CURVE U3-G1 THRU  BTAN0401  BB0501  BB0601                        
+$                                                                       
+SET FEATURE ADD PLATE_G_1                                               
+STORE CHAIN U3-G1 BA0401 CUR U3-G1 STA 0                                
+STORE CHAIN U3-G2 BA0402 CUR U3-G2 STA 0                                
+STORE CHAIN U3-G3 BA0403 CUR U3-G3 STA 0                                
+STORE CHAIN U3-G4 BA0404 CUR U3-G4 STA 0                                
+STORE CHAIN U3-G5 BA0405 CUR U3-G5 STA 0                                
+STORE CHAIN U3-G6 BA0406 CUR U3-G6 STA 0                                
+$                                                                       
+$                                                                       
+$ SET BRG AT BNT 4 AHEAD                                                
+SET FEATURE ADD DEFAULT_PT_S                                            
+LOC 4100 INT LINE BNTL04 BNTL04 TO BNT04 OFFSET -1.5 CHAIN U3-G1        
+LOC 4200 INT LINE BNTL04 BNTL04 TO BNT04 OFFSET -1.5 CHAIN U3-G2        
+LOC 4300 INT LINE BNTL04 BNTL04 TO BNT04 OFFSET -1.5 CHAIN U3-G3        
+LOC 4400 INT LINE BNTL04 BNTL04 TO BNT04 OFFSET -1.5 CHAIN U3-G4        
+LOC 4500 INT LINE BNTL04 BNTL04 TO BNT04 OFFSET -1.5 CHAIN U3-G5        
+LOC 4600 INT LINE BNTL04 BNTL04 TO BNT04 OFFSET -1.5 CHAIN U3-G6        
+$                                                                       
+$                                                                       
+INVERSE ALONG U3-G1 4100 BB0501 BB0601                                  
+INVERSE ALONG U3-G2 4200 BB0502 BB0602                                  
+INVERSE ALONG U3-G3 4300 BB0503 BB0603                                  
+INVERSE ALONG U3-G4 4400 BB0504 BB0604                                  
+INVERSE ALONG U3-G5 4500 BB0505 BB0605                                  
+INVERSE ALONG U3-G6 4600 BB0506 BB0606                                  
+$                                                                       
+SET FEATURE ADD DEFAULT_PT_S                                            
+DIV/CHA U3-G1 INC 10.865  STA 12.365 STA 99.285 OFF 0.0 BEG 4101 STEP 1 
+DIV/CHA U3-G2 INC 10.825  STA 12.325 STA 98.925 OFF 0.0 BEG 4201 STEP 1 
+DIV/CHA U3-G3 INC 10.786  STA 12.286 STA 98.574 OFF 0.0 BEG 4301 STEP 1 
+DIV/CHA U3-G4 INC 10.747  STA 12.247 STA 98.223 OFF 0.0 BEG 4401 STEP 1 
+DIV/CHA U3-G5 INC 10.708  STA 12.208 STA 97.872 OFF 0.0 BEG 4501 STEP 1 
+DIV/CHA U3-G6 INC 10.67   STA 12.17  STA 97.53  OFF 0.0 BEG 4601 STEP 1 
+$ DO NOT GUESS WHERE BEARINGS ARE!                                      
+EQUATE 4110 TO BB0501                                                   
+EQUATE 4210 TO BB0502                                                   
+EQUATE 4310 TO BB0503                                                   
+EQUATE 4410 TO BB0504                                                   
+EQUATE 4510 TO BB0505                                                   
+EQUATE 4610 TO BB0506                                                   
+$                                                                       
+$                                                                       
+$     SET THE LAST POINT OF SPAN 5 THEN DO A DIV/ARC                    
+EQUATE 5110 TO BB0601                                                   
+DIV/ARC 4110 TO 5110 CC CC01 BY 10 BEG 5101                             
+EQUATE 5210 TO BB0602                                                   
+DIV/ARC 4210 TO 5210 CC CC01 BY 10 BEG 5201                             
+EQUATE 5310 TO BB0603                                                   
+DIV/ARC 4310 TO 5310 CC CC01 BY 10 BEG 5301                             
+EQUATE 5410 TO BB0604                                                   
+DIV/ARC 4410 TO 5410 CC CC01 BY 10 BEG 5401                             
+EQUATE 5510 TO BB0605                                                   
+DIV/ARC 4510 TO 5510 CC CC01 BY 10 BEG 5501                             
+EQUATE 5610 TO BB0606                                                   
+DIV/ARC 4610 TO 5610 CC CC01 BY 10 BEG 5601                             
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT_L                                         
+INVERSE ALONG U3-G1 4100 BTAN0401  BB0501 5110                          
+INVERSE ALONG U3-G2 4200 BTAN0402  BB0502 5210                          
+INVERSE ALONG U3-G3 4300 BTAN0403  BB0503 5310                          
+INVERSE ALONG U3-G4 4400 BTAN0404  BB0504 5410                          
+INVERSE ALONG U3-G5 4500 BTAN0405  BB0505 5510                          
+INVERSE ALONG U3-G6 4600      4610 BB0506 5610                          
+$                                                                       
+$                                                                       
+$ FIND THE CORNER OF THE DECK WITH 4 INCH GAP TO PIER CL                
+SET FEATURE ADD DEFAULT_PT_S                                            
+LOC  RCLE404  INT  LINE BNTL04 TO BNT04 OFF -0.333  LINE RCED04  TO RCLE403                                                                            
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     Rod                                                                
+$Subject:     UNIT_4_START                                                       
+$Job No.      213              Operator: RH                                      
+$Date:        Tuesday  March 22, 2016   9:43 am                                  
+                                                                                
+$SYSTEM FIX 4 ASEC 4 BEAR PRI 0 RED NE STA 2 FILE: 'LCE_22'                      
+                                                                                
+                                                                                
+$                                                                       
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT_L                                         
+$ SET THE BEARING LINE OF THE AHEAD UNIT                                
+LOC  BA0601 INT LINE BNT06 BNT06 TO BNTL06  OFFSET 1.5 CHAIN  U4-G1     
+LOC  BA0602 INT LINE BNT06 BNT06 TO BNTL06  OFFSET 1.5 CHAIN  U4-G2     
+LOC  BA0603 INT LINE BNT06 BNT06 TO BNTL06  OFFSET 1.5 CHAIN  U4-G3     
+LOC  BA0604 INT LINE BNT06 BNT06 TO BNTL06  OFFSET 1.5 CHAIN  U4-G4     
+LOC  BA0605 INT LINE BNT06 BNT06 TO BNTL06  OFFSET 1.5 CHAIN  U4-G5     
+LOC  BA0606 INT LINE BNT06 BNT06 TO BNTL06  OFFSET 1.5 CHAIN  U4-G6     
+$                                                                       
+$                                                                       
+$ SET UP FOR LAYING OUT NTH POINTS                                      
+INVERSE ALONG   U4-G1  BA0601  7100                                     
+INVERSE ALONG   U4-G2  BA0602  7200                                     
+INVERSE ALONG   U4-G3  BA0603  7300                                     
+INVERSE ALONG   U4-G4  BA0604  7400                                     
+INVERSE ALONG   U4-G5  BA0605  7500                                     
+INVERSE ALONG   U4-G6  BA0606  7600                                     
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT_R                                         
+$ SET THE BEARING LINE OF THE BACK UNIT                                 
+LOC  BB1001 INT LINE BNT10 BNT10 TO BNTL10  OFFSET -1.5 CHAIN  U4-G1    
+LOC  BB1002 INT LINE BNT10 BNT10 TO BNTL10  OFFSET -1.5 CHAIN  U4-G2    
+LOC  BB1003 INT LINE BNT10 BNT10 TO BNTL10  OFFSET -1.5 CHAIN  U4-G3    
+LOC  BB1004 INT LINE BNT10 BNT10 TO BNTL10  OFFSET -1.5 CHAIN  U4-G4    
+LOC  BB1005 INT LINE BNT10 BNT10 TO BNTL10  OFFSET -1.5 CHAIN  U4-G5    
+LOC  BB1006 INT LINE BNT10 BNT10 TO BNTL10  OFFSET -1.5 CHAIN  U4-G6    
+$                                                                       
+$                                                                       
+$ SET UP FOR LAYING OUT NTH POINTS                                      
+INVERSE ALONG  U4-G1  9100 BB1001                                       
+INVERSE ALONG  U4-G2  9200 BB1002                                       
+INVERSE ALONG  U4-G3  9300 BB1003                                       
+INVERSE ALONG  U4-G4  9400 BB1004                                       
+INVERSE ALONG  U4-G5  9500 BB1005                                       
+SET FEATURE ADD DEFAULT_PT_S                                            
+DIV/LIN 9100 TO  BB1001 BY 10 BEG 9101                                  
+DIV/LIN 9200 TO  BB1002 BY 10 BEG 9201                                  
+DIV/LIN 9300 TO  BB1003 BY 10 BEG 9301                                  
+DIV/LIN 9400 TO  BB1004 BY 10 BEG 9401                                  
+DIV/LIN 9500 TO  BB1005 BY 10 BEG 9501                                  
+DIV/LIN 9600 TO  BB1006 BY 10 BEG 9601                                  
+$                                                                       
+$                                                                       
+DIV/CHA U4-G1 INC 16.86133 STA 12099.94  STA 12251.692 OFF 0.0 BEG 6100 STEP 1                                                                         
+DIV/CHA U4-G2 INC 16.81600 STA 12099.94  STA 12251.284 OFF 0.0 BEG 6200 STEP 1                                                                         
+DIV/CHA U4-G3 INC 16.77067 STA 12099.94  STA 12250.876 OFF 0.0 BEG 6300 STEP 1                                                                         
+DIV/CHA U4-G4 INC 16.72533 STA 12099.94  STA 12250.468 OFF 0.0 BEG 6400 STEP 1                                                                         
+DIV/CHA U4-G5 INC 16.68    STA 12099.94  STA 12250.06  OFF 0.0 BEG 6500 STEP 1                                                                         
+DIV/CHA U4-G6 INC 16.63467 STA 12099.94  STA 12249.652 OFF 0.0 BEG 6600 STEP 1                                                                         
+DESCRIBE CHAIN U2-RED                                                   
+$                                                                       
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     Rod                                                                
+$Subject:     UNIT4 LAYOUT                                                       
+$Job No.      213              Operator: RH                                      
+$Date:        Tuesday  March 22, 2016  10:49 am                                  
+                                                                                
+$SYSTEM FIX 4 ASEC 4 BEAR PRI 0 RED NE STA 2 FILE: 'LCE_24'                      
+                                                                                
+                                                                                
+SET FEATURE ADD PLATE_G_1                                               
+S CHA U4-G1 PAR CHA PRO_IM OFF -2.0 BEG U411 U41-1 STA 12098.44 STA 12953.44                                                                           
+S CHA U4-G2 PAR CHA PRO_IM OFF  6.0 BEG U421 U42-1 STA 12098.44 STA 12953.44                                                                           
+S CHA U4-G3 PAR CHA PRO_IM OFF 14.0 BEG U431 U43-1 STA 12099.44 STA 12953.44                                                                           
+S CHA U4-G4 PAR CHA PRO_IM OFF 22.0 BEG U441 U44-1 STA 12099.44 STA 12953.44                                                                           
+S CHA U4-G5 PAR CHA PRO_IM OFF 30.0 BEG U451 U45-1 STA 12099.44 STA 12953.44                                                                           
+S CHA U4-G6 PAR CHA PRO_IM OFF 38.0 BEG U461 U46-1 STA 12099.44 STA 12953.44                                                                           
+$                                                                       
+$ PLACE POINTS AT INTERIOR BEARINGS                                     
+SET FEATURE ADD DEFAULT_POINT                                           
+LOC 7100 INT LIN BNTL07 BNTL07 TO  BNT07 CHA U4-G1                      
+LOC 7200 INT LIN BNTL07 BNTL07 TO  BNT07 CHA U4-G2                      
+LOC 7300 INT LIN BNTL07 BNTL07 TO  BNT07 CHA U4-G3                      
+LOC 7400 INT LIN BNTL07 BNTL07 TO  BNT07 CHA U4-G4                      
+LOC 7500 INT LIN BNTL07 BNTL07 TO  BNT07 CHA U4-G5                      
+LOC 7600 INT LIN BNTL07 BNTL07 TO  BNT07 CHA U4-G6                      
+LOC 8100 INT LIN BNTL08 BNTL08 TO  BNT08 CHA U4-G1                      
+LOC 8200 INT LIN BNTL08 BNTL08 TO  BNT08 CHA U4-G2                      
+LOC 8300 INT LIN BNTL08 BNTL08 TO  BNT08 CHA U4-G3                      
+LOC 8400 INT LIN BNTL08 BNTL08 TO  BNT08 CHA U4-G4                      
+LOC 8500 INT LIN BNTL08 BNTL08 TO  BNT08 CHA U4-G5                      
+LOC 8600 INT LIN BNTL08 BNTL08 TO  BNT08 CHA U4-G6                      
+LOC 9100 INT LIN BNTL09 BNTL09 TO  BNT09 CHA U4-G1                      
+LOC 9200 INT LIN BNTL09 BNTL09 TO  BNT09 CHA U4-G2                      
+LOC 9300 INT LIN BNTL09 BNTL09 TO  BNT09 CHA U4-G3                      
+LOC 9400 INT LIN BNTL09 BNTL09 TO  BNT09 CHA U4-G4                      
+LOC 9500 INT LIN BNTL09 BNTL09 TO  BNT09 CHA U4-G5                      
+LOC 9600 INT LIN BNTL09 BNTL09 TO  BNT09 CHA U4-G6                      
+$                                                                       
+$                                                                       
+SET FEATURE ADD DEFAULT_PT_S                                            
+$                                                                       
+INV ALONG U4-G1 7100 8100                                               
+INV ALONG U4-G2 7200 8200                                               
+INV ALONG U4-G3 7300 8300                                               
+INV ALONG U4-G4 7400 8400                                               
+INV ALONG U4-G5 7500 8500                                               
+INV ALONG U4-G6 7600 8600                                               
+$                                                                       
+DIV/CHA U4-G1 INC 26.00096 STA 12294.55096 STA 12502.56 OFF 0.0 BEG 7101 STEP 1                                                                        
+DIV/CHA U4-G2 INC 25.99712 STA 12294.09712 STA 12502.08 OFF 0.0 BEG 7201 STEP 1                                                                        
+DIV/CHA U4-G3 INC 25.99327 STA 12293.64327 STA 12501.59 OFF 0.0 BEG 7301 STEP 1                                                                        
+DIV/CHA U4-G4 INC 25.98943 STA 12293.18943 STA 12501.11 OFF 0.0 BEG 7401 STEP 1                                                                        
+DIV/CHA U4-G5 INC 25.98559 STA 12292.73559 STA 12500.63 OFF 0.0 BEG 7501 STEP 1                                                                        
+DIV/CHA U4-G6 INC 25.98174 STA 12292.28174 STA 12500.14 OFF 0.0 BEG 7601 STEP 1                                                                        
+$                                                                       
+DIV/LIN 8100 TO 9100 BY 10 BEG 8101                                     
+DIV/LIN 8200 TO 9200 BY 10 BEG 8201                                     
+DIV/LIN 8300 TO 9300 BY 10 BEG 8301                                     
+DIV/LIN 8400 TO 9400 BY 10 BEG 8401                                     
+DIV/LIN 8500 TO 9500 BY 10 BEG 8501                                     
+DIV/LIN 8600 TO 9600 BY 10 BEG 8601                                     
+$                                                                       
+$ *  51   DIV/LIN 9100 TO 10100 BY 10 BEG 9101                          
+$ *  52   DIV/LIN 9200 TO 10200 BY 10 BEG 9201                          
+$ *  53   DIV/LIN 9300 TO 10300 BY 10 BEG 9301                          
+$ *  54   DIV/LIN 9400 TO 10400 BY 10 BEG 9401                          
+$ *  55   DIV/LIN 9500 TO 10500 BY 10 BEG 9501                          
+$ *  56   DIV/LIN 9600 TO 10600 BY 10 BEG 9601                          
+$ *  57   DIV/LIN 9700 TO 10700 BY 10 BEG 9701                          
+$ *  58   DIV/LIN 9800 TO 10800 BY 10 BEG 9801                          
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     Rod                                                                
+$Subject:     UNIT 2 DEFINED AFTER UNIT 3                                        
+$Job No.      213              Operator: RH                                      
+$Date:        Friday  April 1, 2016  12:04 pm                                    
+                                                                                
+$SYSTEM FIX 4 ASEC 4 BEAR PRI 0 NOR NE STA 2 FILE: 'LCE_25'                      
+                                                                                
+                                                                                
+SET FEATURE ADD EDGE_OF_DECK                                            
+SET FEATURE ADD DEFAULT_POINT                                           
+LOCATE RBED02 INTERSECT LINE BNT02 BNTL02 TO BNT02  CHA RAMP_B OFF 1.1667                                                                              
+SET FEATURE ADD EDGE_OF_DECK                                            
+$                                                                       
+$ REDEFINE THE UNIT 2 RIGHT EDGE DECK  CHAIN                            
+PRINT POINT 406                                                         
+$                                                                       
+$                                                                       
+STORE CURVE U21-1 CON CUR CURVE_41    OFF 1.1666667                     
+STORE CURVE U21-2 CON CUR CURVE_42    OFF 1.1666667                     
+$                                                                       
+$ ADD CURVE ON RIGHT EDGE OF DECK B/F BNT04                             
+SET FEATURE ADD LIGHT_LINE                                              
+STORE CURVE U21-3  PC 409   PT  RED04  R  409 TO CC01  CL               
+SET FEATURE ADD EDGE_OF_DECK                                            
+STORE CHAIN U2-RED   CUR U21-1  CUR  U21-2  409 CUR U21-3  RED04        
+SET FEATURE ADD DEFAULT_POINT_S                                         
+LOCATE CP0401 INTERSECT LINE RCED02 RCED02 TO RCED04 OFF 3.667 LINE BNT04 BNTL04 TO BNT04                                                              
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT                                           
+LOCATE 409 PROJ 304 ON CHAIN PRO_IM OFFSET OFFSET 41.1667               
+LOCATE 30408  PROJ 304 ON CHAIN PRO_IM OFFSET OFFSET 37.5               
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT_S                                         
+LOCATE CP0408 INT LINE 30408 101 TO 102  LINE BNT04 BNTL04 TO BNT04     
+$                                                                       
+DIV/LIN  CP0401 TO CP0408 BY 7 BEG CP0402                               
+$                                                                       
+SET FEATURE ADD DEFAULT_PT_S                                            
+LOCATE 3800 INTERSECT LINE BNT03 BNTL03 TO BNT03  CHA U2-RED OFF -3.667000000000                                                                       
+LOCATE 3700 3800 8.75 BNT03 TO BNTL03                                   
+LOCATE 3600 3800 17.5  BNT03 TO BNTL03                                  
+LOCATE 3500 3800 26.25  BNT03 TO BNTL03                                 
+LOCATE 3400 3800 35.00  BNT03 TO BNTL03                                 
+LOCATE 3100 INTERSECT LINE RCED02 RCED02 TO RCED04 OFF 3.667000000000 LINE BNT03 BNTL03 TO BNT03                                                       
+LOCATE 3200 3100 10  BNTL03 TO BNT03                                    
+LOCATE 3300 3100 20  BNTL03 TO BNT03                                    
+SET FEATURE ADD LIGHT_LINE                                              
+SET FEATURE ADD DEFAULT_POINT                                           
+EQUATE CC42 TO CC CURVE_42                                              
+LOCATE PT407  406   200   CC42 TO 406                                   
+LOCATE PT408  404   200   CC42 TO 404                                   
+SET FEATURE ADD LIGHT_LINE                                              
+SET FEATURE ADD LIGHT_LINE                                              
+STORE LINE LINE-PT407  406 TO PT407                                     
+STORE LINE LINE-PT408  404 TO PT408                                     
+$                                                                       
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT_S                                         
+LOCATE CP0208 INT LINE BNT02 TO BNTL02 CHA  RAMP_B OFF -2.5             
+LOCATE CP0204 INT LINE BNT02 TO BNTL02 CHA  PRO_IM OFF  -1.5            
+DIV/LIN CP0204 TO CP0208 BY 4 BEG CP0205                                
+$                                                                       
+LOC CP0201 INT LIN RCED02 TO RCED04 OFF 3.667 LIN BNT02 TO BNTL02       
+LOC CP0202 INT LIN RCED02 TO RCED04 OFF 3.667 P 11.5 LIN BNT02 TO BNTL02
+LOC CP0203 INT LIN RCED02 TO RCED04 OFF 3.667 P 23.0 LIN BNT02 TO BNTL02
+$                                                                       
+$                                                                       
+$  SET PI BETWEEN THE STRAIGHT RUNS OF GIRDER                           
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT_L                                         
+LOC UGPC24 INT LIN  CP0204 101 TO 102 LINE 404 404 TO PT408             
+LOC UGPC28 INT LIN  CP0208 403 TO 404 LINE 404 404 TO PT408             
+DIV/LIN UGPC24 TO UGPC28 BY 4 BEG UGPC25                                
+$                                                                       
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT_L                                         
+LOC UGPI22 INT LIN CP0402 CP0402 TO 3200 LIN  CP0202 303 TO 304         
+LOC UGPI23 INT LIN CP0403 CP0403 TO 3300 LIN  CP0203 303 TO 304         
+LOC UGPI24 INT LIN CP0404 CP0404 TO 3400 LIN CP0204 CP0204 TO UGPC24    
+LOC UGPI25 INT LIN CP0405 CP0405 TO 3500 LIN CP0205 CP0205 TO UGPC25    
+LOC UGPI26 INT LIN CP0406 CP0406 TO 3600 LIN CP0206 CP0206 TO UGPC26    
+LOC UGPI27 INT LIN CP0407 CP0407 TO 3700 LIN CP0207 CP0207 TO UGPC27    
+LOC UGPI28 INT LIN CP0408 CP0408 TO 3800 LIN CP0208 CP0208 TO UGPC28    
+$                                                                       
+$ DRAW LIGHT LINES TO THE PI'S                                          
+SET FEATURE ADD LIGHT_LINE                                              
+STORE LINE  UPI22-1  CP0202  TO UGPI22                                  
+STORE LINE  UPI22-2  CP0402  TO UGPI22                                  
+$                                                                       
+STORE LINE  UPI23-1  CP0203  TO UGPI23                                  
+STORE LINE  UPI23-2  CP0403  TO UGPI23                                  
+$                                                                       
+STORE LINE  UPI24-1  CP0204  TO UGPI24                                  
+STORE LINE  UPI24-2  CP0404  TO UGPI24                                  
+$                                                                       
+STORE LINE  UPI25-1  CP0205  TO UGPI25                                  
+STORE LINE  UPI25-2  CP0405  TO UGPI25                                  
+$                                                                       
+STORE LINE  UPI26-1  CP0206  TO UGPI26                                  
+STORE LINE  UPI26-2  CP0406  TO UGPI26                                  
+$                                                                       
+STORE LINE  UPI27-1  CP0207  TO UGPI27                                  
+STORE LINE  UPI27-2  CP0407  TO UGPI27                                  
+$                                                                       
+STORE LINE  UPI28-1  CP0208  TO UGPI28                                  
+STORE LINE  UPI28-2  CP0408  TO UGPI28                                  
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT_L                                         
+LOC UGPT22 INT LINE CP0402 TO 3200 LIN 406 TO PT407                     
+LOC UGPT23 INT LINE CP0403 TO 3300 LIN 406 TO PT407                     
+LOC UGPT24 INT LINE CP0404 TO 3400 LIN 406 TO PT407                     
+LOC UGPT25 INT LINE CP0405 TO 3500 LIN 406 TO PT407                     
+LOC UGPT26 INT LINE CP0406 TO 3600 LIN 406 TO PT407                     
+LOC UGPT27 INT LINE CP0407 TO 3700 LIN 406 TO PT407                     
+LOC UGPT28 INT LINE CP0408 TO 3800 LIN 406 TO PT407                     
+$                                                                       
+SET FEATURE ADD PLATE_G_1                                               
+STORE CURVE U2-G2 PI UGPI22 DB  CP0202 TO UGPI22 TANGENT UGPI22 TO UGPT22 PA UGPT22                                                                    
+STORE CURVE U2-G3 PI UGPI23 DB  CP0203 TO UGPI23 TANGENT UGPI23 TO UGPT23 PA UGPT23                                                                    
+STORE CURVE U2-G4 PI UGPI24 DB  CP0204 TO UGPI24 TANGENT UGPI24 TO UGPT24 PA UGPT24                                                                    
+STORE CURVE U2-G5 PI UGPI25 DB  CP0205 TO UGPI25 TANGENT UGPI25 TO UGPT25 PA UGPT25                                                                    
+STORE CURVE U2-G6 PI UGPI26 DB  CP0206 TO UGPI26 TANGENT UGPI26 TO UGPT26 PA UGPT26                                                                    
+STORE CURVE U2-G7 PI UGPI27 DB  CP0207 TO UGPI27 TANGENT UGPI27 TO UGPT27 PA UGPT27                                                                    
+STORE CURVE U2-G8 PI UGPI28 DB  CP0208 TO UGPI28 TANGENT UGPI28 TO UGPT28 PA UGPT28                                                                    
+$                                                                       
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT_L                                         
+LOC PC22 INT LINE  UPI22-1 CURVE U2-G2                                  
+LOC PC23 INT LINE  UPI23-1 CURVE U2-G3                                  
+LOC PC24 INT LINE  UPI24-1 CURVE U2-G4                                  
+LOC PC25 INT LINE  UPI25-1 CURVE U2-G5                                  
+LOC PC26 INT LINE  UPI26-1 CURVE U2-G6                                  
+LOC PC27 INT LINE  UPI27-1 CURVE U2-G7                                  
+LOC PC28 INT LINE  UPI28-1 CURVE U2-G8                                  
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT_L                                         
+LOC BA0201 INT LIN BNT02 TO BNTL02 OFF 1.5 LIN CP0201 TO CP0401         
+LOC BA0202 INT LIN BNT02 TO BNTL02 OFF 1.5 LIN UPI22-1                  
+LOC BA0203 INT LIN BNT02 TO BNTL02 OFF 1.5 LIN UPI23-1                  
+LOC BA0204 INT LIN BNT02 TO BNTL02 OFF 1.5 LIN UPI24-1                  
+LOC BA0205 INT LIN BNT02 TO BNTL02 OFF 1.5 LIN UPI25-1                  
+LOC BA0206 INT LIN BNT02 TO BNTL02 OFF 1.5 LIN UPI26-1                  
+LOC BA0207 INT LIN BNT02 TO BNTL02 OFF 1.5 LIN UPI27-1                  
+LOC BA0208 INT LIN BNT02 TO BNTL02 OFF 1.5 LIN UPI28-1                  
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT_R                                         
+LOC BB0401 INT LIN BNT04 TO BNTL04 OFF -1.5 LIN CP0201 TO CP0401        
+LOC BB0402 INT LIN BNT04 TO BNTL04 OFF -1.5 LIN UPI22-2                 
+LOC BB0403 INT LIN BNT04 TO BNTL04 OFF -1.5 LIN UPI23-2                 
+LOC BB0404 INT LIN BNT04 TO BNTL04 OFF -1.5 LIN UPI24-2                 
+LOC BB0405 INT LIN BNT04 TO BNTL04 OFF -1.5 LIN UPI25-2                 
+LOC BB0406 INT LIN BNT04 TO BNTL04 OFF -1.5 LIN UPI26-2                 
+LOC BB0407 INT LIN BNT04 TO BNTL04 OFF -1.5 LIN UPI27-2                 
+LOC BB0408 INT LIN BNT04 TO BNTL04 OFF -1.5 LIN UPI28-2                 
+$                                                                       
+SET FEATURE ADD PLATE_G_1                                               
+STORE CHAIN U2-G1 BA0201 BB0401 STATION 0                               
+STORE CHAIN U2-G2 BA0202 CUR U2-G2 BB0402 STATION 0                     
+STORE CHAIN U2-G3 BA0203 CUR U2-G3 BB0403 STATION 0                     
+STORE CHAIN U2-G4 BA0204 CUR U2-G4 BB0404 STATION 0                     
+STORE CHAIN U2-G5 BA0205 CUR U2-G5 BB0405 STATION 0                     
+STORE CHAIN U2-G6 BA0206 CUR U2-G6 BB0406 STATION 0                     
+STORE CHAIN U2-G7 BA0207 CUR U2-G7 BB0407 STATION 0                     
+STORE CHAIN U2-G8 BA0208 CUR U2-G8 BB0408 STATION 0                     
+$                                                                       
+$                                                                       
+INVERSE ALONG U2-G2 CP0202 PC22 UGPT22 BB0402                           
+INVERSE ALONG U2-G3 BA0203 PC23 UGPT23 BB0403                           
+INVERSE ALONG U2-G4 BA0204 PC24 UGPT24 BB0404                           
+INVERSE ALONG U2-G5 BA0205 PC25 UGPT25 BB0405                           
+INVERSE ALONG U2-G6 BA0206 PC26 UGPT26 BB0406                           
+INVERSE ALONG U2-G7 BA0207 PC27 UGPT27 BB0407                           
+INVERSE ALONG U2-G8 BA0208 PC28 UGPT28 BB0408                           
+$                                                                       
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     Rod                                                                
+$Subject:     UNITS_2_CROSSFRAMES                                                
+$Job No.      213              Operator: RH                                      
+$Date:        Thursday  March 31, 2016   2:48 pm                                 
+                                                                                
+$SYSTEM FIX 4 ASEC 4 BEAR PRI 0 NOR NE STA 2 FILE: 'LCE_26'                      
+                                                                                
+                                                                                
+$                                                                       
+$                                                                       
+$                                                                       
+$ LOCATE UNIT 2 CROSS FRAME CONNECTION POINTS                           
+$                                                                       
+$                                                                       
+SET FEATURE ADD BR_FASTENER                                             
+EQUATE CF2101 TO BA0201                                                 
+LOC CF2102 INT LIN BNT02 TO BNTL02 OFF 15 CHAIN U2-G1                   
+LOC CF2103 INT LIN BNT02 TO BNTL02 OFF 30 CHAIN U2-G1                   
+LOC CF2104 INT LIN BNT02 TO BNTL02 OFF 45 CHAIN U2-G1                   
+LOC CF2105 INT LIN BNT02 TO BNTL02 OFF 60 CHAIN U2-G1                   
+LOC CF2106 INT LIN BNT02 TO BNTL02 OFF 75 CHAIN U2-G1                   
+LOC CF2107 INT LIN BNT02 TO BNTL02 OFF 90 CHAIN U2-G1                   
+LOC CF2108 INT LIN BNT02 TO BNTL02 OFF 105 CHAIN U2-G1                  
+LOC CF2109 INT LIN BNT02 TO BNTL02 OFF 120 CHAIN U2-G1                  
+LOC CF2110 INT LIN BNT02 TO BNTL02 OFF 135 CHAIN U2-G1                  
+LOC CF2111 INT LIN BNT02 TO BNTL02 OFF 150 CHAIN U2-G1                  
+LOC CF2112 INT LIN BNT02 TO BNTL02 OFF 165 CHAIN U2-G1                  
+LOC CF2113 INT LIN BNT02 TO BNTL02 OFF 180 CHAIN U2-G1                  
+LOC CF2114 INT LIN BNT02 TO BNTL02 OFF 195 CHAIN U2-G1                  
+LOC CF2115 INT LIN BNT02 TO BNTL02 OFF 210 CHAIN U2-G1                  
+LOC CF2116 INT LIN BNT02 TO BNTL02 OFF 225 CHAIN U2-G1                  
+LOC CF2117 INT LIN BNT02 TO BNTL02 OFF 240 CHAIN U2-G1                  
+LOC CF2118 INT LIN BNT02 TO BNTL02 OFF 255 CHAIN U2-G1                  
+LOC CF2119 INT LIN BNT02 TO BNTL02 OFF 270 CHAIN U2-G1                  
+LOC CF2120 INT LIN BNT02 TO BNTL02 OFF 285 CHAIN U2-G1                  
+LOC CF2121 INT LIN BNT02 TO BNTL02 OFF 300 CHAIN U2-G1                  
+LOC CF2122 INT LIN BNT02 TO BNTL02 OFF 315 CHAIN U2-G1                  
+LOC CF2123 INT LIN BNT02 TO BNTL02 OFF 330 CHAIN U2-G1                  
+LOC CF2124 INT LIN BNT02 TO BNTL02 OFF 345 CHAIN U2-G1                  
+LOC CF2125 INT LIN BNT02 TO BNTL02 OFF 360 CHAIN U2-G1                  
+EQUATE CF3101 TO 3100                                                   
+LOC CF3102 INT LIN BNT02 TO BNTL02 OFF 390 CHAIN U2-G1                  
+LOC CF3103 INT LIN BNT02 TO BNTL02 OFF 405 CHAIN U2-G1                  
+LOC CF3104 INT LIN BNT02 TO BNTL02 OFF 420 CHAIN U2-G1                  
+LOC CF3105 INT LIN BNT02 TO BNTL02 OFF 435 CHAIN U2-G1                  
+LOC CF3106 INT LIN BNT02 TO BNTL02 OFF 450 CHAIN U2-G1                  
+LOC CF3107 INT LIN BNT02 TO BNTL02 OFF 465 CHAIN U2-G1                  
+LOC CF3108 INT LIN BNT02 TO BNTL02 OFF 480 CHAIN U2-G1                  
+LOC CF3109 INT LIN BNT02 TO BNTL02 OFF 495 CHAIN U2-G1                  
+LOC CF3110 INT LIN BNT02 TO BNTL02 OFF 510 CHAIN U2-G1                  
+LOC CF3111 INT LIN BNT02 TO BNTL02 OFF 525 CHAIN U2-G1                  
+LOC CF3112 INT LIN BNT02 TO BNTL02 OFF 540 CHAIN U2-G1                  
+LOC CF3113 INT LIN BNT02 TO BNTL02 OFF 555 CHAIN U2-G1                  
+LOC CF3114 INT LIN BNT02 TO BNTL02 OFF 570 CHAIN U2-G1                  
+LOC CF3115 INT LIN BNT02 TO BNTL02 OFF 585 CHAIN U2-G1                  
+LOC CF3116 INT LIN BNT02 TO BNTL02 OFF 600 CHAIN U2-G1                  
+LOC CF3117 INT LIN BNT02 TO BNTL02 OFF 615 CHAIN U2-G1                  
+LOC CF3118 INT LIN BNT02 TO BNTL02 OFF 630 CHAIN U2-G1                  
+LOC CF3119 INT LIN BNT02 TO BNTL02 OFF 645 CHAIN U2-G1                  
+LOC CF3120 INT LIN BNT02 TO BNTL02 OFF 660 CHAIN U2-G1                  
+LOC CF3121 INT LIN BNT02 TO BNTL02 OFF 675 CHAIN U2-G1                  
+LOC CF3122 INT LIN BNT02 TO BNTL02 OFF 690 CHAIN U2-G1                  
+LOC CF3123 INT LIN BNT02 TO BNTL02 OFF 705 CHAIN U2-G1                  
+LOC CF3124 INT LIN BNT02 TO BNTL02 OFF 720 CHAIN U2-G1                  
+LOC CF3125 INT LIN BNT02 TO BNTL02 OFF 735 CHAIN U2-G1                  
+EQUATE CF3126 TO BB0401                                                 
+$                                                                       
+$                                                                       
+$                                                                       
+EQUATE CF2201 TO BA0202                                                 
+LOC CF2202 INT LIN BNT02 TO BNTL02 OFF 15 CHAIN U2-G2                   
+LOC CF2203 INT LIN BNT02 TO BNTL02 OFF 30 CHAIN U2-G2                   
+LOC CF2204 INT LIN BNT02 TO BNTL02 OFF 45 CHAIN U2-G2                   
+LOC CF2205 INT LIN BNT02 TO BNTL02 OFF 60 CHAIN U2-G2                   
+LOC CF2206 INT LIN BNT02 TO BNTL02 OFF 75 CHAIN U2-G2                   
+LOC CF2207 INT LIN BNT02 TO BNTL02 OFF 90 CHAIN U2-G2                   
+LOC CF2208 INT LIN BNT02 TO BNTL02 OFF 105 CHAIN U2-G2                  
+LOC CF2209 INT LIN BNT02 TO BNTL02 OFF 120 CHAIN U2-G2                  
+LOC CF2210 INT LIN BNT02 TO BNTL02 OFF 135 CHAIN U2-G2                  
+LOC CF2211 INT LIN BNT02 TO BNTL02 OFF 150 CHAIN U2-G2                  
+LOC CF2212 INT LIN BNT02 TO BNTL02 OFF 165 CHAIN U2-G2                  
+LOC CF2213 INT LIN BNT02 TO BNTL02 OFF 180 CHAIN U2-G2                  
+LOC CF2214 INT LIN BNT02 TO BNTL02 OFF 195 CHAIN U2-G2                  
+LOC CF2215 INT LIN BNT02 TO BNTL02 OFF 210 CHAIN U2-G2                  
+LOC CF2216 INT LIN BNT02 TO BNTL02 OFF 225 CHAIN U2-G2                  
+LOC CF2217 INT LIN BNT02 TO BNTL02 OFF 240 CHAIN U2-G2                  
+LOC CF2218 INT LIN BNT02 TO BNTL02 OFF 255 CHAIN U2-G2                  
+LOC CF2219 INT LIN BNT02 TO BNTL02 OFF 270 CHAIN U2-G2                  
+LOC CF2220 INT LIN BNT02 TO BNTL02 OFF 285 CHAIN U2-G2                  
+LOC CF2221 INT LIN BNT02 TO BNTL02 OFF 300 CHAIN U2-G2                  
+LOC CF2222 INT LIN BNT02 TO BNTL02 OFF 315 CHAIN U2-G2                  
+LOC CF2223 INT LIN BNT02 TO BNTL02 OFF 330 CHAIN U2-G2                  
+LOC CF2224 INT LIN BNT02 TO BNTL02 OFF 345 CHAIN U2-G2                  
+LOC CF2225 INT LIN BNT02 TO BNTL02 OFF 360 CHAIN U2-G2                  
+EQUATE CF3201 TO 3200                                                   
+LOC CF3202 INT LIN BNT02 TO BNTL02 OFF 390 CHAIN U2-G2                  
+LOC CF3203 INT LIN BNT02 TO BNTL02 OFF 405 CHAIN U2-G2                  
+LOC CF3204 INT LIN BNT02 TO BNTL02 OFF 420 CHAIN U2-G2                  
+LOC CF3205 INT LIN BNT02 TO BNTL02 OFF 435 CHAIN U2-G2                  
+LOC CF3206 INT LIN BNT02 TO BNTL02 OFF 450 CHAIN U2-G2                  
+LOC CF3207 INT LIN BNT02 TO BNTL02 OFF 465 CHAIN U2-G2                  
+LOC CF3208 INT LIN BNT02 TO BNTL02 OFF 480 CHAIN U2-G2                  
+LOC CF3209 INT LIN BNT02 TO BNTL02 OFF 495 CHAIN U2-G2                  
+LOC CF3210 INT LIN BNT02 TO BNTL02 OFF 510 CHAIN U2-G2                  
+LOC CF3211 INT LIN BNT02 TO BNTL02 OFF 525 CHAIN U2-G2                  
+LOC CF3212 INT LIN BNT02 TO BNTL02 OFF 540 CHAIN U2-G2                  
+LOC CF3213 INT LIN BNT02 TO BNTL02 OFF 555 CHAIN U2-G2                  
+LOC CF3214 INT LIN BNT02 TO BNTL02 OFF 570 CHAIN U2-G2                  
+LOC CF3215 INT LIN BNT02 TO BNTL02 OFF 585 CHAIN U2-G2                  
+LOC CF3216 INT LIN BNT02 TO BNTL02 OFF 600 CHAIN U2-G2                  
+LOC CF3217 INT LIN BNT02 TO BNTL02 OFF 615 CHAIN U2-G2                  
+LOC CF3218 INT LIN BNT02 TO BNTL02 OFF 630 CHAIN U2-G2                  
+LOC CF3219 INT LIN BNT02 TO BNTL02 OFF 645 CHAIN U2-G2                  
+LOC CF3220 INT LIN BNT02 TO BNTL02 OFF 660 CHAIN U2-G2                  
+LOC CF3221 INT LIN BNT02 TO BNTL02 OFF 675 CHAIN U2-G2                  
+LOC CF3222 INT LIN BNT02 TO BNTL02 OFF 690 CHAIN U2-G2                  
+LOC CF3223 INT LIN BNT02 TO BNTL02 OFF 705 CHAIN U2-G2                  
+LOC CF3224 INT LIN BNT02 TO BNTL02 OFF 720 CHAIN U2-G2                  
+LOC CF3225 INT LIN BNT02 TO BNTL02 OFF 735 CHAIN U2-G2                  
+EQUATE CF3226 TO BB0402                                                 
+$                                                                       
+$                                                                       
+EQUATE CF2301 TO BA0203                                                 
+LOC CF2302 INT LIN BNT02 TO BNTL02 OFF 15 CHAIN U2-G3                   
+LOC CF2303 INT LIN BNT02 TO BNTL02 OFF 30 CHAIN U2-G3                   
+LOC CF2304 INT LIN BNT02 TO BNTL02 OFF 45 CHAIN U2-G3                   
+LOC CF2305 INT LIN BNT02 TO BNTL02 OFF 60 CHAIN U2-G3                   
+LOC CF2306 INT LIN BNT02 TO BNTL02 OFF 75 CHAIN U2-G3                   
+LOC CF2307 INT LIN BNT02 TO BNTL02 OFF 90 CHAIN U2-G3                   
+LOC CF2308 INT LIN BNT02 TO BNTL02 OFF 105 CHAIN U2-G3                  
+LOC CF2309 INT LIN BNT02 TO BNTL02 OFF 120 CHAIN U2-G3                  
+LOC CF2310 INT LIN BNT02 TO BNTL02 OFF 135 CHAIN U2-G3                  
+LOC CF2311 INT LIN BNT02 TO BNTL02 OFF 150 CHAIN U2-G3                  
+LOC CF2312 INT LIN BNT02 TO BNTL02 OFF 165 CHAIN U2-G3                  
+LOC CF2313 INT LIN BNT02 TO BNTL02 OFF 180 CHAIN U2-G3                  
+LOC CF2314 INT LIN BNT02 TO BNTL02 OFF 195 CHAIN U2-G3                  
+LOC CF2315 INT LIN BNT02 TO BNTL02 OFF 210 CHAIN U2-G3                  
+LOC CF2316 INT LIN BNT02 TO BNTL02 OFF 225 CHAIN U2-G3                  
+LOC CF2317 INT LIN BNT02 TO BNTL02 OFF 240 CHAIN U2-G3                  
+LOC CF2318 INT LIN BNT02 TO BNTL02 OFF 255 CHAIN U2-G3                  
+LOC CF2319 INT LIN BNT02 TO BNTL02 OFF 270 CHAIN U2-G3                  
+LOC CF2320 INT LIN BNT02 TO BNTL02 OFF 285 CHAIN U2-G3                  
+LOC CF2321 INT LIN BNT02 TO BNTL02 OFF 300 CHAIN U2-G3                  
+LOC CF2322 INT LIN BNT02 TO BNTL02 OFF 315 CHAIN U2-G3                  
+LOC CF2323 INT LIN BNT02 TO BNTL02 OFF 330 CHAIN U2-G3                  
+LOC CF2324 INT LIN BNT02 TO BNTL02 OFF 345 CHAIN U2-G3                  
+LOC CF2325 INT LIN BNT02 TO BNTL02 OFF 360 CHAIN U2-G3                  
+EQUATE CF3301 TO 3300                                                   
+LOC CF3302 INT LIN BNT02 TO BNTL02 OFF 390 CHAIN U2-G3                  
+LOC CF3303 INT LIN BNT02 TO BNTL02 OFF 405 CHAIN U2-G3                  
+LOC CF3304 INT LIN BNT02 TO BNTL02 OFF 420 CHAIN U2-G3                  
+LOC CF3305 INT LIN BNT02 TO BNTL02 OFF 435 CHAIN U2-G3                  
+LOC CF3306 INT LIN BNT02 TO BNTL02 OFF 450 CHAIN U2-G3                  
+LOC CF3307 INT LIN BNT02 TO BNTL02 OFF 465 CHAIN U2-G3                  
+LOC CF3308 INT LIN BNT02 TO BNTL02 OFF 480 CHAIN U2-G3                  
+LOC CF3309 INT LIN BNT02 TO BNTL02 OFF 495 CHAIN U2-G3                  
+LOC CF3310 INT LIN BNT02 TO BNTL02 OFF 510 CHAIN U2-G3                  
+LOC CF3311 INT LIN BNT02 TO BNTL02 OFF 525 CHAIN U2-G3                  
+LOC CF3312 INT LIN BNT02 TO BNTL02 OFF 540 CHAIN U2-G3                  
+LOC CF3313 INT LIN BNT02 TO BNTL02 OFF 555 CHAIN U2-G3                  
+LOC CF3314 INT LIN BNT02 TO BNTL02 OFF 570 CHAIN U2-G3                  
+LOC CF3315 INT LIN BNT02 TO BNTL02 OFF 585 CHAIN U2-G3                  
+LOC CF3316 INT LIN BNT02 TO BNTL02 OFF 600 CHAIN U2-G3                  
+LOC CF3317 INT LIN BNT02 TO BNTL02 OFF 615 CHAIN U2-G3                  
+LOC CF3318 INT LIN BNT02 TO BNTL02 OFF 630 CHAIN U2-G3                  
+LOC CF3319 INT LIN BNT02 TO BNTL02 OFF 645 CHAIN U2-G3                  
+LOC CF3320 INT LIN BNT02 TO BNTL02 OFF 660 CHAIN U2-G3                  
+LOC CF3321 INT LIN BNT02 TO BNTL02 OFF 675 CHAIN U2-G3                  
+LOC CF3322 INT LIN BNT02 TO BNTL02 OFF 690 CHAIN U2-G3                  
+LOC CF3323 INT LIN BNT02 TO BNTL02 OFF 705 CHAIN U2-G3                  
+LOC CF3324 INT LIN BNT02 TO BNTL02 OFF 720 CHAIN U2-G3                  
+LOC CF3325 INT LIN BNT02 TO BNTL02 OFF 735 CHAIN U2-G3                  
+EQUATE CF3326 TO BB0403                                                 
+$                                                                       
+$                                                                       
+$                                                                       
+EQUATE CF2401 TO BA0204                                                 
+LOC CF2402 INT LIN BNT02 TO BNTL02 OFF 15 CHAIN U2-G4                   
+LOC CF2403 INT LIN BNT02 TO BNTL02 OFF 30 CHAIN U2-G4                   
+LOC CF2404 INT LIN BNT02 TO BNTL02 OFF 45 CHAIN U2-G4                   
+LOC CF2405 INT LIN BNT02 TO BNTL02 OFF 60 CHAIN U2-G4                   
+LOC CF2406 INT LIN BNT02 TO BNTL02 OFF 75 CHAIN U2-G4                   
+LOC CF2407 INT LIN BNT02 TO BNTL02 OFF 90 CHAIN U2-G4                   
+LOC CF2408 INT LIN BNT02 TO BNTL02 OFF 105 CHAIN U2-G4                  
+LOC CF2409 INT LIN BNT02 TO BNTL02 OFF 120 CHAIN U2-G4                  
+LOC CF2410 INT LIN BNT02 TO BNTL02 OFF 135 CHAIN U2-G4                  
+LOC CF2411 INT LIN BNT02 TO BNTL02 OFF 150 CHAIN U2-G4                  
+LOC CF2412 INT LIN BNT02 TO BNTL02 OFF 165 CHAIN U2-G4                  
+LOC CF2413 INT LIN BNT02 TO BNTL02 OFF 180 CHAIN U2-G4                  
+LOC CF2414 INT LIN BNT02 TO BNTL02 OFF 195 CHAIN U2-G4                  
+LOC CF2415 INT LIN BNT02 TO BNTL02 OFF 210 CHAIN U2-G4                  
+LOC CF2416 INT LIN BNT02 TO BNTL02 OFF 225 CHAIN U2-G4                  
+LOC CF2417 INT LIN BNT02 TO BNTL02 OFF 240 CHAIN U2-G4                  
+LOC CF2418 INT LIN BNT02 TO BNTL02 OFF 255 CHAIN U2-G4                  
+LOC CF2419 INT LIN BNT02 TO BNTL02 OFF 270 CHAIN U2-G4                  
+LOC CF2420 INT LIN BNT02 TO BNTL02 OFF 285 CHAIN U2-G4                  
+LOC CF2421 INT LIN BNT02 TO BNTL02 OFF 300 CHAIN U2-G4                  
+LOC CF2422 INT LIN BNT02 TO BNTL02 OFF 315 CHAIN U2-G4                  
+LOC CF2423 INT LIN BNT02 TO BNTL02 OFF 330 CHAIN U2-G4                  
+LOC CF2424 INT LIN BNT02 TO BNTL02 OFF 345 CHAIN U2-G4                  
+LOC CF2425 INT LIN BNT02 TO BNTL02 OFF 360 CHAIN U2-G4                  
+EQUATE CF3401 TO 3400                                                   
+LOC CF3402 INT LIN BNT02 TO BNTL02 OFF 390 CHAIN U2-G4                  
+LOC CF3403 INT LIN BNT02 TO BNTL02 OFF 405 CHAIN U2-G4                  
+LOC CF3404 INT LIN BNT02 TO BNTL02 OFF 420 CHAIN U2-G4                  
+LOC CF3405 INT LIN BNT02 TO BNTL02 OFF 435 CHAIN U2-G4                  
+LOC CF3406 INT LIN BNT02 TO BNTL02 OFF 450 CHAIN U2-G4                  
+LOC CF3407 INT LIN BNT02 TO BNTL02 OFF 465 CHAIN U2-G4                  
+LOC CF3408 INT LIN BNT02 TO BNTL02 OFF 480 CHAIN U2-G4                  
+LOC CF3409 INT LIN BNT02 TO BNTL02 OFF 495 CHAIN U2-G4                  
+LOC CF3410 INT LIN BNT02 TO BNTL02 OFF 510 CHAIN U2-G4                  
+LOC CF3411 INT LIN BNT02 TO BNTL02 OFF 525 CHAIN U2-G4                  
+LOC CF3412 INT LIN BNT02 TO BNTL02 OFF 540 CHAIN U2-G4                  
+LOC CF3413 INT LIN BNT02 TO BNTL02 OFF 555 CHAIN U2-G4                  
+LOC CF3414 INT LIN BNT02 TO BNTL02 OFF 570 CHAIN U2-G4                  
+LOC CF3415 INT LIN BNT02 TO BNTL02 OFF 585 CHAIN U2-G4                  
+LOC CF3416 INT LIN BNT02 TO BNTL02 OFF 600 CHAIN U2-G4                  
+LOC CF3417 INT LIN BNT02 TO BNTL02 OFF 615 CHAIN U2-G4                  
+LOC CF3418 INT LIN BNT02 TO BNTL02 OFF 630 CHAIN U2-G4                  
+LOC CF3419 INT LIN BNT02 TO BNTL02 OFF 645 CHAIN U2-G4                  
+LOC CF3420 INT LIN BNT02 TO BNTL02 OFF 660 CHAIN U2-G4                  
+LOC CF3421 INT LIN BNT02 TO BNTL02 OFF 675 CHAIN U2-G4                  
+LOC CF3422 INT LIN BNT02 TO BNTL02 OFF 690 CHAIN U2-G4                  
+LOC CF3423 INT LIN BNT02 TO BNTL02 OFF 705 CHAIN U2-G4                  
+LOC CF3424 INT LIN BNT02 TO BNTL02 OFF 720 CHAIN U2-G4                  
+LOC CF3425 INT LIN BNT02 TO BNTL02 OFF 735 CHAIN U2-G4                  
+EQUATE CF3426 TO BB0404                                                 
+$                                                                       
+$                                                                       
+$                                                                       
+EQUATE CF2501 TO BA0205                                                 
+LOC CF2502 INT LIN BNT02 TO BNTL02 OFF 15 CHAIN U2-G5                   
+LOC CF2503 INT LIN BNT02 TO BNTL02 OFF 30 CHAIN U2-G5                   
+LOC CF2504 INT LIN BNT02 TO BNTL02 OFF 45 CHAIN U2-G5                   
+LOC CF2505 INT LIN BNT02 TO BNTL02 OFF 60 CHAIN U2-G5                   
+LOC CF2506 INT LIN BNT02 TO BNTL02 OFF 75 CHAIN U2-G5                   
+LOC CF2507 INT LIN BNT02 TO BNTL02 OFF 90 CHAIN U2-G5                   
+LOC CF2508 INT LIN BNT02 TO BNTL02 OFF 105 CHAIN U2-G5                  
+LOC CF2509 INT LIN BNT02 TO BNTL02 OFF 120 CHAIN U2-G5                  
+LOC CF2510 INT LIN BNT02 TO BNTL02 OFF 135 CHAIN U2-G5                  
+LOC CF2511 INT LIN BNT02 TO BNTL02 OFF 150 CHAIN U2-G5                  
+LOC CF2512 INT LIN BNT02 TO BNTL02 OFF 165 CHAIN U2-G5                  
+LOC CF2513 INT LIN BNT02 TO BNTL02 OFF 180 CHAIN U2-G5                  
+LOC CF2514 INT LIN BNT02 TO BNTL02 OFF 195 CHAIN U2-G5                  
+LOC CF2515 INT LIN BNT02 TO BNTL02 OFF 210 CHAIN U2-G5                  
+LOC CF2516 INT LIN BNT02 TO BNTL02 OFF 225 CHAIN U2-G5                  
+LOC CF2517 INT LIN BNT02 TO BNTL02 OFF 240 CHAIN U2-G5                  
+LOC CF2518 INT LIN BNT02 TO BNTL02 OFF 255 CHAIN U2-G5                  
+LOC CF2519 INT LIN BNT02 TO BNTL02 OFF 270 CHAIN U2-G5                  
+LOC CF2520 INT LIN BNT02 TO BNTL02 OFF 285 CHAIN U2-G5                  
+LOC CF2521 INT LIN BNT02 TO BNTL02 OFF 300 CHAIN U2-G5                  
+LOC CF2522 INT LIN BNT02 TO BNTL02 OFF 315 CHAIN U2-G5                  
+LOC CF2523 INT LIN BNT02 TO BNTL02 OFF 330 CHAIN U2-G5                  
+LOC CF2524 INT LIN BNT02 TO BNTL02 OFF 345 CHAIN U2-G5                  
+LOC CF2525 INT LIN BNT02 TO BNTL02 OFF 360 CHAIN U2-G5                  
+EQUATE CF3501 TO 3500                                                   
+LOC CF3502 INT LIN BNT02 TO BNTL02 OFF 390 CHAIN U2-G5                  
+LOC CF3503 INT LIN BNT02 TO BNTL02 OFF 405 CHAIN U2-G5                  
+LOC CF3504 INT LIN BNT02 TO BNTL02 OFF 420 CHAIN U2-G5                  
+LOC CF3505 INT LIN BNT02 TO BNTL02 OFF 435 CHAIN U2-G5                  
+LOC CF3506 INT LIN BNT02 TO BNTL02 OFF 450 CHAIN U2-G5                  
+LOC CF3507 INT LIN BNT02 TO BNTL02 OFF 465 CHAIN U2-G5                  
+LOC CF3508 INT LIN BNT02 TO BNTL02 OFF 480 CHAIN U2-G5                  
+LOC CF3509 INT LIN BNT02 TO BNTL02 OFF 495 CHAIN U2-G5                  
+LOC CF3510 INT LIN BNT02 TO BNTL02 OFF 510 CHAIN U2-G5                  
+LOC CF3511 INT LIN BNT02 TO BNTL02 OFF 525 CHAIN U2-G5                  
+LOC CF3512 INT LIN BNT02 TO BNTL02 OFF 540 CHAIN U2-G5                  
+LOC CF3513 INT LIN BNT02 TO BNTL02 OFF 555 CHAIN U2-G5                  
+LOC CF3514 INT LIN BNT02 TO BNTL02 OFF 570 CHAIN U2-G5                  
+LOC CF3515 INT LIN BNT02 TO BNTL02 OFF 585 CHAIN U2-G5                  
+LOC CF3516 INT LIN BNT02 TO BNTL02 OFF 600 CHAIN U2-G5                  
+LOC CF3517 INT LIN BNT02 TO BNTL02 OFF 615 CHAIN U2-G5                  
+LOC CF3518 INT LIN BNT02 TO BNTL02 OFF 630 CHAIN U2-G5                  
+LOC CF3519 INT LIN BNT02 TO BNTL02 OFF 645 CHAIN U2-G5                  
+LOC CF3520 INT LIN BNT02 TO BNTL02 OFF 660 CHAIN U2-G5                  
+LOC CF3521 INT LIN BNT02 TO BNTL02 OFF 675 CHAIN U2-G5                  
+LOC CF3522 INT LIN BNT02 TO BNTL02 OFF 690 CHAIN U2-G5                  
+LOC CF3523 INT LIN BNT02 TO BNTL02 OFF 705 CHAIN U2-G5                  
+LOC CF3524 INT LIN BNT02 TO BNTL02 OFF 720 CHAIN U2-G5                  
+LOC CF3525 INT LIN BNT02 TO BNTL02 OFF 735 CHAIN U2-G5                  
+EQUATE CF3526 TO BB0405                                                 
+$                                                                       
+$                                                                       
+$                                                                       
+EQUATE CF2601 TO BA0206                                                 
+LOC CF2602 INT LIN BNT02 TO BNTL02 OFF 15 CHAIN U2-G6                   
+LOC CF2603 INT LIN BNT02 TO BNTL02 OFF 30 CHAIN U2-G6                   
+LOC CF2604 INT LIN BNT02 TO BNTL02 OFF 45 CHAIN U2-G6                   
+LOC CF2605 INT LIN BNT02 TO BNTL02 OFF 60 CHAIN U2-G6                   
+LOC CF2606 INT LIN BNT02 TO BNTL02 OFF 75 CHAIN U2-G6                   
+LOC CF2607 INT LIN BNT02 TO BNTL02 OFF 90 CHAIN U2-G6                   
+LOC CF2608 INT LIN BNT02 TO BNTL02 OFF 105 CHAIN U2-G6                  
+LOC CF2609 INT LIN BNT02 TO BNTL02 OFF 120 CHAIN U2-G6                  
+LOC CF2610 INT LIN BNT02 TO BNTL02 OFF 135 CHAIN U2-G6                  
+LOC CF2611 INT LIN BNT02 TO BNTL02 OFF 150 CHAIN U2-G6                  
+LOC CF2612 INT LIN BNT02 TO BNTL02 OFF 165 CHAIN U2-G6                  
+LOC CF2613 INT LIN BNT02 TO BNTL02 OFF 180 CHAIN U2-G6                  
+LOC CF2614 INT LIN BNT02 TO BNTL02 OFF 195 CHAIN U2-G6                  
+LOC CF2615 INT LIN BNT02 TO BNTL02 OFF 210 CHAIN U2-G6                  
+LOC CF2616 INT LIN BNT02 TO BNTL02 OFF 225 CHAIN U2-G6                  
+LOC CF2617 INT LIN BNT02 TO BNTL02 OFF 240 CHAIN U2-G6                  
+LOC CF2618 INT LIN BNT02 TO BNTL02 OFF 255 CHAIN U2-G6                  
+LOC CF2619 INT LIN BNT02 TO BNTL02 OFF 270 CHAIN U2-G6                  
+LOC CF2620 INT LIN BNT02 TO BNTL02 OFF 285 CHAIN U2-G6                  
+LOC CF2621 INT LIN BNT02 TO BNTL02 OFF 300 CHAIN U2-G6                  
+LOC CF2622 INT LIN BNT02 TO BNTL02 OFF 315 CHAIN U2-G6                  
+LOC CF2623 INT LIN BNT02 TO BNTL02 OFF 330 CHAIN U2-G6                  
+LOC CF2624 INT LIN BNT02 TO BNTL02 OFF 345 CHAIN U2-G6                  
+LOC CF2625 INT LIN BNT02 TO BNTL02 OFF 360 CHAIN U2-G6                  
+EQUATE CF3601 TO 3600                                                   
+LOC CF3602 INT LIN BNT02 TO BNTL02 OFF 390 CHAIN U2-G6                  
+LOC CF3603 INT LIN BNT02 TO BNTL02 OFF 405 CHAIN U2-G6                  
+LOC CF3604 INT LIN BNT02 TO BNTL02 OFF 420 CHAIN U2-G6                  
+LOC CF3605 INT LIN BNT02 TO BNTL02 OFF 435 CHAIN U2-G6                  
+LOC CF3606 INT LIN BNT02 TO BNTL02 OFF 450 CHAIN U2-G6                  
+LOC CF3607 INT LIN BNT02 TO BNTL02 OFF 465 CHAIN U2-G6                  
+LOC CF3608 INT LIN BNT02 TO BNTL02 OFF 480 CHAIN U2-G6                  
+LOC CF3609 INT LIN BNT02 TO BNTL02 OFF 495 CHAIN U2-G6                  
+LOC CF3610 INT LIN BNT02 TO BNTL02 OFF 510 CHAIN U2-G6                  
+LOC CF3611 INT LIN BNT02 TO BNTL02 OFF 525 CHAIN U2-G6                  
+LOC CF3612 INT LIN BNT02 TO BNTL02 OFF 540 CHAIN U2-G6                  
+LOC CF3613 INT LIN BNT02 TO BNTL02 OFF 555 CHAIN U2-G6                  
+LOC CF3614 INT LIN BNT02 TO BNTL02 OFF 570 CHAIN U2-G6                  
+LOC CF3615 INT LIN BNT02 TO BNTL02 OFF 585 CHAIN U2-G6                  
+LOC CF3616 INT LIN BNT02 TO BNTL02 OFF 600 CHAIN U2-G6                  
+LOC CF3617 INT LIN BNT02 TO BNTL02 OFF 615 CHAIN U2-G6                  
+LOC CF3618 INT LIN BNT02 TO BNTL02 OFF 630 CHAIN U2-G6                  
+LOC CF3619 INT LIN BNT02 TO BNTL02 OFF 645 CHAIN U2-G6                  
+LOC CF3620 INT LIN BNT02 TO BNTL02 OFF 660 CHAIN U2-G6                  
+LOC CF3621 INT LIN BNT02 TO BNTL02 OFF 675 CHAIN U2-G6                  
+LOC CF3622 INT LIN BNT02 TO BNTL02 OFF 690 CHAIN U2-G6                  
+LOC CF3623 INT LIN BNT02 TO BNTL02 OFF 705 CHAIN U2-G6                  
+LOC CF3624 INT LIN BNT02 TO BNTL02 OFF 720 CHAIN U2-G6                  
+LOC CF3625 INT LIN BNT02 TO BNTL02 OFF 735 CHAIN U2-G6                  
+EQUATE CF3626 TO BB0406                                                 
+$                                                                       
+$                                                                       
+$                                                                       
+EQUATE CF2701 TO BA0207                                                 
+LOC CF2702 INT LIN BNT02 TO BNTL02 OFF 15 CHAIN U2-G7                   
+LOC CF2703 INT LIN BNT02 TO BNTL02 OFF 30 CHAIN U2-G7                   
+LOC CF2704 INT LIN BNT02 TO BNTL02 OFF 45 CHAIN U2-G7                   
+LOC CF2705 INT LIN BNT02 TO BNTL02 OFF 60 CHAIN U2-G7                   
+LOC CF2706 INT LIN BNT02 TO BNTL02 OFF 75 CHAIN U2-G7                   
+LOC CF2707 INT LIN BNT02 TO BNTL02 OFF 90 CHAIN U2-G7                   
+LOC CF2708 INT LIN BNT02 TO BNTL02 OFF 105 CHAIN U2-G7                  
+LOC CF2709 INT LIN BNT02 TO BNTL02 OFF 120 CHAIN U2-G7                  
+LOC CF2710 INT LIN BNT02 TO BNTL02 OFF 135 CHAIN U2-G7                  
+LOC CF2711 INT LIN BNT02 TO BNTL02 OFF 150 CHAIN U2-G7                  
+LOC CF2712 INT LIN BNT02 TO BNTL02 OFF 165 CHAIN U2-G7                  
+LOC CF2713 INT LIN BNT02 TO BNTL02 OFF 180 CHAIN U2-G7                  
+LOC CF2714 INT LIN BNT02 TO BNTL02 OFF 195 CHAIN U2-G7                  
+LOC CF2715 INT LIN BNT02 TO BNTL02 OFF 210 CHAIN U2-G7                  
+LOC CF2716 INT LIN BNT02 TO BNTL02 OFF 225 CHAIN U2-G7                  
+LOC CF2717 INT LIN BNT02 TO BNTL02 OFF 240 CHAIN U2-G7                  
+LOC CF2718 INT LIN BNT02 TO BNTL02 OFF 255 CHAIN U2-G7                  
+LOC CF2719 INT LIN BNT02 TO BNTL02 OFF 270 CHAIN U2-G7                  
+LOC CF2720 INT LIN BNT02 TO BNTL02 OFF 285 CHAIN U2-G7                  
+LOC CF2721 INT LIN BNT02 TO BNTL02 OFF 300 CHAIN U2-G7                  
+LOC CF2722 INT LIN BNT02 TO BNTL02 OFF 315 CHAIN U2-G7                  
+LOC CF2723 INT LIN BNT02 TO BNTL02 OFF 330 CHAIN U2-G7                  
+LOC CF2724 INT LIN BNT02 TO BNTL02 OFF 345 CHAIN U2-G7                  
+LOC CF2725 INT LIN BNT02 TO BNTL02 OFF 360 CHAIN U2-G7                  
+EQUATE CF3701 TO 3700                                                   
+LOC CF3702 INT LIN BNT02 TO BNTL02 OFF 390 CHAIN U2-G7                  
+LOC CF3703 INT LIN BNT02 TO BNTL02 OFF 405 CHAIN U2-G7                  
+LOC CF3704 INT LIN BNT02 TO BNTL02 OFF 420 CHAIN U2-G7                  
+LOC CF3705 INT LIN BNT02 TO BNTL02 OFF 435 CHAIN U2-G7                  
+LOC CF3706 INT LIN BNT02 TO BNTL02 OFF 450 CHAIN U2-G7                  
+LOC CF3707 INT LIN BNT02 TO BNTL02 OFF 465 CHAIN U2-G7                  
+LOC CF3708 INT LIN BNT02 TO BNTL02 OFF 480 CHAIN U2-G7                  
+LOC CF3709 INT LIN BNT02 TO BNTL02 OFF 495 CHAIN U2-G7                  
+LOC CF3710 INT LIN BNT02 TO BNTL02 OFF 510 CHAIN U2-G7                  
+LOC CF3711 INT LIN BNT02 TO BNTL02 OFF 525 CHAIN U2-G7                  
+LOC CF3712 INT LIN BNT02 TO BNTL02 OFF 540 CHAIN U2-G7                  
+LOC CF3713 INT LIN BNT02 TO BNTL02 OFF 555 CHAIN U2-G7                  
+LOC CF3714 INT LIN BNT02 TO BNTL02 OFF 570 CHAIN U2-G7                  
+LOC CF3715 INT LIN BNT02 TO BNTL02 OFF 585 CHAIN U2-G7                  
+LOC CF3716 INT LIN BNT02 TO BNTL02 OFF 600 CHAIN U2-G7                  
+LOC CF3717 INT LIN BNT02 TO BNTL02 OFF 615 CHAIN U2-G7                  
+LOC CF3718 INT LIN BNT02 TO BNTL02 OFF 630 CHAIN U2-G7                  
+LOC CF3719 INT LIN BNT02 TO BNTL02 OFF 645 CHAIN U2-G7                  
+LOC CF3720 INT LIN BNT02 TO BNTL02 OFF 660 CHAIN U2-G7                  
+LOC CF3721 INT LIN BNT02 TO BNTL02 OFF 675 CHAIN U2-G7                  
+LOC CF3722 INT LIN BNT02 TO BNTL02 OFF 690 CHAIN U2-G7                  
+LOC CF3723 INT LIN BNT02 TO BNTL02 OFF 705 CHAIN U2-G7                  
+LOC CF3724 INT LIN BNT02 TO BNTL02 OFF 720 CHAIN U2-G7                  
+LOC CF3725 INT LIN BNT02 TO BNTL02 OFF 735 CHAIN U2-G7                  
+EQUATE CF3726 TO BB0407                                                 
+$                                                                       
+$                                                                       
+$                                                                       
+EQUATE CF2801 TO BA0208                                                 
+LOC CF2802 INT LIN BNT02 TO BNTL02 OFF 15 CHAIN U2-G8                   
+LOC CF2803 INT LIN BNT02 TO BNTL02 OFF 30 CHAIN U2-G8                   
+LOC CF2804 INT LIN BNT02 TO BNTL02 OFF 45 CHAIN U2-G8                   
+LOC CF2805 INT LIN BNT02 TO BNTL02 OFF 60 CHAIN U2-G8                   
+LOC CF2806 INT LIN BNT02 TO BNTL02 OFF 75 CHAIN U2-G8                   
+LOC CF2807 INT LIN BNT02 TO BNTL02 OFF 90 CHAIN U2-G8                   
+LOC CF2808 INT LIN BNT02 TO BNTL02 OFF 105 CHAIN U2-G8                  
+LOC CF2809 INT LIN BNT02 TO BNTL02 OFF 120 CHAIN U2-G8                  
+LOC CF2810 INT LIN BNT02 TO BNTL02 OFF 135 CHAIN U2-G8                  
+LOC CF2811 INT LIN BNT02 TO BNTL02 OFF 150 CHAIN U2-G8                  
+LOC CF2812 INT LIN BNT02 TO BNTL02 OFF 165 CHAIN U2-G8                  
+LOC CF2813 INT LIN BNT02 TO BNTL02 OFF 180 CHAIN U2-G8                  
+LOC CF2814 INT LIN BNT02 TO BNTL02 OFF 195 CHAIN U2-G8                  
+LOC CF2815 INT LIN BNT02 TO BNTL02 OFF 210 CHAIN U2-G8                  
+LOC CF2816 INT LIN BNT02 TO BNTL02 OFF 225 CHAIN U2-G8                  
+LOC CF2817 INT LIN BNT02 TO BNTL02 OFF 240 CHAIN U2-G8                  
+LOC CF2818 INT LIN BNT02 TO BNTL02 OFF 255 CHAIN U2-G8                  
+LOC CF2819 INT LIN BNT02 TO BNTL02 OFF 270 CHAIN U2-G8                  
+LOC CF2820 INT LIN BNT02 TO BNTL02 OFF 285 CHAIN U2-G8                  
+LOC CF2821 INT LIN BNT02 TO BNTL02 OFF 300 CHAIN U2-G8                  
+LOC CF2822 INT LIN BNT02 TO BNTL02 OFF 315 CHAIN U2-G8                  
+LOC CF2823 INT LIN BNT02 TO BNTL02 OFF 330 CHAIN U2-G8                  
+LOC CF2824 INT LIN BNT02 TO BNTL02 OFF 345 CHAIN U2-G8                  
+LOC CF2825 INT LIN BNT02 TO BNTL02 OFF 360 CHAIN U2-G8                  
+EQUATE CF3801 TO 3800                                                   
+LOC CF3802 INT LIN BNT02 TO BNTL02 OFF 390 CHAIN U2-G8                  
+LOC CF3803 INT LIN BNT02 TO BNTL02 OFF 405 CHAIN U2-G8                  
+LOC CF3804 INT LIN BNT02 TO BNTL02 OFF 420 CHAIN U2-G8                  
+LOC CF3805 INT LIN BNT02 TO BNTL02 OFF 435 CHAIN U2-G8                  
+LOC CF3806 INT LIN BNT02 TO BNTL02 OFF 450 CHAIN U2-G8                  
+LOC CF3807 INT LIN BNT02 TO BNTL02 OFF 465 CHAIN U2-G8                  
+LOC CF3808 INT LIN BNT02 TO BNTL02 OFF 480 CHAIN U2-G8                  
+LOC CF3809 INT LIN BNT02 TO BNTL02 OFF 495 CHAIN U2-G8                  
+LOC CF3810 INT LIN BNT02 TO BNTL02 OFF 510 CHAIN U2-G8                  
+LOC CF3811 INT LIN BNT02 TO BNTL02 OFF 525 CHAIN U2-G8                  
+LOC CF3812 INT LIN BNT02 TO BNTL02 OFF 540 CHAIN U2-G8                  
+LOC CF3813 INT LIN BNT02 TO BNTL02 OFF 555 CHAIN U2-G8                  
+LOC CF3814 INT LIN BNT02 TO BNTL02 OFF 570 CHAIN U2-G8                  
+LOC CF3815 INT LIN BNT02 TO BNTL02 OFF 585 CHAIN U2-G8                  
+LOC CF3816 INT LIN BNT02 TO BNTL02 OFF 600 CHAIN U2-G8                  
+LOC CF3817 INT LIN BNT02 TO BNTL02 OFF 615 CHAIN U2-G8                  
+LOC CF3818 INT LIN BNT02 TO BNTL02 OFF 630 CHAIN U2-G8                  
+LOC CF3819 INT LIN BNT02 TO BNTL02 OFF 645 CHAIN U2-G8                  
+LOC CF3820 INT LIN BNT02 TO BNTL02 OFF 660 CHAIN U2-G8                  
+LOC CF3821 INT LIN BNT02 TO BNTL02 OFF 675 CHAIN U2-G8                  
+LOC CF3822 INT LIN BNT02 TO BNTL02 OFF 690 CHAIN U2-G8                  
+LOC CF3823 INT LIN BNT02 TO BNTL02 OFF 705 CHAIN U2-G8                  
+LOC CF3824 INT LIN BNT02 TO BNTL02 OFF 720 CHAIN U2-G8                  
+LOC CF3825 INT LIN BNT02 TO BNTL02 OFF 735 CHAIN U2-G8                  
+EQUATE CF3826 TO BB0408                                                 
+$                                                                       
+$                                                                       
+
+$       * 438   INVERSE ALONG U2-G1 CF2101 CF2102 CF2103 CF2104 CF2105 CF2106 CF2107 CF-
+$       2108 CF2109 CF2110 CF2111 CF2112 CF2113 CF2114 CF2115 CF2116 CF2117 CF2118 CF21-
+$       19 CF2120 CF2121 CF2122 CF2123 CF2124 CF2125 3100                               
+$       * 439   INVERSE ALONG U2-G1 CF3101 CF3102 CF3103 CF3104 CF3105 CF3106 CF3107 CF-
+$       3108 CF3109 CF3110 CF3111 CF3112 CF3113 CF3114 CF3115 CF3116 CF3117 CF3118 CF31-
+$       19 CF3120 CF3121 CF3122 CF3123 CF3124 CF3125 BB0401 CF3126 CP0401               
+$       * 440   INVERSE ALONG U2-G2 CF2201 CF2202 CF2203 CF2204 CF2205 CF2206 CF2207 CF-
+$       2208 CF2209 CF2210 CF2211 CF2212 CF2213 CF2214 CF2215 CF2216 CF2217 CF2218 CF22-
+$       19 CF2220 CF2221 CF2222 CF2223 CF2224 CF2225 3200                               
+$       * 441   INVERSE ALONG U2-G2 CF3201 CF3202 CF3203 CF3204 CF3205 CF3206 CF3207 CF-
+$       3208 CF3209 CF3210 CF3211 CF3212 CF3213 CF3214 CF3215 CF3216 CF3217 CF3218 CF32-
+$       19 CF3220 CF3221 CF3222 CF3223 CF3224 CF3225 CF3226 CP0402                      
+$       * 442   INVERSE ALONG U2-G3 CF2301 CF2302 CF2303 CF2304 CF2305 CF2306 CF2307 CF-
+$       2308 CF2309 CF2310 CF2311 CF2312 CF2313 CF2314 CF2315 CF2316 CF2317 CF2318 CF23-
+$       19 CF2320 CF2321 CF2322 CF2323 CF2324 CF2325 3300                               
+$       * 443   INVERSE ALONG U2-G3 CF3301 CF3302 CF3303 CF3304 CF3305 CF3306 CF3307 CF-
+$       3308 CF3309 CF3310 CF3311 CF3312 CF3313 CF3314 CF3315 CF3316 CF3317 CF3318 CF33-
+$       19 CF3320 CF3321 CF3322 CF3323 CF3324 CF3325 CF3326 CP0403                      
+$       * 444   INVERSE ALONG U2-G4 CF2401 CF2402 CF2403 CF2404 CF2405 CF2406 CF2407 CF-
+$       2408 CF2409 CF2410 CF2411 CF2412 CF2413 CF2414 CF2415 CF2416 CF2417 CF2418 CF24-
+$       19 CF2420 CF2421 CF2422 CF2423 CF2424 CF2425 3400                               
+$       * 445   INVERSE ALONG U2-G4 CF3401 CF3402 CF3403 CF3404 CF3405 CF3406 CF3407 CF-
+$       3408 CF3409 CF3410 CF3411 CF3412 CF3413 CF3414 CF3415 CF3416 CF3417 CF3418 CF34-
+$       19 CF3420 CF3421 CF3422 CF3423 CF3424 CF3425 CF3426 CP0404                      
+$       * 446   INVERSE ALONG U2-G5 CF2501 CF2502 CF2503 CF2504 CF2505 CF2506 CF2507 CF-
+$       2508 CF2509 CF2510 CF2511 CF2512 CF2513 CF2514 CF2515 CF2516 CF2517 CF2518 CF25-
+$       19 CF2520 CF2521 CF2522 CF2523 CF2524 CF2525 3500                               
+$       * 447   INVERSE ALONG U2-G5 CF3501 CF3502 CF3503 CF3504 CF3505 CF3506 CF3507 CF-
+$       3508 CF3509 CF3510 CF3511 CF3512 CF3513 CF3514 CF3515 CF3516 CF3517 CF3518 CF35-
+$       19 CF3520 CF3521 CF3522 CF3523 CF3524 CF3525 CF3526 CP0405                      
+$       * 448   INVERSE ALONG U2-G6 CF2601 CF2602 CF2603 CF2604 CF2605 CF2606 CF2607 CF-
+$       2608 CF2609 CF2610 CF2611 CF2612 CF2613 CF2614 CF2615 CF2616 CF2617 CF2618 CF26-
+$       19 CF2620 CF2621 CF2622 CF2623 CF2624 CF2625 3600                               
+$       * 449   INVERSE ALONG U2-G6 CF3601 CF3602 CF3603 CF3604 CF3605 CF3606 CF3607 CF-
+$       3608 CF3609 CF3610 CF3611 CF3612 CF3613 CF3614 CF3615 CF3616 CF3617 CF3618 CF36-
+$       19 CF3620 CF3621 CF3622 CF3623 CF3624 CF3625 CF3626 CP0406                      
+$       * 450   INVERSE ALONG U2-G7 CF2701 CF2702 CF2703 CF2704 CF2705 CF2706 CF2707 CF-
+$       2708 CF2709 CF2710 CF2711 CF2712 CF2713 CF2714 CF2715 CF2716 CF2717 CF2718 CF27-
+$       19 CF2720 CF2721 CF2722 CF2723 CF2724 CF2725 3700                               
+$       * 451   INVERSE ALONG U2-G7 CF3701 CF3702 CF3703 CF3704 CF3705 CF3706 CF3707 CF-
+$       3708 CF3709 CF3710 CF3711 CF3712 CF3713 CF3714 CF3715 CF3716 CF3717 CF3718 CF37-
+$       19 CF3720 CF3721 CF3722 CF3723 CF3724 CF3725 CF3726 CP0407                      
+$       * 452   INVERSE ALONG U2-G8 CF2801 CF2802 CF2803 CF2804 CF2805 CF2806 CF2807 CF-
+$       2808 CF2809 CF2810 CF2811 CF2812 CF2813 CF2814 CF2815 CF2816 CF2817 CF2818 CF28-
+$       19 CF2820 CF2821 CF2822 CF2823 CF2824 CF2825 3800                               
+$       * 453   INVERSE ALONG U2-G8 CF3801 CF3802 CF3803 CF3804 CF3805 CF3806 CF3807 CF-
+$       3808 CF3809 CF3810 CF3811 CF3812 CF3813 CF3814 CF3815 CF3816 CF3817 CF3818 CF38-
+$       19 CF3820 CF3821 CF3822 CF3823 CF3824 CF3825 CF3826 CP0408                      
+
+$                                                                       
+$                                                                       
+$STORE BEAR BEARCF2101 TAN CHAIN U2-G1 STA 00+00.00                     
+$PRINT ANGLE BEARCF2101 N 90° E                                         
+$                                                                       
+$                                                                       
+EQUATE CCU202 TO CC U2-G2                                               
+EQUATE CCU203 TO CC U2-G3                                               
+EQUATE CCU204 TO CC U2-G4                                               
+EQUATE CCU205 TO CC U2-G5                                               
+EQUATE CCU206 TO CC U2-G6                                               
+EQUATE CCU207 TO CC U2-G7                                               
+EQUATE CCU208 TO CC U2-G8                                               
+$                                                                       
+$                                                                       
+$FIND DIMENSION "A" ON FRAMING PLAN                                     
+$                                                                       
+INVERSE ALONG U2-G1 CF2101 CF3126                                       
+INVERSE ALONG U2-G2 CF2201 CF3226                                       
+INVERSE ALONG U2-G3 CF2301 CF3326                                       
+INVERSE ALONG U2-G4 CF2401 CF3426                                       
+INVERSE ALONG U2-G5 CF2501 CF3526                                       
+INVERSE ALONG U2-G6 CF2601 CF3626                                       
+INVERSE ALONG U2-G7 CF2701 CF3726                                       
+INVERSE ALONG U2-G8 CF2801 CF3826                                       
+$                                                                       
+$                                                                       
+$FIND DIMENSION "B" ON FRAMING PLAN                                     
+$                                                                       
+INVERSE ALONG U2-G1 CF2101 CF3101                                       
+INVERSE ALONG U2-G2 CF2201 CF3201                                       
+INVERSE ALONG U2-G3 CF2301 CF3301                                       
+INVERSE ALONG U2-G4 CF2401 CF3401                                       
+INVERSE ALONG U2-G5 CF2501 CF3501                                       
+INVERSE ALONG U2-G6 CF2601 CF3601                                       
+INVERSE ALONG U2-G7 CF2701 CF3701                                       
+INVERSE ALONG U2-G8 CF2801 CF3801                                       
+$                                                                       
+$                                                                       
+$FIND DIMENSION "C" ON FRAMING PLAN                                     
+$                                                                       
+INVERSE ALONG U2-G1 CF3101 CF3126                                       
+INVERSE ALONG U2-G2 CF3201 CF3226                                       
+INVERSE ALONG U2-G3 CF3301 CF3326                                       
+INVERSE ALONG U2-G4 CF3401 CF3426                                       
+INVERSE ALONG U2-G5 CF3501 CF3526                                       
+INVERSE ALONG U2-G6 CF3601 CF3626                                       
+INVERSE ALONG U2-G7 CF3701 CF3726                                       
+INVERSE ALONG U2-G8 CF3801 CF3826                                       
+$                                                                       
+$                                                                       
+$FIND DIMENSION "D" ON FRAMING PLAN                                     
+$                                                                       
+INVERSE ALONG U2-G1 CF3101 CF3125                                       
+INVERSE ALONG U2-G2 CF3201 CF3225                                       
+INVERSE ALONG U2-G3 CF3301 CF3325                                       
+INVERSE ALONG U2-G4 CF3401 CF3425                                       
+INVERSE ALONG U2-G5 CF3501 CF3525                                       
+INVERSE ALONG U2-G6 CF3601 CF3625                                       
+INVERSE ALONG U2-G7 CF3701 CF3725                                       
+INVERSE ALONG U2-G8 CF3801 CF3825                                       
+$                                                                       
+$                                                                       
+$FIND DIMENSION "E" ON FRAMING PLAN                                     
+$                                                                       
+INVERSE ALONG U2-G1 CF3125 CF3126                                       
+INVERSE ALONG U2-G2 CF3225 CF3226                                       
+INVERSE ALONG U2-G3 CF3325 CF3326                                       
+INVERSE ALONG U2-G4 CF3425 CF3426                                       
+INVERSE ALONG U2-G5 CF3525 CF3526                                       
+INVERSE ALONG U2-G6 CF3625 CF3626                                       
+INVERSE ALONG U2-G7 CF3725 CF3726                                       
+INVERSE ALONG U2-G8 CF3825 CF3826                                       
+$                                                                       
+$                                                                       
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     Rod                                                                
+$Subject:     NTH POINTS OF UNIT 2                                               
+$Job No.      213              Operator: RH                                      
+$Date:        Thursday  March 17, 2016  10:27 am                                 
+                                                                                
+$SYSTEM FIX 4 ASEC 2 BEAR PRI 0 RED NE STA 2 FILE: 'LCE_27'                      
+                                                                                
+                                                                                
+SET FEATURE ADD DEFAULT_POINT2                                          
+INVERSE ALONG U2-G1 BA0201 3100 BB0401                                  
+INVERSE ALONG U2-G2 BA0202 3200 BB0402                                  
+INVERSE ALONG U2-G3 BA0203 3300 BB0403                                  
+INVERSE ALONG U2-G4 BA0204 3400 BB0404                                  
+INVERSE ALONG U2-G5 BA0205 3500 BB0405                                  
+INVERSE ALONG U2-G6 BA0206 3600 BB0406                                  
+INVERSE ALONG U2-G7 BA0207 3700 BB0407                                  
+INVERSE ALONG U2-G8 BA0208 3800 BB0408                                  
+$                                                                       
+SET FEATURE ADD DEFAULT_PT_S                                            
+DIV/CHA U2-G1 INC 37.428 STA 37.428 STA  336.86 OFF 0.0  BEG 2101 STEP 1
+DIV/CHA U2-G2 INC 37.419 STA 37.419 STA  336.78 OFF 0.0  BEG 2201 STEP 1
+DIV/CHA U2-G3 INC 37.411 STA 37.411 STA  336.70 OFF 0.0  BEG 2301 STEP 1
+DIV/CHA U2-G4 INC 37.356 STA 37.356 STA  336.21 OFF 0.0  BEG 2401 STEP 1
+DIV/CHA U2-G5 INC 37.355 STA 37.355 STA  336.20 OFF 0.0  BEG 2501 STEP 1
+DIV/CHA U2-G6 INC 37.358 STA 37.358 STA  336.23 OFF 0.0  BEG 2601 STEP 1
+DIV/CHA U2-G7 INC 37.365 STA 37.365 STA  336.29 OFF 0.0  BEG 2701 STEP 1
+DIV/CHA U2-G8 INC 37.375 STA 37.375 STA  336.39 OFF 0.0  BEG 2801 STEP 1
+$                                                                       
+DIV/CHA U2-G1 INC 37.428 STA 411.707   STA 711.14 OFF 0.0  BEG 3101 STEP 1                                                                             
+DIV/CHA U2-G2 INC 37.403 STA 411.592   STA 710.82 OFF 0.0  BEG 3201 STEP 1                                                                             
+DIV/CHA U2-G3 INC 37.384 STA 411.497   STA 710.57 OFF 0.0  BEG 3301 STEP 1                                                                             
+DIV/CHA U2-G4 INC 37.368 STA 410.925   STA 709.87 OFF 0.0  BEG 3401 STEP 1                                                                             
+DIV/CHA U2-G5 INC 37.360 STA 410.908   STA 709.79 OFF 0.0  BEG 3501 STEP 1                                                                             
+DIV/CHA U2-G6 INC 37.354 STA 410.932   STA 709.77 OFF 0.0  BEG 3601 STEP 1                                                                             
+DIV/CHA U2-G7 INC 37.351 STA 410.997   STA 709.81 OFF 0.0  BEG 3701 STEP 1                                                                             
+DIV/CHA U2-G8 INC 37.350 STA 411.103   STA 709.93 OFF 0.0  BEG 3801 STEP 1                                                                             
+$                                                                       
+INVERSE ALONG RAMP_C  BA0201 2101 TO  2106                              
+INVERSE ALONG RAMP_C  BA0202 2201 TO  2206                              
+INVERSE ALONG RAMP_C  BA0203 2301 TO  2306                              
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     Rod                                                                
+$Subject:     UNITS_1_LAYOUTS                                                    
+$Job No.      213              Operator: RH                                      
+$Date:        Tuesday  March 22, 2016  11:50 am                                  
+                                                                                
+$SYSTEM FIX 4 ASEC 4 BEAR PRI 0 RED NE STA 2 FILE: 'LCE_28'                      
+                                                                                
+                                                                                
+SET FEATURE ADD BIG_POINT                                               
+EQUATE BNTA01  TO 301                                                   
+SET FEATURE ADD DEFAULT_POINT_L                                         
+LOCATE BNTEMP01 PROJ BNTA01 ON CHAIN RAMP_C  OFFSET  -100               
+SET FEATURE ADD LIGHT_LINE                                              
+SET FEATURE ADD DEFAULT_POINT_R                                         
+LOCATE ANG BNTEMP01 BNTA01 BNTLA01 M 4 26 41  DIS 100                   
+SET FEATURE ADD LIGHT_LINE                                              
+STORE LINE  CLBT-A01 BNTA01 TO  BNTLA01                                 
+STORE BEARING BRGA01 BNTA01 TO BNTLA01                                  
+$                                                                       
+SET FEATURE ADD DEFAULT_PT_S                                            
+LOCATE 1101 301 0.3289 BNTLA01 TO 301                                   
+LOCATE 1102 1101 8.7532 BNTLA01 TO 301                                  
+LOCATE 1103 1102 8.7532 BNTLA01 TO 301                                  
+SET FEATURE ADD DEFAULT_PT_S                                            
+LOCATE 1201 RCBNT02 0.2310 BNTL02 TO RCBNT02                            
+LOCATE 1202 1201 8.7877 BNTL02 TO RCBNT02                               
+LOCATE 1203 1202 8.7877 BNTL02 TO RCBNT02                               
+$                                                                       
+$                                                                       
+SET FEATURE ADD DEFAULT_PT_S                                            
+LOCATE BA0105 INTERSECT LINE BNT01 TO BNTL01 OFF  0.5 CHA PRO_IM OFF -1.5                                                                              
+LOCATE BB0205 INTERSECT LINE BNT02 TO BNTL02 OFF -1.5 CHA PRO_IM OFF -1.5                                                                              
+LOCATE BA0109 INTERSECT LINE BNT01 TO BNTL01 OFF  0.5 CHA PRO_IM OFF 34.166666667                                                                      
+LOCATE BB0209 INTERSECT LINE BNT02 TO BNTL02 OFF -1.5 CHA PRO_IM OFF 34.166666667                                                                      
+$                                                                       
+LOCATE BA0111 INTERSECT LINE BNT01 TO BNTL01 OFF 0.5 CHA PRO_IM OFF 52.0208333333                                                                      
+LOCATE BB0211 INTERSECT LINE BNT02 TO BNTL02 OFF -1.5 CHA PRO_IM OFF 48.63541667                                                                       
+$                                                                       
+$ LOCATE GIRDERS U1-G6  TO G8                                           
+DIV/LIN BA0105 TO BA0109 BY 4 BEG BA0106                                
+DIV/LIN BB0205 TO BB0209 BY 4 BEG BB0206                                
+$ LOCATE GIRDER U1-G10                                                  
+DIV/LIN BA0109 TO BA0111 BY 2 BEG BA0110                                
+DIV/LIN BB0209 TO BB0211 BY 2 BEG BB0210                                
+$                                                                       
+$                                                                       
+$ FIND 10TH POINTS                                                      
+$ RAMP                                                                  
+DIV/LIN BA0101 TO BB0201 BY 10 BEG G0101                                
+DIV/LIN BA0102 TO BB0202 BY 10 BEG G0201                                
+DIV/LIN BA0103 TO BB0203 BY 10 BEG G0301                                
+$  MAINLINE                                                             
+DIV/LIN BA0105 TO BB0205 BY 10 BEG G0501                                
+DIV/LIN BA0106 TO BB0206 BY 10 BEG G0601                                
+DIV/LIN BA0107 TO BB0207 BY 10 BEG G0701                                
+DIV/LIN BA0108 TO BB0208 BY 10 BEG G0801                                
+DIV/LIN BA0109 TO BB0209 BY 10 BEG G0901                                
+DIV/LIN BA0110 TO BB0210 BY 10 BEG G1001                                
+DIV/LIN BA0111 TO BB0211 BY 10 BEG G1101                                
+$                                                                       
+$                                                                       
+$SET DRIP PLATE LOCATIONS ON OUTSIDE GIRDERS                            
+SET FEATURE ADD DEFAULT_PT_S                                            
+LOCATE DP0101 BA0101 8.00 1101 TO 1201                                  
+LOCATE DP0103 BA0103 8.00 1103 TO 1203                                  
+$                                                                       
+INVERSE BA0101 BB0201                                                   
+INVERSE BA0102 BB0202                                                   
+INVERSE BA0103 BB0203                                                   
+$                                                                       
+SET FEATURE ADD DEFAULT_POINT_L                                         
+LOCATE CF1202 BA0102 29.27655 BA0102 TO BB0202                          
+STORE CHAIN 0102 BA0102 BB0202                                          
+LOCATE CFL1202 PROJ CF1202 ON CHAIN 0102 OFFSET -100                    
+LOCATE CF1201 INT LINE CF1202 TO CFL1202 OFFSET -14.8333333333 LINE BA0102 TO BB0202                                                                   
+LOCATE CF1203 INT LINE CF1202 TO CFL1202 OFFSET 14.8333333333 LINE BA0102 TO BB0202                                                                    
+$                                                                       
+LOCATE CF1101 INT LINE CF1202 TO CFL1202 OFFSET -14.8333333333 LINE BA0101 TO BB0201                                                                   
+LOCATE CF1301 INT LINE CF1202 TO CFL1202 OFFSET -14.8333333333 LINE BA0103 TO BB0203                                                                   
+LOCATE CF1102 INT LINE CF1202 TO CFL1202 LINE BA0101 TO BB0201          
+LOCATE CF1302 INT LINE CF1202 TO CFL1202 LINE BA0103 TO BB0203          
+LOCATE CF1103 INT LINE CF1202 TO CFL1202 OFFSET 14.8333333333 LINE BA0101 TO BB0201                                                                    
+LOCATE CF1303 INT LINE CF1202 TO CFL1202 OFFSET 14.8333333333 LINE BA0103 TO BB0203                                                                    
+$                                                                       
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     LewisClarkProj                                                     
+$Subject:     UNIT_7_LAYOUT_OF_NTH                                               
+$Job No.      213              Operator: RH                                      
+$Date:        Friday  November 13, 2015   2:32 pm                                
+                                                                                
+$SYSTEM FIX 4 ASEC 2 BEAR PRI 0 RED NE STA 2 FILE: 'LCE_29'                      
+                                                                                
+                                                                                
+SET FEATURE ADD DEFAULT_PT_S                                            
+STORE DIST BRGOS 0 M 1.00                                               
+LOC 20100 INT LIN BNTL20 BNTL20 TO BNT20 OFFSET %BRGOS LIN BNT20 BNT20 TO BNT21 OFFSET -2.0                                                            
+$                                                                       
+LOC 20200 INT LIN BNT20 BNTL20 TO BNT20 OFFSET %BRGOS LIN BNT20 BNT20 TO BNT21 OFFSET  6.0                                                             
+LOC 20300 INT LIN BNT20 BNTL20 TO BNT20 OFFSET %BRGOS LIN BNT20 BNT20 TO BNT21 OFFSET 14.0                                                             
+LOC 20400 INT LIN BNT20 BNTL20 TO BNT20 OFFSET %BRGOS LIN BNT20 BNT20 TO BNT21 OFFSET 22.0                                                             
+LOC 20500 INT LIN BNT20 BNTL20 TO BNT20 OFFSET %BRGOS LIN BNT20 BNT20 TO BNT21 OFFSET 30.0                                                             
+LOC 20600 INT LIN BNT20 BNTL20 TO BNT20 OFFSET %BRGOS LIN BNT20 BNT20 TO BNT21 OFFSET 38.0                                                             
+$                                                                       
+$ BEARING AT 21                                                         
+STORE DIST BRGOS 1.00                                                   
+LOC 20110 INT LIN BNTL21 BNTL21 TO BNT21 OFFSET %BRGOS LIN BNT20 BNT20 TO BNT21 OFFSET -2.0                                                            
+$                                                                       
+LOC 20210 INT LIN BNT21 BNTL21 TO BNT21 OFFSET %BRGOS LIN BNT20 BNT20 TO BNT21 OFFSET  6.0                                                             
+LOC 20310 INT LIN BNT21 BNTL21 TO BNT21 OFFSET %BRGOS LIN BNT20 BNT20 TO BNT21 OFFSET 14.0                                                             
+LOC 20410 INT LIN BNT21 BNTL21 TO BNT21 OFFSET %BRGOS LIN BNT20 BNT20 TO BNT21 OFFSET 22.0                                                             
+LOC 20510 INT LIN BNT21 BNTL21 TO BNT21 OFFSET %BRGOS LIN BNT20 BNT20 TO BNT21 OFFSET 30.0                                                             
+LOC 20610 INT LIN BNT21 BNTL21 TO BNT21 OFFSET %BRGOS LIN BNT20 BNT20 TO BNT21 OFFSET 38.0                                                             
+$                                                                       
+$ NTH POINTS                                                            
+DIV/LIN 20100 TO 20110 BY 10 BEG 20101                                  
+DIV/LIN 20200 TO 20210 BY 10 BEG 20201                                  
+DIV/LIN 20300 TO 20310 BY 10 BEG 20301                                  
+DIV/LIN 20400 TO 20410 BY 10 BEG 20401                                  
+DIV/LIN 20500 TO 20510 BY 10 BEG 20501                                  
+DIV/LIN 20600 TO 20610 BY 10 BEG 20601                                  
+$                                                                       
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     Rod                                                                
+$Subject:     FIND BRACE LOC IN U3                                               
+$Job No.      213              Operator: RH                                      
+$Date:        Monday  February 8, 2016   6:09 pm                                 
+                                                                                
+$SYSTEM FIX 4 ASEC 0 BEAR PRI 0 RED NE STA 2 FILE: 'LCE_41'                      
+                                                                                
+                                                                                
+$ FIND THE BRACE LOCATION IN UNIT 3                                     
+SET FEATURE ADD BR_FASTENER                                             
+EQUATE CF60 TO 4600                                                     
+EQUATE CF50 TO 4500                                                     
+EQUATE CF40 TO 4400                                                     
+EQUATE CF30 TO 4300                                                     
+EQUATE CF20 TO 4200                                                     
+EQUATE CF10 TO 4100                                                     
+$LOC CF60 INT LIN BNTL04 TO BNT04  OFF -1.5  CHA U3-G6 N 4600           
+$LOC CF50 INT LIN BNTL04 TO BNT04  OFF -1.5  CHA U3-G5 N 4500           
+$LOC CF40 INT LIN BNTL04 TO BNT04  OFF -1.5  CHA U3-G4 N 4400           
+$LOC CF30 INT LIN BNTL04 TO BNT04  OFF -1.5  CHA U3-G3 N 4300           
+$LOC CF20 INT LIN BNTL04 TO BNT04  OFF -1.5  CHA U3-G2 N 4200           
+$LOC CF10 INT LIN BNTL04 TO BNT04  OFF -1.5  CHA U3-G1 N 4100           
+$                                                                       
+$                                                                       
+$ FIND 5 EQUAL SPACES B/W POINTS                                        
+INVERSE ALONG U3-G6  CF60 BB0506                                        
+$                                                                       
+$ STORE NEW POINT ON WITH EQUAL                                         
+DIV/CHA U3-G6 INC 21.34 STA 22.84 STA 108.2 OFF 0.0 BEG CF61 STEP 1     
+$                                                                       
+LOCATE CF11 INT LINE CC01 TO CF61 CHA U3-G1 N 4102                      
+LOCATE CF12 INT LINE CC01 TO CF62 CHA U3-G1 N 4104                      
+LOCATE CF13 INT LINE CC01 TO CF63 CHA U3-G1 N 4106                      
+LOCATE CF14 INT LINE CC01 TO CF64 CHA U3-G1 N 4108                      
+$                                                                       
+LOCATE CF21 INT LINE CC01 TO CF61 CHA U3-G2 N 4202                      
+LOCATE CF22 INT LINE CC01 TO CF62 CHA U3-G2 N 4204                      
+LOCATE CF23 INT LINE CC01 TO CF63 CHA U3-G2 N 4206                      
+LOCATE CF24 INT LINE CC01 TO CF64 CHA U3-G2 N 4208                      
+$                                                                       
+LOCATE CF31 INT LINE CC01 TO CF61 CHA U3-G3 N 4302                      
+LOCATE CF32 INT LINE CC01 TO CF62 CHA U3-G3 N 4304                      
+LOCATE CF33 INT LINE CC01 TO CF63 CHA U3-G3 N 4306                      
+LOCATE CF34 INT LINE CC01 TO CF64 CHA U3-G3 N 4308                      
+$                                                                       
+LOCATE CF41 INT LINE CC01 TO CF61 CHA U3-G4 N 4402                      
+LOCATE CF42 INT LINE CC01 TO CF62 CHA U3-G4 N 4404                      
+LOCATE CF43 INT LINE CC01 TO CF63 CHA U3-G4 N 4406                      
+LOCATE CF44 INT LINE CC01 TO CF64 CHA U3-G4 N 4408                      
+$                                                                       
+LOCATE CF51 INT LINE CC01 TO CF61 CHA U3-G5 N 4502                      
+LOCATE CF52 INT LINE CC01 TO CF62 CHA U3-G5 N 4504                      
+LOCATE CF53 INT LINE CC01 TO CF63 CHA U3-G5 N 4506                      
+LOCATE CF54 INT LINE CC01 TO CF64 CHA U3-G5 N 4508                      
+$                                                                       
+$ LENGTHS OF BRACES                                                     
+INV  CF10 CF20 CF30 CF40 CF50 CF60                                      
+INV  CF11 CF21 CF31 CF41 CF51 CF61                                      
+INV  CF12 CF22 CF32 CF42 CF52 CF62                                      
+INV  CF13 CF23 CF33 CF43 CF53 CF63                                      
+INV  CF14 CF24 CF34 CF44 CF54 CF64                                      
+$                                                                       
+$ FIND THE ANGLE OF THE RIGHT BRACE                                     
+$ ONLY ON THE TANGENT SECTION                                           
+$                                                                       
+$ FIND THE ANGLE OF THE RIGHT BRACE                                     
+$ ONLY ON THE TANGENT SECTION                                           
+$ CROSS FRAME 1                                                         
+$                                                                       
+ANGLE AT CF10 BTAN0401 TO CF20                                          
+$                                                                       
+ANGLE AT CF20 CF10 TO BTAN0402                                          
+ANGLE AT CF20 BTAN0402 TO CF30                                          
+$                                                                       
+ANGLE AT CF30 CF20 TO BTAN0403                                          
+ANGLE AT CF30 BTAN0403 TO CF40                                          
+$                                                                       
+ANGLE AT CF40 CF30 TO BTAN0404                                          
+ANGLE AT CF40 BTAN0404 TO CF50                                          
+$                                                                       
+ANGLE AT CF50 CF40 TO BTAN0405                                          
+ANGLE AT CF50 BTAN0405 TO CF60                                          
+$   SUBTRACT 90DEG FROM THE FOLLOWING                                   
+ANGLE AT CF60 CF50 TO CC01                                              
+$                                                                       
+$                                                                       
+$ FIRST INTERIOR CROSS FRAME                                            
+ANGLE AT CF11 BTAN0401 TO CF21                                          
+$                                                                       
+ANGLE AT CF21 CF11 TO BTAN0402                                          
+ANGLE AT CF21 BTAN0402 TO CF31                                          
+$                                                                       
+ANGLE AT CF31 CF21 TO BTAN0403                                          
+ANGLE AT CF31 BTAN0403 TO CF41                                          
+$                                                                       
+ANGLE AT CF41 CF31 TO BTAN0404                                          
+ANGLE AT CF41 BTAN0404 TO CF51                                          
+$                                                                       
+ANGLE AT CF51 CF41 TO BTAN0405                                          
+ANGLE AT CF51 BTAN0405 TO CF61                                          
+$ OTHERS ARE IN CURVE                                                   
+$                                                                       
+$ CROSS FRAME 2                                                         
+ANGLE AT CF12 BTAN0401 TO CF22                                          
+$                                                                       
+ANGLE AT CF22 CF12 TO BTAN0402                                          
+ANGLE AT CF22 BTAN0402 TO CF32                                          
+$                                                                       
+ANGLE AT CF32 CF22 TO BTAN0403                                          
+ANGLE AT CF32 BTAN0403 TO CF42                                          
+$                                                                       
+ANGLE AT CF42 CF32 TO BTAN0404                                          
+ANGLE AT CF42 BTAN0404 TO CF52                                          
+$ OTHERS ARE IN CURVE                                                   
+$                                                                       
+$ CROSS FRAME 3                                                         
+ANGLE AT CF13 BTAN0401 TO CF23                                          
+$                                                                       
+ANGLE AT CF23 CF13 TO BTAN0402                                          
+ANGLE AT CF23 BTAN0402 TO CF33                                          
+$                                                                       
+ANGLE AT CF33 CF23 TO BTAN0403                                          
+ANGLE AT CF33 BTAN0403 TO CF43                                          
+$ OTHERS ARE IN CURVE                                                   
+$                                                                       
+$ CROSS FRAME 4                                                         
+ANGLE AT CF14 BTAN0401 TO CF24                                          
+$ OTHERS ARE IN CURVE                                                   
+$                                                                       
+$ ALL BRACES IN THE CURVE ARE NORMAL                                    
+$                                                                       
+$ SPACINGS B/W C-FRAMES ON SAME GIRDER                                  
+INV ALONG U3-G1 CF10 CF11 CF12 CF13 CF14 4110                           
+INV ALONG U3-G2 CF20 CF21 CF22 CF23 CF24 4210                           
+INV ALONG U3-G3 CF30 CF31 CF32 CF33 CF34 4310                           
+INV ALONG U3-G4 CF40 CF41 CF42 CF43 CF44 4410                           
+INV ALONG U3-G5 CF50 CF51 CF52 CF53 CF54 4510                           
+INV ALONG U3-G6 CF60 CF61 CF62 CF63 CF64 CF65                           
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     Rod                                                                
+$Subject:     U3 SPAN 2 (5-6)                                                    
+$Job No.      213              Operator: RH                                      
+$Date:        Thursday  January 14, 2016   3:26 pm                               
+                                                                                
+$SYSTEM FIX 4 ASEC 0 BEAR PRI 0 RED NE STA 2 FILE: 'LCE_42'                      
+                                                                                
+                                                                                
+$ LAYOUT OF UNIT_3_SPAN_2    IE (5-6)                                   
+SET FEATURE ADD BR_FASTENER                                             
+LOC CF611 INT LIN BNTL06 TO BNT06 OFF 1.5 CHA U3-G6  N 6600             
+LOC CF511 INT LIN BNTL06 TO BNT06 OFF 1.5 CHA U3-G5  N 6500             
+LOC CF411 INT LIN BNTL06 TO BNT06 OFF 1.5 CHA U3-G4  N 6400             
+LOC CF311 INT LIN BNTL06 TO BNT06 OFF 1.5 CHA U3-G3  N 6300             
+LOC CF211 INT LIN BNTL06 TO BNT06 OFF 1.5 CHA U3-G2  N 6200             
+LOC CF111 INT LIN BNTL06 TO BNT06 OFF 1.5 CHA U3-G1  N 6100             
+$                                                                       
+$                                                                       
+EQUATE CF15 TO 4110                                                     
+EQUATE CF25 TO 4210                                                     
+EQUATE CF35 TO 4310                                                     
+EQUATE CF45 TO 4410                                                     
+EQUATE CF55 TO 4510                                                     
+EQUATE CF65 TO 4610                                                     
+$                                                                       
+$ DIST ALONG BEAM B/W 05 AND 06 BEARING                                 
+INVERSE ALONG  U3-G1 CF15 CF111                                         
+INVERSE ALONG  U3-G2 CF25 CF211                                         
+INVERSE ALONG  U3-G3 CF35 CF311                                         
+INVERSE ALONG  U3-G4 CF45 CF411                                         
+INVERSE ALONG  U3-G5 CF55 CF511                                         
+INVERSE ALONG  U3-G6 CF65 CF611                                         
+$                                                                       
+$ LOCATION OF BEND                                                      
+INVERSE ALONG  U3-G1 CF10 BTAN0401  CF15                                
+INVERSE ALONG  U3-G2 CF20 BTAN0402  CF25                                
+INVERSE ALONG  U3-G3 CF30 BTAN0403  CF35                                
+INVERSE ALONG  U3-G4 CF40 BTAN0404  CF45                                
+INVERSE ALONG  U3-G5 CF50 BTAN0405  CF55                                
+$ NO CURVE IN THE SIXTH GIRDER                                          
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     Rod                                                                
+$Subject:     UNIT_3_EXTRA_POINTS                                                
+$Job No.      213              Operator: RH                                      
+$Date:        Monday  February 8, 2016   9:52 am                                 
+                                                                                
+$SYSTEM FIX 4 ASEC 0 BEAR PRI 0 RED NE STA 2 FILE: 'LCE_43'                      
+                                                                                
+                                                                                
+$                                                                       
+$ FIND SOME ADDITIONAL POINTS IN UNIT 3                                 
+SET FEATURE ADD DEFAULT_POINT                                           
+LOCATE BAPG04 INTERSECT LINE CF10 TO CF20  CHA PRO_IM   N BNT04         
+INVERSE CF10 BAPG04  CF20                                               
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     Rod                                                                
+$Subject:     TEST                                                               
+$Job No.      213              Operator: RH                                      
+$Date:        Wednesday  November 11, 2015   9:39 am                             
+                                                                                
+$SYSTEM FIX 4 ASEC 2 BEAR PRI 0 RED NE STA 2 FILE: 'LCE_44'                      
+                                                                                
+                                                                                
+SET FEATURE ADD DEFAULT_POINT_L                                         
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     Rod                                                                
+$Subject:     RAMP C BARRIER                                                     
+$Job No.      213              Operator: RH                                      
+$Date:        Wednesday  April 27, 2016   4:40 pm                                
+                                                                                
+$SYSTEM FIX 2 ASEC 0 BEAR PRI 0 RED NE STA 2 FILE: 'LCE_50'                      
+                                                                                
+                                                                                
+SET FEATURE ADD DEFAULT_PT_S                                            
+STORE POINT RCB101 302305.18624542 2272591.9630882                      
+STORE POINT RCB102 302298.53135791 2272599.7013394                      
+STORE POINT RCB103 302291.82142399 2272607.1201861                      
+STORE POINT RCB104 302272.28109357 2272629.8407160                      
+STORE POINT RCB105 302266.06018407 2272637.5699066                      
+STORE POINT RCB106 302246.39142868 2272623.7299365                      
+STORE POINT RCB107 302253.60220490 2272614.7708826                      
+STORE POINT RCB108 302273.27884981 2272592.0766539                      
+STORE POINT RCB109 302279.64101994 2272584.3575030                      
+STORE POINT RCB110 302286.27211297 2272576.7098194                      
+$                                                                       
+$                                                                       
+$                                                                       
+INVERSE ALONG RAMP_C RCB101-RCB110                                      
+INVERSE ALONG RAMP_C RCB101-RCB110                                      
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     Rod                                                                
+$Subject:     UNIT 1 BARRIER                                                     
+$Job No.      213              Operator: RH                                      
+$Date:        Monday  April 25, 2016   2:56 pm                                   
+                                                                                
+$SYSTEM FIX 4 ASEC 0 BEAR PRI 0 RED NE STA 3 FILE: 'LCE_51'                      
+                                                                                
+                                                                                
+$                                                                       
+$ LAYOUT ALL THE POINTS AROUND THE EDGE OF DECK                         
+$ FILE  LCE_51                                                          
+$                                                                       
+SET FEATURE ADD DEFAULT_PT_S                                            
+STORE POINT RCB111 302264.57154120 2272561.1488180                      
+STORE POINT RCB112 302258.72097617 2272569.4633831                      
+STORE POINT RCB113 302252.99373108 2272577.6245540                      
+STORE POINT RCB114 302236.36625700 2272602.6266720                      
+STORE POINT RCB115 302229.75407171 2272612.0230173                      
+STORE POINT RCB116 302183.07670332 2272579.1783676                      
+STORE POINT RCB117 302205.24860308 2272544.0629346                      
+STORE POINT RCB118 302210.17551996 2272535.3824286                      
+STORE POINT RCB119 302215.46062926 2272526.5917991                      
+INVERSE ALONG PRO_IM RCB111-RCB119                                      
+END                                                                     
+$Copyright: (c) 2012 Bentley Systems, Incorporated. All rights reserved.         
+$Project:     Rod                                                                
+$Subject:     UNIT2_INFO                                                         
+$Job No.      213              Operator: RH                                      
+$Date:        Monday  May 2, 2016   5:33 pm                                      
+                                                                                
+$SYSTEM FIX 2 ASEC 0 BEAR PRI 0 RED NE STA 2 FILE: 'LCE_52'                      
+                                                                                
+                                                                                
+INVERSE ALONG PRO_IM BA0201 BA0202                                      
+INVERSE ALONG PRO_IM BA0201 - BA0208                                    
+PRINT CURVE U2-G2                                                       
+INVERSE ALONG PRO_IM BB0401 - BB0408                                    
+PRINT CURVE U2-G2                                                       
+LAY OFF CHA PRO_IM   PC U2-G2 PT U2-G2                                  
+LAY OFF CHA PRO_IM   PC U2-G3 PT U2-G3                                  
+LAY OFF CHA PRO_IM   PC U2-G4 PT U2-G4                                  
+LAY OFF CHA PRO_IM   PC U2-G5 PT U2-G5                                  
+LAY OFF CHA PRO_IM   PC U2-G6 PT U2-G6                                  
+LAY OFF CHA PRO_IM   PC U2-G7 PT U2-G7                                  
+LAY OFF CHA PRO_IM   PC U2-G8 PT U2-G8                                  
+PRINT CURVE U2-G3                                                       
+PRINT CURVE U2-G4                                                       
+PRINT CURVE U2-G5                                                       
+PRINT CURVE U2-G6                                                       
+PRINT CURVE U2-G7                                                       
+PRINT CURVE U2-G8                                                       
+INVERSE ALONG PRO_IM BB0401 - BB0408                                    
+$                                                                       
+$                                                                       
+$                                                                       
+INVERSE ALONG U2-G2 BA0202  PC U2-G2  PT U2-G2  BB0402                  
+INVERSE ALONG U2-G3 BA0203  PC U2-G3  PT U2-G3  BB0403                  
+INVERSE ALONG U2-G4 BA0204  PC U2-G4  PT U2-G4  BB0404                  
+INVERSE ALONG U2-G5 BA0205  PC U2-G5  PT U2-G5  BB0405                  
+INVERSE ALONG U2-G6 BA0206  PC U2-G6  PT U2-G6  BB0406                  
+INVERSE ALONG U2-G7 BA0207  PC U2-G7  PT U2-G7  BB0407                  
+INVERSE ALONG U2-G8 BA0208  PC U2-G8  PT U2-G8  BB0408                  
+$                                                                       
+$                                                                       
+$                                                                       
+INVERSE ALONG PRO_IM CF2401 - CF2425 CF3401 - CF3426                    

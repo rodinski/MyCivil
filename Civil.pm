@@ -280,23 +280,26 @@ sub c2p {
     return @r_theta;
 }
 sub p2c {
-    if ( scalar @_ % 2 ) { warn "need to send p2c pairs of r, theta values in a list, while return x, y pairs\n"};
+    if ( scalar @_ % 2 ) {
+        warn
+"need to send p2c pairs of r, theta values in a list, while return x, y pairs\n";
+    }
     my @xy;
-    while (@_) { 
-        my $r = shift;
+    while (@_) {
+        my $r     = shift;
         my $theta = shift;
-        my $x = $r * cos $theta; 
-        my $y = $r * sin $theta; 
-        push @xy,   $x, $y;
+        my $x     = $r * cos $theta;
+        my $y     = $r * sin $theta;
+        push @xy, $x, $y;
     }
     return @xy;
 }
 
 use List::MoreUtils;
 sub pairgaps {
-    my     @meshed = List::MoreUtils::mesh @_, @_;
-    pop    @meshed;
-    shift  @meshed;
+    my @meshed = List::MoreUtils::mesh @_, @_;
+    pop @meshed;
+    shift @meshed;
     return @meshed;
 }
 
@@ -349,37 +352,37 @@ sub plateslopes {
 
 
 sub bar_a {
-  my $bar = shift;
-       if( $bar == 3 )  {return 0.11}
-    elsif( $bar == 4 )  {return 0.2 }
-    elsif( $bar == 5 )  {return 0.31}
-    elsif( $bar == 6 )  {return 0.44}
-    elsif( $bar == 7 )  {return 0.6 }
-    elsif( $bar == 8 )  {return 0.79}
-    elsif( $bar == 9 )  {return 1   }
-    elsif( $bar == 10)  {return 1.27}
-    elsif( $bar == 11)  {return 1.56}
-    elsif( $bar == 14)  {return 2.25}
-    elsif( $bar == 18)  {return 4   }
-     else               { return "NA"}
-  return "NA";
+    my $bar = shift;
+    if    ( $bar == 3 )  { return 0.11 }
+    elsif ( $bar == 4 )  { return 0.2 }
+    elsif ( $bar == 5 )  { return 0.31 }
+    elsif ( $bar == 6 )  { return 0.44 }
+    elsif ( $bar == 7 )  { return 0.6 }
+    elsif ( $bar == 8 )  { return 0.79 }
+    elsif ( $bar == 9 )  { return 1 }
+    elsif ( $bar == 10 ) { return 1.27 }
+    elsif ( $bar == 11 ) { return 1.56 }
+    elsif ( $bar == 14 ) { return 2.25 }
+    elsif ( $bar == 18 ) { return 4 }
+    else                 { return "NA" }
+    return "NA";
 }
 
 sub bar_wt {
   my $bar = shift;
      if ($bar == 3 ) { return 0.376}
-  elsif ($bar == 4 ) { return 0.668}
-  elsif ($bar == 5 ) { return 1.043}
-  elsif ($bar == 6 ) { return 1.502}
-  elsif ($bar == 7 ) { return 2.044}
-  elsif ($bar == 8 ) { return 2.670}
-  elsif ($bar == 9 ) { return 3.400}
-  elsif ($bar == 10) { return 4.303}
-  elsif ($bar == 11) { return 5.313}
-  elsif ($bar == 14) { return 7.650}
-  elsif ($bar == 18) { return 13.60}
-   else              { return "NA"}
-  return "NA";
+    elsif ($bar == 4 ) { return 0.668}
+    elsif ($bar == 5 ) { return 1.043}
+    elsif ($bar == 6 ) { return 1.502}
+    elsif ($bar == 7 ) { return 2.044}
+    elsif ($bar == 8 ) { return 2.670}
+    elsif ($bar == 9 ) { return 3.400}
+    elsif ($bar == 10) { return 4.303}
+    elsif ($bar == 11) { return 5.313}
+    elsif ($bar == 14) { return 7.650}
+    elsif ($bar == 18) { return 13.60}
+    else              { return "NA"}
+    return "NA";
 }
 #say join " ", rotate (45/180.0*3.1415, 10,10);
 #say join " ", translate (-5, 5, 10,10, 5, 5);
@@ -388,3 +391,5 @@ sub bar_wt {
 #say join "  ", p2c (  c2p(100, 101) ) ;
 #  will it save and work?
 1;   # modules return true to show they have loaded
+
+
