@@ -25,7 +25,7 @@ has tags =>  ( is => 'rw', required => 0 ) ;
 
 sub to_string {
     my ($self) = @_;
-    return sprintf "[%s, %s]", $self->E, $self->N;
+    return sprintf "{ N=> %s, E=> %s }", $self->E, $self->N;
 }
 
 sub distance_from_origin {
@@ -34,19 +34,34 @@ sub distance_from_origin {
     return sqrt($sqr);
 }
 
+use Data::Dumper;
+#translate  changes the points N&E
 sub translate {
-    my ( $self, $dE, $dN ) = @_;
-    my $E_temp = $self->E;
-    $E_temp += $dE;
-    $self->E($E_temp);
+    my ( $self, %hash) = @_;
+    my $dN =  $hash{ 'dN' };
+    my $dE =  $hash{ 'dE' };
+    #print Dumper $self;
     $self->N( $self->N + $dN );
+    $self->E( $self->E + $dE );
     return;
 }
+sub rotate {
+    my ( $self, %hash  ) = @_;
+#    print Dumper $self;
+#    print Dumper $hash;
+    my $angle = $hash{ 'angle' };
+    my ($n, $e);
+    $n = ( $self->N *cos($angle) - $self->E *sin($angle)  );
+    $e = ( $self->N *sin($angle) + $self->E *cos($angle)  );
+    $self->N($n);
+    $self->E($e);
+    return ;
+  }
 
-sub bearing_from_N {
-    my ($self) = @_;
-    my $bearing_from_N = atan2( $self->N, $self->E );
-    return $bearing_from_N;
-}
+#sub bearing_from_N {
+#    my ($self) = @_;
+#    my $bearing_from_N = atan2( $self->N, $self->E );
+#    return $bearing_from_N;
+#}
 
 1;

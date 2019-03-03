@@ -1,36 +1,20 @@
 package Line;
 use Moo;
 use Data::Dumper;
-#use Type::Tiny;
-#use Scalar::Util qw( looks_like_number);
-#extends  'My::CoGo::Point' ;
+use Type::Tiny;
+use Types::Standard qw( Str Int ArrayRef HashRef );
+use Scalar::Util qw( looks_like_number);
+use Carp qw( confess ); 
 
-# some test that Type::Tiny will do for us
-#my $Pos_NUM_TEST = "Type::Tiny"->new(
-#    name       => "Number",
-#    constraint => sub { looks_like_number($_)  && $_ >= 0  },
-#    message    => sub { "$_ ain't a number or not possitive" },
-#);
-#
-#my $Point_Test = "Type::Tiny"->new(
-#    name       => "Number",
-#    constraint => sub { looks_like_number($_)   },
-#    message    => sub { "$_ ain't a number" },
-#);
-#=============================================================
-
-#has 'start' => ( is => 'rw', required => 1, isa => 'My::CoGo::Point'  );
-#has 'start' => ( is => 'rw', required => 1, isa => 'Point'  );
-has 'start' => ( is => 'rw', required => 1,   );
-#has 'end'   => ( is => 'rw', required => 1, isa => 'My::CoGo::Point' );
-has 'end'   => ( is => 'rw', required => 1, );
-
-sub length {
-    my ($self) = @_;
-    print Dumper $self; 
-    my $dN = $self->{start}{'N'} - $self->{end}{'N'} ;
-    my $dE = $self->{start}{'E'} - $self->{end}{'E'} ;
-    return sqrt( $dN**2 + $dE**2 ) 
-  }
+#has 'start' => ( is => 'rw', required => 1,   );
+has pa => (
+    is  => 'rw',
+    isa => sub {  confess "'$_[0]' is not a Point Hash!"
+        unless  $_[0] =~/Point=HASH/ }
+);
+has bearing =>     ( is => 'rw', required => 1, 
+               isa => sub {  confess "'$_[0]' is not a number!"
+                      unless looks_like_number $_[0]}
+               );
 
 1;

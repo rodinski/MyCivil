@@ -3,10 +3,9 @@ use Moo;
 use Type::Tiny;
 use Carp qw( confess ); 
 use Scalar::Util qw( looks_like_number);
-#use Math::Trig qw( :pi rad2deg );
+use Math::Trig qw( :pi rad2deg deg2rad );
 use Data::Dumper;
-use My::CoGo::Point;
-use My::CoGo::Bearing;
+#extends 'My::CoGo::Line';
 
 #my $POINT_TEST = "Type::Tiny"->new(
 #    name       => "Point",
