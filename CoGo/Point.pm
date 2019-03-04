@@ -4,18 +4,13 @@ use Type::Tiny;
 use Types::Standard qw( Str Int ArrayRef HashRef );
 use Scalar::Util qw( looks_like_number);
 use Carp qw( confess ); 
-#has Point => ( 
-#    is => 'rw'
-#  , required => 1
-#  , isa => sub {  confess "'$_[0]' is not a Hash!"
-#          unless  $_[0] =~/Point=HASH/ }
-#  );
-#
-has E =>     ( is => 'rw', required => 1, 
+use Data::Dumper;
+
+has N =>     ( is => 'rw', required => 1,
                isa => sub {  confess "'$_[0]' is not a number!"
                       unless looks_like_number $_[0]}
                );
-has N =>     ( is => 'rw', required => 1,
+has E =>     ( is => 'rw', required => 1, 
                isa => sub {  confess "'$_[0]' is not a number!"
                       unless looks_like_number $_[0]}
                );
@@ -28,13 +23,6 @@ sub to_string {
     return sprintf "{ N=> %s, E=> %s }", $self->E, $self->N;
 }
 
-sub distance_from_origin {
-    my ($self) = @_;
-    my $sqr = $self->E**2 + $self->N**2;
-    return sqrt($sqr);
-}
-
-use Data::Dumper;
 #translate  changes the points N&E
 sub translate {
     my ( $self, %hash) = @_;
@@ -57,11 +45,5 @@ sub rotate {
     $self->E($e);
     return ;
   }
-
-#sub bearing_from_N {
-#    my ($self) = @_;
-#    my $bearing_from_N = atan2( $self->N, $self->E );
-#    return $bearing_from_N;
-#}
 
 1;
