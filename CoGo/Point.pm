@@ -1,10 +1,10 @@
 package Point;
 use Moo;
+use Data::Dumper;
 use Type::Tiny;
 use Types::Standard qw( Str Int ArrayRef HashRef );
 use Scalar::Util qw( looks_like_number);
 use Carp qw( confess ); 
-use Data::Dumper;
 
 has N =>     ( is => 'rw', required => 1,
                isa => sub {  confess "'$_[0]' is not a number!"

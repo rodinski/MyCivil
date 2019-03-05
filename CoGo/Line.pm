@@ -1,5 +1,4 @@
 package Line;
-#use My::CoGo::Utils;
 use Moo;
 use Data::Dumper;
 use Type::Tiny;
@@ -17,13 +16,12 @@ has pa => (
         unless  $_[0] =~/Point=HASH/ }
 );
 has bearing =>     ( is => 'rw', required => 1, 
-  #           isa => sub {  confess "'$_[0]' is not a number!"
-  #                    unless looks_like_number $_[0]}
     isa => sub {  
-#      print $_[0];
       confess "'$_[0]' is not a not number!"
         unless  looks_like_number $_[0]  }
                );
+has ID =>    ( is => 'rw', required => 0 ) ;
+has tags =>  ( is => 'rw', required => 0 ) ;
 
 sub is_parallel {
     my ( $self, $in_number  ) = @_;
@@ -33,14 +31,9 @@ sub is_parallel {
     return (abs ($self->normalize - 
                  $L->normalize ) < 0.0000001);
 }
-#sub normalize {
-#    my ( $self  ) = @_;
-#    return normalize $self->bearing;
-#}
 sub normal  { my ($self) = @_; return $self->bearing + pi; }
 sub b_deg   {  my ($self) = @_; rad2deg $self->bearing }
 sub normalize {  my ($self) = @_;
-#         say Dumper $self;
          atan2 ( sin($self->bearing ),  cos($self->bearing ) )  }
 
 1;
