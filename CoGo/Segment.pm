@@ -5,6 +5,8 @@ use Type::Tiny;
 use Types::Standard qw( Str Int ArrayRef HashRef );
 use Scalar::Util qw( looks_like_number);
 use Math::Trig qw( pi rad2deg deg2rad );
+use Math::Round qw( round );
+
 use Carp qw( confess ); 
 use feature 'say';
 
@@ -27,7 +29,7 @@ has tags =>  ( is => 'rw', required => 0 ) ;
 
 sub bearing {
     my ( $self ) = @_; 
-    return atan2( $self->d_E, $self->d_N);
+    return  atan2( $self->d_E, $self->d_N) ;
 }
 
 sub length {

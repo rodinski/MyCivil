@@ -14,9 +14,8 @@ foreach my $i ( 0 .. 11) {
 #  say "$x   $y";
   push @clock, Point->new(N => $x, E=> $y );
 }
-my   $b=Line->new(pa=>$clock[0], bearing => .25 );
-say  $b->bearing ;
-say  $b->normalize;
-say  $b->normal;
-say  $b->is_parallel(0.25 +  2*pi*10);
-
+my   $b=Line->new(pa=>$clock[0], bearing => 0.1 );
+say  "bearing of \$b: ", $b->bearing ;
+say  "normal  of \$b: ", $b->normal;
+say Dumper  $b->offset(2);
+say Dumper  $b->offset(-20);

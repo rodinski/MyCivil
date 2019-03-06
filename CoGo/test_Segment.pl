@@ -15,7 +15,7 @@ foreach my $i ( 0 .. 11) {
 #  say "$x   $y";
   push @clock, Point->new(N => $x, E=> $y );
 }
-my   $s=Segment->new(pa=>$clock[4], pb=>$clock[3] );
+my   $s=Segment->new(pa=>$clock[9], pb=>$clock[3] );
 
 #say Dumper $s;
 say $s->length;
@@ -23,3 +23,4 @@ say $s->bearing;
 say $s->d_N;
 say $s->d_E;
 say $s->normal;
+
