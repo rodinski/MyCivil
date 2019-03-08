@@ -7,8 +7,9 @@ use feature 'say' ;
 use Data::Dumper;
 
 
+
 use Data::Dumper;
-use Math::Trig qw ( pi rad2deg deg2rad );
+use Math::Trig qw ( asin pi rad2deg deg2rad );
 use feature 'say' ;
 my @clock;
 foreach my $i ( 0 .. 11) {
@@ -47,3 +48,25 @@ sub intersect {
     my $new_pt = Point->new( N => $y, E => $x ) ;
     return $new_pt;
     }
+
+use My::CoGo::Curve;
+    my $cur = Curve->new( CC => $clock[0] , 
+                          PC => $clock[1] , 
+                          delta_angle => pi / 3.0 ); 
+
+
+# write a sub to find the tangents from a random point to a given curve
+tangent_to_curve ( $cur, $clock[7]  ); 
+
+sub tangent_to_curve {
+  my $curve = shift; 
+  my $pa = shift; 
+  
+  my $temp_set = Segment->new( pa => $pa , pb => $curve->CC ) ;
+  say Dumper $temp_set;
+  say $temp_set->length;
+  say $curve->R;
+  my  $theta = asin ( $curve->R / $temp_set->length );
+  say $theta ;
+
+}

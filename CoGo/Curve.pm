@@ -30,7 +30,7 @@ has delta_angle  => (
 
 sub R { 
     my ($self) = @_;
-    my $seg = Segment->new( pt0=>$self->CC, pt1=>$self->PC );
+    my $seg = Segment->new( pa=>$self->CC, pb=>$self->PC );
     return $seg->length;
 }
 
