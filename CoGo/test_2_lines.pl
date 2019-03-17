@@ -49,6 +49,10 @@ sub intersect {
     return $new_pt;
     }
 
+say Dumper $sa->divide( 3 );
+
+
+if (0) {
 use My::CoGo::Curve;
     my $cur = Curve->new( CC => $clock[0] , 
                           PC => $clock[1] , 
@@ -70,3 +74,6 @@ sub tangent_to_curve {
   say $theta ;
 
 }
+}
+
+

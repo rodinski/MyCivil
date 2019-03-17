@@ -56,5 +56,19 @@ sub normalize {  my ($self) = @_;
          $self->bearing; #by def b/c defined with the two points
        }
 
+sub divide { 
+    my ( $self, $divisions ) =  @_;
+    unless ( looks_like_number $divisions ) { say "must be number"; }
+    my $d_e_per = $self->d_E / $divisions;
+    my $d_n_per = $self->d_N / $divisions;
+    my @point_list;
+    for my $i (1 .. ($divisions - 1) )  {
+       my $new_e = $self->pa->{'E'} + $d_e_per * $i ;  
+       my $new_n = $self->pa->{'N'} + $d_n_per * $i ;  
+       push @point_list, Point->new( E => $new_e, N => $new_n );
+    }
+    return @point_list;
+
+}
 
 1;
